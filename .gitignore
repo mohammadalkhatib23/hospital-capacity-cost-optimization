@@ -1,0 +1,36 @@
+# Private/local data and environments
+*.xlsx
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.DS_Store
+*.log
+*.tmp
+# Ignore regenerated results, retaining only reviewed evidence below.
+outputs/*
+!outputs/final_evaluation/
+!outputs/frozen_three_month_forecast_backtest/
+!outputs/frozen_three_month_forecast_optimization/
+!outputs/frozen_three_month_uncertainty_optimization/
+outputs/final_evaluation/*
+!outputs/final_evaluation/final_model_selection_with_deep.csv
+!outputs/final_evaluation/rolling_origin_predictions.csv
+outputs/frozen_three_month_forecast_backtest/*
+!outputs/frozen_three_month_forecast_backtest/frozen_forecast_paths.csv
+outputs/frozen_three_month_forecast_optimization/*
+!outputs/frozen_three_month_forecast_optimization/monthly_realized_results.csv
+!outputs/frozen_three_month_forecast_optimization/nine_month_optimization_summary.csv
+!outputs/frozen_three_month_forecast_optimization/per_block_optimization_summary.csv
+outputs/frozen_three_month_uncertainty_optimization/*
+!outputs/frozen_three_month_uncertainty_optimization/per_origin_policy_summary.csv
+!outputs/frozen_three_month_uncertainty_optimization/monthly_realized_results.csv
+!outputs/frozen_three_month_uncertainty_optimization/pooled_policy_summary.csv
+!outputs/frozen_three_month_uncertainty_optimization/regression_test_results.json
+!outputs/frozen_three_month_uncertainty_optimization/presentation_total_cost_*.png

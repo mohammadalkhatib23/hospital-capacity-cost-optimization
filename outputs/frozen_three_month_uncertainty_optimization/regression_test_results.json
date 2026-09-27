@@ -1,0 +1,298 @@
+{
+  "tests_run": 62,
+  "successful": true,
+  "failures": 0,
+  "errors": 0,
+  "excluded": [
+    {
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_15_cached_notebook_executes_successfully",
+      "reason": "Would execute an authoritative existing notebook; preservation boundary."
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_20_revised_notebook_executes_from_cached_outputs",
+      "reason": "Would execute an authoritative existing notebook; preservation boundary."
+    }
+  ],
+  "test_results": [
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_01_dates_are_strictly_increasing",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_02_dates_have_no_duplicates",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_03_required_targets_exist",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_04_fold_train_validation_and_test_do_not_overlap",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_05_validation_dates_follow_training_dates",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_06_final_test_never_enters_selection_folds",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_07_lag_one_comes_from_previous_month",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_08_lag_twelve_comes_from_twelve_months_earlier",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_09_shifted_rolling_features_exclude_current_month",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_10_scaler_is_fitted_only_on_training_dates",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_11_recursive_forecast_does_not_read_hidden_horizon_actuals",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_12_forecast_length_matches_requested_horizon",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_13_predictions_are_finite",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_14_occupancy_predictions_respect_bounds",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_15_percentage_predictions_respect_bounds",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_16_metric_functions_match_synthetic_values",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_17_selection_function_has_no_test_metric_input",
+      "status": "PASS"
+    },
+    {
+      "test": "test_forecasting_evaluation.ForecastingEvaluationTests.test_18_seeded_recursive_model_is_reproducible",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_01_implementable_decisions_never_use_future_actuals",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_02_forecast_origins_and_implementation_are_chronological",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_03_update_policies_implement_correct_segment_lengths",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_04_all_compared_policies_use_identical_cost_assumptions",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_05_capacity_balance_constraints_hold",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_06_transition_constraints_hold",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_07_ramp_and_maximum_capacity_limits_hold",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_08_realized_shortage_is_recomputed_from_actual_outcomes",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_09_oracle_cost_is_no_greater_than_implementable_costs",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_10_policy_inputs_match_forecast_and_interval_sources",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_11_los_counts_are_never_added_to_occupied_census",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_12_uncertainty_intervals_align_with_target_date_and_horizon",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_13_final_test_actuals_do_not_tune_policies",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_14_solver_and_scenarios_are_reproducible",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_01_seasonal_naive_uses_only_origin_available_values",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_02_last_value_repeats_latest_observation",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_03_no_implementable_baseline_uses_future_actuals",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_04_every_policy_respects_requested_update_frequency",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_05_decisions_are_fixed_between_update_dates",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_06_planning_horizon_and_update_frequency_are_separate",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_07_forecast_origin_target_date_mappings_are_unique",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_08_realized_shortage_uses_actual_outcomes",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_09_cost_components_have_correct_units_and_multiplication",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_10_no_cost_term_is_double_counted",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_11_direct_gap_forecast_cannot_read_future_values",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_12_bias_correction_uses_development_residuals_only",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_13_ensemble_weights_use_development_folds_only",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_14_final_test_does_not_tune_locked_choices",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_15_scenario_paths_preserve_pairing_and_temporal_order",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_16_oracle_constraints_match_implementable_policies",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_17_oracle_cost_is_no_greater_than_comparable_policies",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_18_evpi_and_vss_use_correct_signs",
+      "status": "PASS"
+    },
+    {
+      "test": "test_optimization_revision.OptimizationRevisionTests.test_19_legacy_results_remain_reproducible",
+      "status": "PASS"
+    },
+    {
+      "test": "test_frozen_uncertainty_experiment.FrozenUncertaintyTests.test_bank_never_passes_post_cutoff_history_to_fitter",
+      "status": "PASS"
+    },
+    {
+      "test": "test_frozen_uncertainty_experiment.FrozenUncertaintyTests.test_centering_means_and_complete_pairing",
+      "status": "PASS"
+    },
+    {
+      "test": "test_frozen_uncertainty_experiment.FrozenUncertaintyTests.test_future_outcome_and_nonfinite_residual_rejected",
+      "status": "PASS"
+    },
+    {
+      "test": "test_frozen_uncertainty_experiment.FrozenUncertaintyTests.test_future_poison_does_not_change_recursive_forecast",
+      "status": "PASS"
+    },
+    {
+      "test": "test_frozen_uncertainty_experiment.FrozenUncertaintyTests.test_incomplete_or_duplicate_path_rejected",
+      "status": "PASS"
+    },
+    {
+      "test": "test_frozen_uncertainty_experiment.FrozenUncertaintyTests.test_invalid_component_domain_fails_instead_of_clipping",
+      "status": "PASS"
+    },
+    {
+      "test": "test_frozen_uncertainty_experiment.FrozenUncertaintyTests.test_inventory_ignores_post_cutoff_values",
+      "status": "PASS"
+    },
+    {
+      "test": "test_frozen_uncertainty_experiment.FrozenUncertaintyTests.test_real_stochastic_dispersion_constraints",
+      "status": "PASS"
+    },
+    {
+      "test": "test_frozen_uncertainty_experiment.FrozenUncertaintyTests.test_signed_comparison_and_zero_denominator",
+      "status": "PASS"
+    },
+    {
+      "test": "test_frozen_uncertainty_experiment.FrozenUncertaintyTests.test_single_scenario_equivalence_and_shared_decisions",
+      "status": "PASS"
+    },
+    {
+      "test": "test_frozen_uncertainty_experiment.FrozenUncertaintyTests.test_weights_means_negative_gaps_and_no_clipping",
+      "status": "PASS"
+    }
+  ],
+  "additional_verification_solves": [
+    {
+      "role": "regression_or_synthetic_verification",
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_14_solver_and_scenarios_are_reproducible",
+      "problem": "nhs_capacity_point_forecast",
+      "status": "Optimal"
+    },
+    {
+      "role": "regression_or_synthetic_verification",
+      "test": "test_optimization_evaluation.OptimizationEvaluationTests.test_14_solver_and_scenarios_are_reproducible",
+      "problem": "nhs_capacity_point_forecast",
+      "status": "Optimal"
+    },
+    {
+      "role": "regression_or_synthetic_verification",
+      "test": "test_frozen_uncertainty_experiment.FrozenUncertaintyTests.test_real_stochastic_dispersion_constraints",
+      "problem": "nhs_capacity_stochastic",
+      "status": "Optimal"
+    },
+    {
+      "role": "regression_or_synthetic_verification",
+      "test": "test_frozen_uncertainty_experiment.FrozenUncertaintyTests.test_single_scenario_equivalence_and_shared_decisions",
+      "problem": "nhs_capacity_frozen_locked_ml",
+      "status": "Optimal"
+    },
+    {
+      "role": "regression_or_synthetic_verification",
+      "test": "test_frozen_uncertainty_experiment.FrozenUncertaintyTests.test_single_scenario_equivalence_and_shared_decisions",
+      "problem": "nhs_capacity_stochastic",
+      "status": "Optimal"
+    }
+  ]
+}

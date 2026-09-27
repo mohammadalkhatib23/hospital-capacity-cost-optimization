@@ -1,0 +1,3 @@
+target,selected_model,feature_mode,selection_was_locked_before_test
+g_and_a_beds_available,RandomForestRegressor_target_only_features,target_only_features,True
+g_and_a_beds_occupied,ExtraTreesRegressor_target_only_features,target_only_features,True
