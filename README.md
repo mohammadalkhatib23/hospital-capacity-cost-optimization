@@ -46,6 +46,47 @@ evaluated separately.
 Limitations: three overlapping historical trials; short-window fits are
 exploratory; February/June use retrospectively selected models.
 
+## Planning performance further ahead
+
+Using the same saved seven-month analysis (cells 37-39), we evaluated frozen
+capacity plans against actual bed outcomes. We compared monthly-average
+shortages and cost disadvantage relative to the **full seven-month hindsight
+benchmark** in H1-H3 versus H4-H7. These are portions of one plan, not separate
+optimization runs. Worse later forecasts did not consistently produce worse
+later planning.
+
+![Early versus later monthly-average cost disadvantage and shortages by origin and policy](figures/planning_performance_early_vs_late.png)
+
+| Origin | Later performance worsened | Improved | Mixed |
+| --- | --- | --- | --- |
+| February 2025 | 5 | 0 | 2 |
+| June 2025 | 2 | 4 | 1 |
+| August 2025 | 1 | 5 | 1 |
+
+Counts cover **seven practical policies per origin**: persistence and point /
+uncertainty planning for each of three training windows. Classification considers
+shortages and disadvantage relative to hindsight, **not total expenditure alone**.
+One worsening diagnostic with the other unchanged counts as worsened; opposing
+changes are mixed.
+
+- **February:** all ML plans developed later shortages; some scheduled capacity
+  reductions went too far despite lower actual requirements.
+- **June:** performance varied; several plans improved despite higher later
+  requirements.
+- **August:** all six ML plans had a smaller later cost disadvantage despite worse
+  individual forecast accuracy. Persistence worsened; 12-month point planning
+  had mixed results.
+
+Uncertainty reduced later-period average monthly costs in **five of nine**
+comparisons: all three windows in February and two in June, but none in August.
+It cost more for all three windows in August's later period. This differs from
+whole-plan results: early protection still made August's all-history and
+24-month uncertainty plans cheaper overall.
+
+These are overlapping historical trials with illustrative modeled costs, not
+NHS cash savings. The result concerns **frozen-plan performance, not solver
+failure**; an optimal plan for forecast inputs can perform poorly against actuals.
+
 ## View or run
 
 Viewing saved outputs requires no execution. For a fresh run, first obtain the
