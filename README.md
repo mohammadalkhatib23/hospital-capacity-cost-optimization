@@ -22,6 +22,30 @@ provider-level or patient-level records. G&A means General and Acute beds,
 excluding maternity and mental health. Only occupied and available beds enter
 planning; the threshold requirement is occupied / 0.90.
 
+## Forecast accuracy further ahead
+
+A separate saved analysis from `nhs_frozen_seven_month_three_origins.ipynb`
+(not included here) compares 12-month, 24-month and all-history training.
+At each origin, we forecast the next seven months without admitting new actual
+observations or refitting. H1-H3 and H4-H7 are portions of **one frozen forecast
+path per training window**, not separate runs.
+
+![Early versus later forecast errors for available and occupied beds](figures/forecast_error_early_vs_late.png)
+
+| Origin | Forecast months | Observed pattern |
+| --- | --- | --- |
+| February 2025 | March-September 2025 | Later errors increased in five of six target/window combinations; one stayed almost unchanged (+0.08%). |
+| June 2025 | July 2025-January 2026 | Later errors increased in two combinations and decreased in four. |
+| August 2025 | September 2025-March 2026 | Later errors increased in all six combinations. |
+
+Later forecasts were generally less accurate in February and August, while June
+was mixed. Errors fluctuated rather than increasing every month. These findings
+concern individual bed forecasts; capacity-gap accuracy and planning costs are
+evaluated separately.
+
+Limitations: three overlapping historical trials; short-window fits are
+exploratory; February/June use retrospectively selected models.
+
 ## View or run
 
 Viewing saved outputs requires no execution. For a fresh run, first obtain the
