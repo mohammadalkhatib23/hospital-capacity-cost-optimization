@@ -87,6 +87,71 @@ These are overlapping historical trials with illustrative modeled costs, not
 NHS cash savings. The result concerns **frozen-plan performance, not solver
 failure**; an optimal plan for forecast inputs can perform poorly against actuals.
 
+## Uncertainty and capacity optimization explained
+
+The following two presentation cells describe the separate seven-month analysis
+in `nhs_frozen_seven_month_three_origins.ipynb` (not included here), discussed
+above. Its February, June, and August 2025 plans each start with zero additional
+capacity and use 3, 7, and 9 historical error paths respectively. The included
+three-month notebook instead uses 13 paths and carries capacity between blocks.
+
+### How we represent uncertainty
+
+We start with the ML forecasts of available and occupied beds.
+
+- Look back at complete **seven-month forecast error paths** (actual minus predicted), using only outcomes known by that origin.
+- Keep available/occupied errors paired and retain their month order.
+- Subtract the average historical error separately for each bed series at each horizon, then add these centered paths to its ML forecast. The resulting possible futures average back to the original forecasts.
+- Give every historical path equal weight. Verified paths per training window: **February 2025: 3; June 2025: 7; August 2025: 9** (weights 1/3, 1/7 and 1/9).
+
+These are empirical scenarios, not guaranteed confidence intervals. February's three overlapping paths provide particularly limited evidence.
+
+**The ML prediction stays the same; uncertainty lets the planner consider how that prediction could be wrong.**
+
+#### Worked SAA example
+
+**Hypothetical one-month example, starting with zero additional capacity.** SAA (sample average approximation) means choosing a plan using the average cost across scenarios.
+
+The ML capacity-gap prediction is 10 beds. Centered historical errors of $-2$ and $+2$ give equally weighted gaps of 8 and 12; their average is still 10.
+Opening and operating one extra bed costs **£1,050**: £500 active + £500 addition + £50 change. Each remaining shortage bed costs **£5,000**.
+
+| Extra beds chosen | Opening + operating cost | Shortage penalty: gap 8 | Shortage penalty: gap 12 | Average total cost |
+| --- | --- | --- | --- | --- |
+| 8 | £8,400 | £0 | £20,000 | £18,400 |
+| 10 | £10,500 | £0 | £10,000 | £15,500 |
+| 12 | £12,600 | £0 | £0 | £12,600 |
+
+$$\text{Average cost of choosing 10}=10{,}500+\frac{0+10{,}000}{2}=15{,}500.$$
+
+**The point forecast chooses 10 beds. SAA chooses 12 here because £2,100 of additional capacity avoids £5,000 of average shortage penalties. The forecast average remains 10; the cost of being wrong changes the decision.**
+
+**If the actual gap is only 8, the SAA plan costs £2,100 more than the point plan. This explains why uncertainty can help on average across scenarios but hurt in a particular outcome.**
+
+Our real optimizer makes one shared seven-month schedule using complete historical error paths and the actual capacity constraints.
+
+### How uncertainty enters the optimization
+
+**We choose how much extra capacity to keep, add, or remove each month, balancing its cost against the penalty for being short.**
+
+- $x_h$: active extra capacity.
+- $a_h,r_h$: capacity added and removed.
+- $s_{j,h},u_{j,h}$: shortage and unused capacity in scenario $j$.
+- $p_j$: the scenario's assigned weight.
+- $h$: planning month; $j$: possible future path.
+
+$A_{j,h}$ and $O_{j,h}$ are available and occupied beds in that scenario. With costs in GBP:
+
+$$\min \sum_h(500x_h+550a_h+300r_h)+5000\sum_jp_j\sum_hs_{j,h}.$$
+
+$$A_{j,h}+x_h+s_{j,h}=O_{j,h}/0.90+u_{j,h},\qquad x_h=x_{h-1}+a_h-r_h.$$
+
+**We choose one seven-month capacity schedule shared across all scenarios. Each scenario can produce a different shortage. The objective includes their weighted average shortage penalty. Extra protection is worthwhile only when the expected penalty reduction outweighs its capacity cost.**
+
+All quantities are nonnegative; active extra capacity is capped at 15,000, additions/removals at 5,000 each per month, and each origin starts at $x_0=0$.
+The 550 and 300 include the 50-per-bed change cost. Unused capacity has no separate penalty, but maintaining extra capacity still costs money.
+
+**Future actual bed numbers are used afterward to score the frozen plan. All monetary costs and the 90% threshold are illustrative assumptions.**
+
 ## View or run
 
 Viewing saved outputs requires no execution. For a fresh run, first obtain the
