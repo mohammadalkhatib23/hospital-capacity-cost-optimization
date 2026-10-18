@@ -166,13 +166,18 @@ Target-only SARIMA was the **retrospectively observed pooled-MAE winner**: avail
 
 Adding historical LOS7+/21+ counts at lags6/12 improved occupied-bed Extra Trees pooled MAE from **840.8 to 720.1**, still above seasonal naive's **694.4**. This does not establish that every other predictor is unhelpful.
 
-### Occupied-bed forecast accuracy
+### Available- and occupied-bed forecast accuracy
 
-![Six-month occupied-bed forecast MAE: SARIMA versus target-only Extra Trees](figures/occupied_sarima_vs_extra_trees_mae.png)
+![Frozen six-month available- and occupied-bed MAE: target-only SARIMA versus target-only Extra Trees](figures/sarima_vs_extra_trees_both_targets_mae.png)
 
-SARIMA had lower occupied-bed MAE than target-only Extra Trees in February and June, and approximately 21.9% lower pooled MAE. Extra Trees performed better in August. These are retrospective frozen six-month comparisons.
+Re-evaluating frozen six-month forecasts showed lower pooled MAE for SARIMA than target-only Extra Trees for both bed series. Performance still varied across origins; Extra Trees won August's occupied-bed comparison. The pooled MAE reductions were **51.7% for available beds** and **21.9% for occupied beds**.
 
-This figure measures **forecast accuracy**, not optimization costs. The optimization figure's **Original RF/ET** label remains a two-model pair: Random Forest for available beds and Extra Trees for occupied beds. Pooled results cover 18 forecast cases across 12 distinct months.
+**Which months drove the differences?** Positive gains below mean smaller absolute errors for SARIMA, not lower signed predictions.
+
+- **Available:** February's July/August outcomes contributed gains of **1,085.51 / 1,329.51 beds**; June's October gain was **635.24**. In the August trial, Extra Trees was closer in December and January, despite SARIMA's slightly lower six-month MAE.
+- **Occupied:** February's largest gain was August (**1,121.41 beds**), and June's was July (**761.73**). In the August trial, Extra Trees' October/November errors were **734.18 / 902.50 beds smaller**, driving its six-month win.
+
+These are retrospective forecast-accuracy comparisons, not optimization-cost reductions or reliable advance-selection rules. Each method keeps the same definition across origins; no per-origin best-ML substitution is used. The original locked pair was **Random Forest for available beds and Extra Trees for occupied beds**. This figure instead compares SARIMA with the **Extra Trees candidate for each target**; the optimization figure's **Original RF/ET** label is unchanged. Pooled results contain 18 overlapping forecast cases per target across 12 distinct outcome months.
 
 ![Actual and frozen six-month forecasts, by origin and bed target](figures/six_month_sarima_forecasts.png)
 
