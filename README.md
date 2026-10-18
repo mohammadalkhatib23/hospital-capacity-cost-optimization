@@ -151,3 +151,49 @@ All quantities are nonnegative; active extra capacity is capped at 15,000, addit
 The 550 and 300 include the 50-per-bed change cost. Unused capacity has no separate penalty, but maintaining extra capacity still costs money.
 
 **Future actual bed numbers are used afterward to score the frozen plan. All monetary costs and the 90% threshold are illustrative assumptions.**
+
+## Six-month SARIMA forecasts and frozen capacity planning
+
+We re-evaluated the original approach for a different task: forecasting **six months from one frozen information cutoff**. Each origin starts independently with **zero extra capacity**; all six forecasts and capacity decisions stay frozen. Actual bed outcomes score the plan afterward. This is separate from the three- and seven-month studies above.
+
+| Last observed month | Frozen forecast / planning months |
+| --- | --- |
+| February 2025 | March-August 2025 |
+| June 2025 | July-December 2025 |
+| August 2025 | September 2025-February 2026 |
+
+Target-only SARIMA was the **retrospectively observed pooled-MAE winner**: available beds **352.8 versus 426.6**, occupied beds **656.6 versus 694.4** for seasonal naive. It did not win every origin; earlier validation did not reliably identify subsequent winners.
+
+Adding historical LOS7+/21+ counts at lags6/12 improved occupied-bed Extra Trees pooled MAE from **840.8 to 720.1**, still above seasonal naive's **694.4**. This does not establish that every other predictor is unhelpful.
+
+![Actual and frozen six-month forecasts, by origin and bed target](figures/six_month_sarima_forecasts.png)
+
+### Did better forecasts make cheaper plans?
+
+Same deterministic solver, 90% threshold, costs and limits for every policy. Original RF/ET means Random Forest for available beds and Extra Trees for occupied beds, not a newly chosen pair. Totals below are **realized modeled costs in GBP millions**, including operational costs and shortage penalties.
+
+| Origin | Last-value persistence | Seasonal naive | SARIMA | Original RF/ET |
+| --- | ---: | ---: | ---: | ---: |
+| February 2025 | 16.567 | 13.758 | 13.741 | 17.383 |
+| June 2025 | 23.221 | 13.405 | 14.096 | 17.736 |
+| August 2025 | 67.453 | 15.924 | 15.879 | 23.221 |
+
+![Six-month realized modeled costs split into operational costs and shortage penalties](figures/six_month_sarima_planning_costs.png)
+
+SARIMA signed reduction = baseline cost minus SARIMA cost. **Negative means SARIMA cost more.**
+
+| Origin | Versus last-value persistence | Versus seasonal naive |
+| --- | ---: | ---: |
+| February 2025 | GBP +2,826,042 (+17.06%) | GBP +17,202 (+0.13%) |
+| June 2025 | GBP +9,125,463 (+39.30%) | GBP -690,393 (-5.15%) |
+| August 2025 | GBP +51,573,818 (+76.46%) | GBP +44,995 (+0.28%) |
+
+SARIMA cost less than persistence at **3/3 origins**, and less than seasonal naive at **2/3**. Individual-target MAE is not planning cost: the signed required-capacity gap is `occupied / 0.90 - available`. The two forecast errors can offset. Underestimating the gap can cause shortages costing GBP5,000 per deficit bed-month; overestimating it can buy unnecessary capacity. Monthly additions/removals and their timing also matter.
+
+In June, SARIMA had lower adjusted-gap MAE (**309.68 versus 382.54 bed-equivalents**), yet cost **GBP 690,393 more**. Operating costs fell by GBP 1.067m, but shortage penalties rose by GBP 1.757m. July/September shortages outweighed the cheaper capacity schedule; a near-zero average gap error hid those underestimates.
+
+Assumptions: GBP500 per active extra bed-month, GBP550 per added bed and GBP300 per removed bed (including change costs); extra capacity capped at 15,000, monthly additions/removals at 5,000 each. Costs and limits are illustrative, not NHS-validated.
+
+[Full-precision costs and deficits](results/six_month_sarima_planning_costs.csv) | [Signed cost reductions](results/six_month_sarima_cost_reductions.csv) | [Saved forecast inputs and actuals](results/six_month_sarima_forecasts.csv) | [Forecasting summary](results/forecast_research_summary.csv).
+
+Sources: saved scope-comparison, model-behaviour audit and occupied-predictor-ablation records. Nine matching deterministic plans were verified and reused; only three missing SARIMA plans were solved. No forecasts were refitted or selected for this update. These outcomes have been repeatedly inspected: **18 overlapping origin-horizon cases cover 12 distinct months**, not 18 independent months. Any cross-origin cost sum describes repeated hypothetical trials, not one continuous operating period. Historical publication timing/revisions remain unresolved. These are **illustrative modeled costs and reductions, not NHS cash savings**.

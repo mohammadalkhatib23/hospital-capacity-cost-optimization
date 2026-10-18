@@ -1,0 +1,7 @@
+target,method,pooled_MAE,origin_horizon_cases,distinct_months
+g_and_a_beds_available,Seasonal naive,426.6111111111111,18,12
+g_and_a_beds_available,SARIMA (target-only),352.77579999742494,18,12
+g_and_a_beds_occupied,Seasonal naive,694.4444444444445,18,12
+g_and_a_beds_occupied,SARIMA (target-only),656.5501479683743,18,12
+g_and_a_beds_occupied,Extra Trees target-only,840.8310493827407,18,12
+g_and_a_beds_occupied,Extra Trees LOS-only addition,720.1062345679173,18,12
