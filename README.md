@@ -210,3 +210,53 @@ Assumptions: GBP500 per active extra bed-month, GBP550 per added bed and GBP300 
 [Full-precision costs and deficits](results/six_month_sarima_planning_costs.csv) | [Signed cost reductions](results/six_month_sarima_cost_reductions.csv) | [Saved forecast inputs and actuals](results/six_month_sarima_forecasts.csv) | [Forecasting summary](results/forecast_research_summary.csv).
 
 Sources: saved scope-comparison, model-behaviour audit and occupied-predictor-ablation records. Nine matching deterministic plans were verified and reused; only three missing SARIMA plans were solved. No forecasts were refitted or selected for this update. These outcomes have been repeatedly inspected: **18 overlapping origin-horizon cases cover 12 distinct months**, not 18 independent months. Any cross-origin cost sum describes repeated hypothetical trials, not one continuous operating period. Historical publication timing/revisions remain unresolved. These are **illustrative modeled costs and reductions, not NHS cash savings**.
+
+## Six-month SARIMA with empirical-scenario SAA
+
+Same frozen six-month SARIMA forecasts and independent zero-capacity starts as
+above. We changed only planning under uncertainty: one shared capacity schedule
+minimizes operating cost plus the average shortage penalty across equally
+weighted, paired **SARIMA-specific** historical six-month error paths. No RF/ET
+errors were used. CVaR is off; costs, constraints and the 90% threshold are unchanged.
+
+Complete paths ending by each origin: **February 4, June 8, August 10**.
+We centered errors separately for each target/horizon, so scenarios average
+back to the unchanged point forecasts. These are empirical possibilities, not
+guaranteed prediction intervals or bias correction. All historical forecasts
+were reused after verification; no forecasting refits or new model selection.
+
+![SARIMA point versus SARIMA SAA six-month realized costs, split into operations and shortage penalties](figures/six_month_sarima_point_vs_saa.png)
+
+Costs below are evaluated against **actual outcomes**, not the expected scenario
+objective. Saving = point cost minus SAA cost; **negative means SAA cost more**.
+
+| Origin | Point (GBP m) | SAA (GBP m) | Saving (GBP) | Saving / point |
+| --- | ---: | ---: | ---: | ---: |
+| February 2025 | 13.741 | 14.916 | -1,175,692 | -8.56% |
+| June 2025 | 14.096 | 13.870 | +226,272 | +1.61% |
+| August 2025 | 15.879 | 17.511 | -1,631,344 | -10.27% |
+
+- **February:** GBP 1.953m extra operating expenditure
+  avoided GBP 0.777m of shortages. Protection cost more than it saved.
+- **June:** GBP 1.869m extra operations avoided
+  GBP 2.096m of penalties, reducing total cost by GBP 226,272.
+- **August:** the point plan already had no observed shortage; SAA added
+  GBP 1.631m without avoiding any shortage penalty.
+
+SAA eliminated the observed point-plan deficits (155.44 and
+419.12 bed-equivalent months in February/June) but increased
+unused capacity at all origins. It was cheaper in **one of three trials**, not
+a universal improvement. The existing persistence and seasonal-naive point
+[reference costs](results/six_month_sarima_planning_costs.csv) remain unchanged;
+seasonal-naive point planning was cheaper than SARIMA + SAA at all three origins.
+
+[Full-precision cost components, deficits, unused capacity and scenario objectives](results/six_month_sarima_saa_comparison.csv)
+| [Signed savings and expenditure trade-offs](results/six_month_sarima_saa_savings.csv).
+The executed research notebook is
+`nhs_frozen_six_month_sarima_saa_comparison.ipynb` (not included in this checkout).
+
+Limitations: overlapping, retrospectively inspected trials; small overlapping
+scenario banks also used in earlier specification validation; historical release
+timing/revisions unresolved. Costs, limits and the 90% threshold are illustrative,
+**not demonstrated NHS cash savings**. Extra protection is not guaranteed to pay
+off, and an unfavorable realized outcome is not evidence of solver failure.
