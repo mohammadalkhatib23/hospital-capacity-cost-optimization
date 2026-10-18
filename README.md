@@ -166,6 +166,14 @@ Target-only SARIMA was the **retrospectively observed pooled-MAE winner**: avail
 
 Adding historical LOS7+/21+ counts at lags6/12 improved occupied-bed Extra Trees pooled MAE from **840.8 to 720.1**, still above seasonal naive's **694.4**. This does not establish that every other predictor is unhelpful.
 
+### Occupied-bed forecast accuracy
+
+![Six-month occupied-bed forecast MAE: SARIMA versus target-only Extra Trees](figures/occupied_sarima_vs_extra_trees_mae.png)
+
+SARIMA had lower occupied-bed MAE than target-only Extra Trees in February and June, and approximately 21.9% lower pooled MAE. Extra Trees performed better in August. These are retrospective frozen six-month comparisons.
+
+This figure measures **forecast accuracy**, not optimization costs. The optimization figure's **Original RF/ET** label remains a two-model pair: Random Forest for available beds and Extra Trees for occupied beds. Pooled results cover 18 forecast cases across 12 distinct months.
+
 ![Actual and frozen six-month forecasts, by origin and bed target](figures/six_month_sarima_forecasts.png)
 
 ### Did better forecasts make cheaper plans?
