@@ -1,262 +1,95 @@
-# NHS frozen forecast-to-capacity planning
-
-Read `nhs_frozen_three_month_uncertainty_optimization.ipynb`. It is the only
-notebook in this repository; saved execution outputs are included. Cells 45-47
-show the three simple total-cost comparisons.
-
-| Origin | Frozen planning months |
-| --- | --- |
-| August 2025 | September-November 2025 |
-| November 2025 | December 2025-February 2026 |
-| February 2026 | March-May 2026 |
-
-Three policies: latest-value persistence with deterministic optimization; locked
-Random Forest available-bed and Extra Trees occupied-bed points with deterministic
-optimization; the same ML points with 13 equally weighted, centered historical
-paired error paths and expected-cost stochastic optimization. All three monthly
-decisions stay frozen within each block. Each policy carries its own capacity
-state into the next block. No CQR or CVaR is used in this experiment.
-
-The series has 66 monthly national all-acute aggregate observations, not daily,
-provider-level or patient-level records. G&A means General and Acute beds,
-excluding maternity and mental health. Only occupied and available beds enter
-planning; the threshold requirement is occupied / 0.90.
-
-## Forecast accuracy further ahead
-
-A separate saved analysis from `nhs_frozen_seven_month_three_origins.ipynb`
-(not included here) compares 12-month, 24-month and all-history training.
-At each origin, we forecast the next seven months without admitting new actual
-observations or refitting. H1-H3 and H4-H7 are portions of **one frozen forecast
-path per training window**, not separate runs.
+# NHS bed forecasting and capacity planning
 
-![Early versus later forecast errors for available and occupied beds](figures/forecast_error_early_vs_late.png)
+We study how forecast errors affect a six-month capacity plan, and when planning against uncertainty helps. The data are monthly national aggregates of NHS England General and Acute (G&A) beds, excluding maternity and mental health.
 
-| Origin | Forecast months | Observed pattern |
-| --- | --- | --- |
-| February 2025 | March-September 2025 | Later errors increased in five of six target/window combinations; one stayed almost unchanged (+0.08%). |
-| June 2025 | July 2025-January 2026 | Later errors increased in two combinations and decreased in four. |
-| August 2025 | September 2025-March 2026 | Later errors increased in all six combinations. |
+**Main finding:** SARIMA point planning was cheaper than centered empirical SAA in two of three 2025 trials. In a later, partially blind retrospective 2026 evaluation, the same SAA comparison was substantially cheaper. Forecast-error direction and the chosen shortfall penalty affected the ranking; structural assumptions also mattered in some cases. This does not establish a generally superior policy.
 
-Later forecasts were generally less accurate in February and August, while June
-was mixed. Errors fluctuated rather than increasing every month. These findings
-concern individual bed forecasts; capacity-gap accuracy and planning costs are
-evaluated separately.
+All costs below are **illustrative model cost units**, not validated sterling expenditure or NHS cash savings. Earlier published tables label these same illustrative numbers as GBP. A shortfall means missing an occupancy-adjusted capacity target, not a measured number of patients denied care.
 
-Limitations: three overlapping historical trials; short-window fits are
-exploratory; February/June use retrospectively selected models.
+## The decision
 
-## Planning performance further ahead
+SARIMA forecasts occupied beds $O_t$ and available beds $A_t$ from one observed-month cutoff. The planning gap, in capacity-equivalent beds, is
 
-Using the same saved seven-month analysis (cells 37-39), we evaluated frozen
-capacity plans against actual bed outcomes. We compared monthly-average
-shortages and cost disadvantage relative to the **full seven-month hindsight
-benchmark** in H1-H3 versus H4-H7. These are portions of one plan, not separate
-optimization runs. Worse later forecasts did not consistently produce worse
-later planning.
+$$
+d_t = O_t / 0.90 - A_t.
+$$
 
-![Early versus later monthly-average cost disadvantage and shortages by origin and policy](figures/planning_performance_early_vs_late.png)
+The planner chooses active extra capacity $x_t$, additions $a_t$ and removals $r_t$ for all six months together. Each trial starts independently at $x_0=0$. Forecasts and decisions remain frozen; later actuals score the plan.
 
-| Origin | Later performance worsened | Improved | Mixed |
-| --- | --- | --- | --- |
-| February 2025 | 5 | 0 | 2 |
-| June 2025 | 2 | 4 | 1 |
-| August 2025 | 1 | 5 | 1 |
+- **Point planning:** optimize against the single SARIMA forecast path.
+- **Empirical SAA** (sample average approximation): optimize one shared schedule against equally weighted scenarios built from complete earlier six-month SARIMA error paths. Available/occupied errors remain paired, and all calibration outcomes must be known by the origin. Errors are centered separately by target and horizon, so scenario means match the point forecasts. The 2025 trials use 4, 8 and 10 paths; the February/March 2026 trials use 16 and 17.
 
-Counts cover **seven practical policies per origin**: persistence and point /
-uncertainty planning for each of three training windows. Classification considers
-shortages and disadvantage relative to hindsight, **not total expenditure alone**.
-One worsening diagnostic with the other unchanged counts as worsened; opposing
-changes are mixed.
+The baseline objective is
 
-- **February:** all ML plans developed later shortages; some scheduled capacity
-  reductions went too far despite lower actual requirements.
-- **June:** performance varied; several plans improved despite higher later
-  requirements.
-- **August:** all six ML plans had a smaller later cost disadvantage despite worse
-  individual forecast accuracy. Persistence worsened; 12-month point planning
-  had mixed results.
+$$
+\min \sum_t (500x_t + 550a_t + 300r_t)
++ 5000\,\mathbb{E}\!\left[\sum_t (d_t-x_t)_+\right],
+$$
 
-Uncertainty reduced later-period average monthly costs in **five of nine**
-comparisons: all three windows in February and two in June, but none in August.
-It cost more for all three windows in August's later period. This differs from
-whole-plan results: early protection still made August's all-history and
-24-month uncertainty plans cheaper overall.
+where $(v)_+=\max(v,0)$. Constraints impose $x_t=x_{t-1}+a_t-r_t$, nonnegative quantities, at most 15,000 active extra beds, and at most 5,000 additions or removals per month. There is no terminal charge in this baseline, and CVaR is disabled. For point planning, the expectation reduces to one forecast path.
 
-These are overlapping historical trials with illustrative modeled costs, not
-NHS cash savings. The result concerns **frozen-plan performance, not solver
-failure**; an optimal plan for forecast inputs can perform poorly against actuals.
+The shortfall penalty is ten times the monthly holding cost. Opening/removal costs and links between months mean these are not six independent monthly quantile decisions. SAA minimizes average scenario cost; it does not guarantee a cheaper realized outcome.
 
-## Uncertainty and capacity optimization explained
+## What happened
 
-The following two presentation cells describe the separate seven-month analysis
-in `nhs_frozen_seven_month_three_origins.ipynb` (not included here), discussed
-above. Its February, June, and August 2025 plans each start with zero additional
-capacity and use 3, 7, and 9 historical error paths respectively. The included
-three-month notebook instead uses 13 paths and carries capacity between blocks.
+Difference = **SAA realized cost minus point realized cost**, in millions of model cost units. Positive means SAA cost more. Rows are separate, overlapping hypothetical trials, not a continuous operating trajectory.
 
-### How we represent uncertainty
+| Observed-month cutoff | Frozen planning months | Cost difference (millions) | Evaluation status |
+| --- | --- | ---: | --- |
+| February 2025 | March-August 2025 | +1.176 | Exploratory development |
+| June 2025 | July-December 2025 | -0.226 | Exploratory development |
+| August 2025 | September 2025-February 2026 | +1.631 | Exploratory development |
+| February 2026 | March-August 2026 | -10.854 | Locked, partially blind retrospective evaluation |
+| March 2026 | April-September 2026 | -11.898 | Locked, partially blind retrospective evaluation |
 
-We start with the ML forecasts of available and occupied beds.
+The 2025 values reconcile with the [published baseline results](results/six_month_sarima_saa_comparison.csv). The 2026 values and robustness findings below were checked against the latest local records; those detailed records are **not yet published in this repository**.
 
-- Look back at complete **seven-month forecast error paths** (actual minus predicted), using only outcomes known by that origin.
-- Keep available/occupied errors paired and retain their month order.
-- Subtract the average historical error separately for each bed series at each horizon, then add these centered paths to its ML forecast. The resulting possible futures average back to the original forecasts.
-- Give every historical path equal weight. Verified paths per training window: **February 2025: 3; June 2025: 7; August 2025: 9** (weights 1/3, 1/7 and 1/9).
+The 2026 rows show a **prespecified secondary comparison** of unchanged point versus centered SAA. The registered primary comparison instead used mean-error-corrected point forecasts versus uncentered historical-error scenarios; its differences were -11.644 and -14.593 million model cost units. The comparisons should not be conflated.
 
-These are empirical scenarios, not guaranteed confidence intervals. February's three overlapping paths provide particularly limited evidence.
+## Why the ranking changed
 
-**The ML prediction stays the same; uncertainty lets the planner consider how that prediction could be wrong.**
+Let $\widehat d_t$ be the forecast gap. Define signed forecast error $e_t=d_t-\widehat d_t$ and planned buffer $b_t=x_t-\widehat d_t$. Before numerical rounding, realized planning shortfall is exactly
 
-#### Worked SAA example
+$$
+s_t=(e_t-b_t)_+.
+$$
 
-**Hypothetical one-month example, starting with zero additional capacity.** SAA (sample average approximation) means choosing a plan using the average cost across scenarios.
+In the 2025 trials, SARIMA generally overforecast the gap. Realized gaps fell below the scenario median in **14 of 18 origin-months**. Planning against a high forecast already provided protection; SAA often added capacity whose operating cost exceeded the penalties it avoided. This protection was accidental, but it was not free: point planning also paid to operate its capacity.
 
-The ML capacity-gap prediction is 10 beds. Centered historical errors of $-2$ and $+2$ give equally weighted gaps of 8 and 12; their average is still 10.
-Opening and operating one extra bed costs **£1,050**: £500 active + £500 addition + £50 change. Each remaining shortage bed costs **£5,000**.
+In the February and March 2026 evaluations, realized gaps averaged **544 and 559 beds above the forecasts**, respectively. The point schedules provided too little protection, and SAA reduced modeled cost under the same baseline assumptions.
 
-| Extra beds chosen | Opening + operating cost | Shortage penalty: gap 8 | Shortage penalty: gap 12 | Average total cost |
-| --- | --- | --- | --- | --- |
-| 8 | £8,400 | £0 | £20,000 | £18,400 |
-| 10 | £10,500 | £0 | £10,000 | £15,500 |
-| 12 | £12,600 | £0 | £0 | £12,600 |
+Historical mean-error correction did not anticipate this change. Pre-origin corrections lowered the forecast gaps by an average of 108 and 123 beds, respectively, when the subsequent actual gaps were higher. The insurance effect of overforecasting is understandable; using past bias to predict its future direction was unreliable in these cases.
 
-$$\text{Average cost of choosing 10}=10{,}500+\frac{0+10{,}000}{2}=15{,}500.$$
+## What the checks established
 
-**The point forecast chooses 10 beds. SAA chooses 12 here because £2,100 of additional capacity avoids £5,000 of average shortage penalties. The forecast average remains 10; the cost of being wrong changes the decision.**
+The latest local robustness records supersede the initial stopped audit: the specification was reconciled with the existing coupled optimizer, rather than treating its transition costs as a solver defect. All 24 existing plans reproduced with identical capacity decisions and floating-point-level cost differences. Later synthetic and nesting checks passed under documented tolerances. Configurations were hashed before the corresponding sensitivity rounds; one recorded amendment addressed numerical tolerance in the budget-constrained hindsight check. The 2025 analysis remains exploratory because outcomes had already been examined.
 
-**If the actual gap is only 8, the SAA plan costs £2,100 more than the point plan. This explains why uncertainty can help on average across scenarios but hurt in a particular outcome.**
+- **Costs and protection preferences:** tested shortfall-cost ratios and occupancy thresholds changed rankings; no universal preference survived the grid.
+- **Operational structure:** several tested changes preserved rankings, but structure was not irrelevant. Removing lead time reversed June's block-planning comparison, and a terminal charge reduced its baseline advantage to a practical tie. These tests are not a formal ranking of which assumptions matter most.
+- **Equal budgets:** SAA produced less or equal realized planning shortfall than the tested point-plus-uniform-buffer policy at all 21 tested 2025 budget/origin cells, within numerical tolerance. This supports that comparison, not all possible buffer rules.
+- **Alternative scenarios:** Gaussian and innovation-bootstrap generators produced much wider distributions and cost more than point planning and empirical SAA at all three 2025 origins. Their gap CRPS was worse on the common June/August validation cases; high coverage alone did not establish better calibration.
+- **Nonlinear penalties:** the additional 95%-occupancy shortfall tier was inactive in the tested 2025 actuals and scenarios, so those cases could not assess its intended effect.
 
-Our real optimizer makes one shared seven-month schedule using complete historical error paths and the actual capacity constraints.
+Reordering paired scenarios independently within each calendar month leaves this additive expected-cost objective unchanged when each month's gap distribution and weights stay fixed. Moving demand between calendar months can affect decisions.
 
-### How uncertainty enters the optimization
+## What the later evaluation establishes
 
-**We choose how much extra capacity to keep, add, or remove each month, balancing its cost against the penalty for being short.**
+The recorded execution order and verified hashes show that configurations and plans were frozen before scoring June-September 2026 outcomes. March-May 2026 had already been inspected. This is a **partially blind retrospective exercise conducted in October 2026**, not evidence that the plans were issued in real time at the stated origins. Hashes support file integrity; they do not independently establish what an analyst had previously seen.
 
-- $x_h$: active extra capacity.
-- $a_h,r_h$: capacity added and removed.
-- $s_{j,h},u_{j,h}$: shortage and unused capacity in scenario $j$.
-- $p_j$: the scenario's assigned weight.
-- $h$: planning month; $j$: possible future path.
+The two new windows share five target months (April-August). They therefore do not provide two independent six-month confirmations, and contain only **four distinct previously unread outcome months** (June-September). The later workbook's history matches the earlier snapshot through both origins; subsequent revisions and historical release-time availability remain limitations.
 
-$A_{j,h}$ and $O_{j,h}$ are available and occupied beds in that scenario. With costs in GBP:
+The ranking reversal shows that the observed 2025 point advantage did not persist in these later cases. It does not establish SAA's long-run expected benefit, an optimal protection level, or a guaranteed downside cap. The scale of the differences depends on the illustrative penalty ratio.
 
-$$\min \sum_h(500x_h+550a_h+300r_h)+5000\sum_jp_j\sum_hs_{j,h}.$$
+## Limits and next step
 
-$$A_{j,h}+x_h+s_{j,h}=O_{j,h}/0.90+u_{j,h},\qquad x_h=x_{h-1}+a_h-r_h.$$
+National monthly averages assume substantial pooling and hide local peaks. Occupied beds reflect accommodated demand and may be capacity-constrained. Holding published available and occupied bed counts fixed while adding modeled capacity is an unvalidated counterfactual. Publication timing, historical revisions, and the boundary between published capacity and modeled additions also need operational validation.
 
-**We choose one seven-month capacity schedule shared across all scenarios. Each scenario can produce a different shortage. The objective includes their weighted average shortage penalty. Extra protection is worthwhile only when the expected penalty reduction outweighs its capacity cost.**
+The next step is to define an actionable decision with one trust or bed pool and evaluate it using suitable local data. Trust-level analysis reduces national pooling but still needs staffing, timing and access measures; monthly averages alone may miss short periods of congestion.
 
-All quantities are nonnegative; active extra capacity is capped at 15,000, additions/removals at 5,000 each per month, and each origin starts at $x_0=0$.
-The 550 and 300 include the 50-per-bed change cost. Unused capacity has no separate penalty, but maintaining extra capacity still costs money.
+These repeatedly inspected, overlapping trials support a methodological case study: forecast-error direction and protection preferences can reverse planning rankings, so forecast accuracy alone cannot select a capacity policy. A ranking change does not identify the correct formulation, and an unchanged ranking does not prove absence of bias. The results do not demonstrate NHS cash savings or improved patient access.
 
-**Future actual bed numbers are used afterward to score the frozen plan. All monetary costs and the 90% threshold are illustrative assumptions.**
+## Reproduction status
 
-## Six-month SARIMA forecasts and frozen capacity planning
+The latest formulation notebook, helper, robustness tables, locked plans, 2026 scoring records and newer workbook have **not been published here**. This checkout contains earlier research artifacts and the 2025 baseline tables; it does not reproduce the entire study summarized above. Earlier artifacts are retained for traceability, rather than presented as the current experiment. Fresh end-to-end reproduction from a clean public checkout has not been verified.
 
-We re-evaluated the original approach for a different task: forecasting **six months from one frozen information cutoff**. Each origin starts independently with **zero extra capacity**; all six forecasts and capacity decisions stay frozen. Actual bed outcomes score the plan afterward. This is separate from the three- and seven-month studies above.
-
-| Last observed month | Frozen forecast / planning months |
-| --- | --- |
-| February 2025 | March-August 2025 |
-| June 2025 | July-December 2025 |
-| August 2025 | September 2025-February 2026 |
-
-Target-only SARIMA was the **retrospectively observed pooled-MAE winner**: available beds **352.8 versus 426.6**, occupied beds **656.6 versus 694.4** for seasonal naive. It did not win every origin; earlier validation did not reliably identify subsequent winners.
-
-Adding historical LOS7+/21+ counts at lags6/12 improved occupied-bed Extra Trees pooled MAE from **840.8 to 720.1**, still above seasonal naive's **694.4**. This does not establish that every other predictor is unhelpful.
-
-### Available- and occupied-bed forecast accuracy
-
-![Frozen six-month available- and occupied-bed MAE: target-only SARIMA versus target-only Extra Trees](figures/sarima_vs_extra_trees_both_targets_mae.png)
-
-Re-evaluating frozen six-month forecasts showed lower pooled MAE for SARIMA than target-only Extra Trees for both bed series. Performance still varied across origins; Extra Trees won August's occupied-bed comparison. The pooled MAE reductions were **51.7% for available beds** and **21.9% for occupied beds**.
-
-**Which months drove the differences?** Positive gains below mean smaller absolute errors for SARIMA, not lower signed predictions.
-
-- **Available:** February's July/August outcomes contributed gains of **1,085.51 / 1,329.51 beds**; June's October gain was **635.24**. In the August trial, Extra Trees was closer in December and January, despite SARIMA's slightly lower six-month MAE.
-- **Occupied:** February's largest gain was August (**1,121.41 beds**), and June's was July (**761.73**). In the August trial, Extra Trees' October/November errors were **734.18 / 902.50 beds smaller**, driving its six-month win.
-
-These are retrospective forecast-accuracy comparisons, not optimization-cost reductions or reliable advance-selection rules. Each method keeps the same definition across origins; no per-origin best-ML substitution is used. The original locked pair was **Random Forest for available beds and Extra Trees for occupied beds**. This figure instead compares SARIMA with the **Extra Trees candidate for each target**; the optimization figure's **Original RF/ET** label is unchanged. Pooled results contain 18 overlapping forecast cases per target across 12 distinct outcome months.
-
-![Actual and frozen six-month forecasts, by origin and bed target](figures/six_month_sarima_forecasts.png)
-
-### Did better forecasts make cheaper plans?
-
-Same deterministic solver, 90% threshold, costs and limits for every policy. Original RF/ET means Random Forest for available beds and Extra Trees for occupied beds, not a newly chosen pair. Totals below are **realized modeled costs in GBP millions**, including operational costs and shortage penalties.
-
-| Origin | Last-value persistence | Seasonal naive | SARIMA | Original RF/ET |
-| --- | ---: | ---: | ---: | ---: |
-| February 2025 | 16.567 | 13.758 | 13.741 | 17.383 |
-| June 2025 | 23.221 | 13.405 | 14.096 | 17.736 |
-| August 2025 | 67.453 | 15.924 | 15.879 | 23.221 |
-
-![Six-month realized modeled costs split into operational costs and shortage penalties](figures/six_month_sarima_planning_costs.png)
-
-SARIMA signed reduction = baseline cost minus SARIMA cost. **Negative means SARIMA cost more.**
-
-| Origin | Versus last-value persistence | Versus seasonal naive |
-| --- | ---: | ---: |
-| February 2025 | GBP +2,826,042 (+17.06%) | GBP +17,202 (+0.13%) |
-| June 2025 | GBP +9,125,463 (+39.30%) | GBP -690,393 (-5.15%) |
-| August 2025 | GBP +51,573,818 (+76.46%) | GBP +44,995 (+0.28%) |
-
-SARIMA cost less than persistence at **3/3 origins**, and less than seasonal naive at **2/3**. Individual-target MAE is not planning cost: the signed required-capacity gap is `occupied / 0.90 - available`. The two forecast errors can offset. Underestimating the gap can cause shortages costing GBP5,000 per deficit bed-month; overestimating it can buy unnecessary capacity. Monthly additions/removals and their timing also matter.
-
-In June, SARIMA had lower adjusted-gap MAE (**309.68 versus 382.54 bed-equivalents**), yet cost **GBP 690,393 more**. Operating costs fell by GBP 1.067m, but shortage penalties rose by GBP 1.757m. July/September shortages outweighed the cheaper capacity schedule; a near-zero average gap error hid those underestimates.
-
-Assumptions: GBP500 per active extra bed-month, GBP550 per added bed and GBP300 per removed bed (including change costs); extra capacity capped at 15,000, monthly additions/removals at 5,000 each. Costs and limits are illustrative, not NHS-validated.
-
-[Full-precision costs and deficits](results/six_month_sarima_planning_costs.csv) | [Signed cost reductions](results/six_month_sarima_cost_reductions.csv) | [Saved forecast inputs and actuals](results/six_month_sarima_forecasts.csv) | [Forecasting summary](results/forecast_research_summary.csv).
-
-Sources: saved scope-comparison, model-behaviour audit and occupied-predictor-ablation records. Nine matching deterministic plans were verified and reused; only three missing SARIMA plans were solved. No forecasts were refitted or selected for this update. These outcomes have been repeatedly inspected: **18 overlapping origin-horizon cases cover 12 distinct months**, not 18 independent months. Any cross-origin cost sum describes repeated hypothetical trials, not one continuous operating period. Historical publication timing/revisions remain unresolved. These are **illustrative modeled costs and reductions, not NHS cash savings**.
-
-## Six-month SARIMA with empirical-scenario SAA
-
-Same frozen six-month SARIMA forecasts and independent zero-capacity starts as
-above. We changed only planning under uncertainty: one shared capacity schedule
-minimizes operating cost plus the average shortage penalty across equally
-weighted, paired **SARIMA-specific** historical six-month error paths. No RF/ET
-errors were used. CVaR is off; costs, constraints and the 90% threshold are unchanged.
-
-Complete paths ending by each origin: **February 4, June 8, August 10**.
-We centered errors separately for each target/horizon, so scenarios average
-back to the unchanged point forecasts. These are empirical possibilities, not
-guaranteed prediction intervals or bias correction. All historical forecasts
-were reused after verification; no forecasting refits or new model selection.
-
-![SARIMA point versus SARIMA SAA six-month realized costs, split into operations and shortage penalties](figures/six_month_sarima_point_vs_saa.png)
-
-Costs below are evaluated against **actual outcomes**, not the expected scenario
-objective. Saving = point cost minus SAA cost; **negative means SAA cost more**.
-
-| Origin | Point (GBP m) | SAA (GBP m) | Saving (GBP) | Saving / point |
-| --- | ---: | ---: | ---: | ---: |
-| February 2025 | 13.741 | 14.916 | -1,175,692 | -8.56% |
-| June 2025 | 14.096 | 13.870 | +226,272 | +1.61% |
-| August 2025 | 15.879 | 17.511 | -1,631,344 | -10.27% |
-
-- **February:** GBP 1.953m extra operating expenditure
-  avoided GBP 0.777m of shortages. Protection cost more than it saved.
-- **June:** GBP 1.869m extra operations avoided
-  GBP 2.096m of penalties, reducing total cost by GBP 226,272.
-- **August:** the point plan already had no observed shortage; SAA added
-  GBP 1.631m without avoiding any shortage penalty.
-
-SAA eliminated the observed point-plan deficits (155.44 and
-419.12 bed-equivalent months in February/June) but increased
-unused capacity at all origins. It was cheaper in **one of three trials**, not
-a universal improvement. The existing persistence and seasonal-naive point
-[reference costs](results/six_month_sarima_planning_costs.csv) remain unchanged;
-seasonal-naive point planning was cheaper than SARIMA + SAA at all three origins.
-
-[Full-precision cost components, deficits, unused capacity and scenario objectives](results/six_month_sarima_saa_comparison.csv)
-| [Signed savings and expenditure trade-offs](results/six_month_sarima_saa_savings.csv).
-The executed research notebook is
-`nhs_frozen_six_month_sarima_saa_comparison.ipynb` (not included in this checkout).
-
-Limitations: overlapping, retrospectively inspected trials; small overlapping
-scenario banks also used in earlier specification validation; historical release
-timing/revisions unresolved. Costs, limits and the 90% threshold are illustrative,
-**not demonstrated NHS cash savings**. Extra protection is not guaranteed to pay
-off, and an unfavorable realized outcome is not evidence of solver failure.
+See [data provenance](DATA_PROVENANCE.md) and the [existing reproduction review](REPRODUCTION_REVIEW.md) for the included materials. Both cover the earlier bundled experiment and May 2026 workbook, not the latest local study or September 2026 release. The workbook is not committed; data-reuse and code-licensing questions documented there remain unresolved.
