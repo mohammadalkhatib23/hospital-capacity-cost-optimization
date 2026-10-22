@@ -56,3 +56,19 @@ Variables:
 - $u_t$, $u_{j,t}$: capacity above the planning requirement (beds)
 - $O_t$, $A_t$: occupied and available beds (forecast inputs)
 - $d_t$, $d_{j,t}$: planning gap (point forecast, or scenario $j$)
+
+## Point vs SAA: realised cost by origin
+
+Each origin's plans are fixed at the origin and scored on the six months that followed. Neighbouring origins share target months, so rows are not independent.
+
+Point - SAA > 0 means SAA had the lower realised cost. Costs are illustrative model units (validated: False), not NHS cash.
+
+| Origin | Forecast months | N | Point operating | Point shortfall cost | Point total | SAA operating | SAA shortfall cost | SAA total | Hindsight total | Point - SAA |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Feb 2025 | Mar 2025-Aug 2025 | 4 | 12.96 | 0.78 | 13.74 | 14.92 | 0.00 | 14.92 | 11.40 | -1.18 |
+| Jun 2025 | Jul 2025-Dec 2025 | 8 | 12.00 | 2.10 | 14.10 | 13.87 | 0.00 | 13.87 | 11.73 | 0.23 |
+| Aug 2025 | Sep 2025-Feb 2026 | 10 | 15.88 | 0.00 | 15.88 | 17.51 | 0.00 | 17.51 | 14.74 | -1.63 |
+| Feb 2026 | Mar 2026-Aug 2026 | 16 | 11.33 | 16.36 | 27.69 | 13.18 | 3.65 | 16.84 | 12.72 | 10.85 |
+| Mar 2026 | Apr 2026-Sep 2026 | 17 | 11.17 | 13.58 | 24.75 | 12.85 | 0.00 | 12.85 | 12.58 | 11.90 |
+
+![Point vs SAA: realised cost by origin](figures/point_vs_saa_five_origins.png)
