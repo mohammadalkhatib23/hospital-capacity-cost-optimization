@@ -12,6 +12,100 @@ SARIMA is fitted separately to occupied and available beds at each origin using 
 
 ![SARIMA MAE, months 1-3 vs 4-6](figures/sarima_mae_early_vs_late.png)
 
+## Capacity planning optimisation
+
+At each origin, the next six months of forecasts are converted into a planning gap, and a linear program chooses how much extra capacity to operate in each month. The whole six-month schedule is fixed at the origin and is not revised as months occur. The objective balances running, opening and closing costs against a penalty for falling short of the occupancy-based planning requirement. Costs are illustrative model units (**validated: False**), not NHS cash values.
+
+### Planning gap
+
+```text
+d_t = O_t / 0.90 - A_t
+```
+
+O_t is occupied beds, A_t is available beds, and tau = 0.90 is the planning occupancy threshold. Positive d_t is the extra capacity needed to keep occupancy at or below 90%, while negative d_t indicates baseline headroom; this is a planning target, not a count of patients denied care.
+
+The gap follows the occupied/rho and capacity-balance calculation in [optimization_evaluation.py:577-581](optimization_evaluation.py#L577-L581). The six-month horizon, 0.90 threshold and zero starting capacity are the study settings recorded in local `sarima_six_month_saa_comparison.py:55-56,212-213,257-258`; the generic solver receives these as inputs. Code links below use the repository's line numbers.
+
+### Decision variables
+
+| Variable | Meaning | Unit |
+| --- | --- | --- |
+| x_t | Extra capacity active in month t ([code:553-558](optimization_evaluation.py#L553-L558)) | beds |
+| a_t | Extra capacity added in month t ([code:559-564](optimization_evaluation.py#L559-L564)) | beds |
+| r_t | Extra capacity removed in month t ([code:565-570](optimization_evaluation.py#L565-L570)) | beds |
+| s_t | Shortfall against the planning requirement ([code:571](optimization_evaluation.py#L571)) | beds |
+| u_t | Capacity above the planning requirement ([code:572](optimization_evaluation.py#L572)) | beds |
+
+All variables are continuous: fractional bed-equivalents are allowed. These declarations use PuLP's default continuous category, not integer variables.
+
+### Parameters
+
+| Symbol | Value | Meaning |
+| --- | ---: | --- |
+| c | 500 | Running cost per bed-month ([code:97](optimization_evaluation.py#L97)) |
+| a+ | 550 | Cost per bed added: 500 activation + 50 change charge ([code:98-101](optimization_evaluation.py#L98-L101), [585-587](optimization_evaluation.py#L585-L587)) |
+| a- | 300 | Cost per bed removed: 250 removal + 50 change charge ([code:99-101](optimization_evaluation.py#L99-L101), [586-587](optimization_evaluation.py#L586-L587)) |
+| p | 5,000 | Penalty per bed-month of shortfall ([code:100](optimization_evaluation.py#L100)) |
+| R+ | 5,000 | Maximum additions per month ([code:103](optimization_evaluation.py#L103)) |
+| R- | 5,000 | Maximum removals per month ([code:104](optimization_evaluation.py#L104)) |
+| X | 15,000 | Maximum extra capacity ([code:102](optimization_evaluation.py#L102)) |
+| x_0 | 0 | Extra capacity at the origin ([code:524](optimization_evaluation.py#L524)); fixed to zero in this study |
+
+The cost parameters are explicitly unvalidated ([optimization_evaluation.py:106](optimization_evaluation.py#L106)).
+
+### Objective
+
+```text
+min sum_{t=1..6} (500 x_t + 550 a_t + 300 r_t + 5000 s_t)
+```
+
+The 500 x_t term pays to run active extra capacity each month ([code:584](optimization_evaluation.py#L584)).
+The 550 a_t term pays for additions, including the change charge ([code:585-587](optimization_evaluation.py#L585-L587)).
+The 300 r_t term pays for removals, including the change charge ([code:586-587](optimization_evaluation.py#L586-L587)).
+The 5000 s_t term penalises shortfall each month; baseline shortfall multipliers are one ([code:535-538](optimization_evaluation.py#L535-L538), [588](optimization_evaluation.py#L588)).
+
+### Constraints
+
+```text
+x_t + s_t - u_t = d_t
+```
+
+Shortfall or surplus accounts for the difference between extra capacity and the planning gap ([optimization_evaluation.py:577-581](optimization_evaluation.py#L577-L581)).
+
+```text
+x_t = x_{t-1} + a_t - r_t
+```
+
+Capacity carries over between months, and changing it requires additions or removals ([optimization_evaluation.py:575-576](optimization_evaluation.py#L575-L576)).
+
+```text
+0 <= x_t <= 15000
+```
+
+Active extra capacity cannot be negative or exceed 15,000 beds ([optimization_evaluation.py:554-555](optimization_evaluation.py#L554-L555)).
+
+```text
+0 <= a_t <= 5000,  0 <= r_t <= 5000
+```
+
+At most 5,000 beds can be added and at most 5,000 removed in any month ([optimization_evaluation.py:560-567](optimization_evaluation.py#L560-L567)).
+
+```text
+s_t, u_t >= 0,  x_0 = 0
+```
+
+Shortfall and surplus are nonnegative, and the study starts with no extra capacity ([optimization_evaluation.py:571-572](optimization_evaluation.py#L571-L572), [524](optimization_evaluation.py#L524)).
+
+### Modelling assumptions
+
+- All six months of capacity decisions are made once at the origin: no adaptive capacity-decision recourse; SAA has scenario-specific shortfall/surplus accounting ([code:715-756](optimization_evaluation.py#L715-L756)).
+- There is no terminal charge for capacity left open after month six ([objective:583-590](optimization_evaluation.py#L583-L590)); there is no requirement to close it.
+- Surplus u_t has no separate penalty; any extra capacity kept active still incurs its running cost ([objective:583-590](optimization_evaluation.py#L583-L590)).
+- The baseline is risk-neutral: minimise total cost, or average cost with scenarios, with CVaR disabled ([code:685](optimization_evaluation.py#L685), [758-778](optimization_evaluation.py#L758-L778)).
+- Point planning uses one forecast path; SAA extends the same program to several scenarios with one shared capacity schedule ([code:715-756](optimization_evaluation.py#L715-L756), [772-776](optimization_evaluation.py#L772-L776)).
+
+The next section shows how SAA replaces the single forecast gap with several scenario gaps while keeping one shared capacity plan.
+
 ## Uncertainty-aware planning (SAA)
 
 The point planner optimises against a single forecast path. Sample Average Approximation (SAA) instead builds **N = 4 equally weighted possible futures** by adding centred historical SARIMA forecast errors to the current forecast, then chooses one six-month capacity plan minimising average cost across those futures. Capacity, additions and removals are shared by all scenarios; shortfall and unused capacity can differ. The point plan is the special case with one scenario equal to the forecast.
@@ -70,6 +164,8 @@ For each path and month: scenario O = forecast O + centred O mistake; scenario A
 | Average | 4,335.99 | 4,045.15 | 3,602.03 | 3,213.54 | 2,722.57 | 1,591.01 |
 
 ### Step 5 - The optimisation
+
+This is the program from 'Capacity planning optimisation', with the shortfall term averaged over N scenarios.
 
 ```text
 min  sum_t (500 x_t + 550 a_t + 300 r_t)
