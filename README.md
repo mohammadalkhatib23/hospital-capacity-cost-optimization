@@ -72,3 +72,9 @@ Point - SAA > 0 means SAA had the lower realised cost. Costs are illustrative mo
 | Mar 2026 | Apr 2026-Sep 2026 | 17 | 11.17 | 13.58 | 24.75 | 12.85 | 0.00 | 12.85 | 12.58 | 11.90 |
 
 ![Point vs SAA: realised cost by origin](figures/point_vs_saa_five_origins.png)
+
+### Conclusion
+
+Point plans fewer beds, so it pays less for beds but risks big shortage penalties. SAA plans more beds, so it pays more for beds but rarely gets caught short. Which one wins depends on whether reality came in above or below the forecast.
+
+For example, at the August 2025 origin reality came in below the forecast: point had no shortfall, and SAA's extra beds cost 1.63m more. At the March 2026 origin reality came in above the forecast: point ran short (13.58m in shortfall penalties), while SAA had none and finished 11.90m cheaper.
