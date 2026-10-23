@@ -2,7 +2,9 @@
 
 All forecasting methods use the same 24 months before the origin (October 2023 - September 2025) and forecast the next six months (October 2025 - March 2026). "Rule" opens exactly the extra capacity the forecast says is needed each month, ignoring costs, while "LP" solves a linear program that chooses monthly extra capacity to minimise running (500 per bed-month), opening (550), closing (300) and shortfall (5,000 per bed-month) costs, with capacity carrying over between months, limits of 5,000 opened or closed per month and 15,000 in total, and zero starting capacity with that forecast. SARIMA-full (trained on all history) is shown only as a reference.
 
-![September 2025 origin: forecast gaps vs actual](figures/sep2025_forecasts_vs_actual.png)
+![September 2025 origin: monthly forecasts vs actual](figures/sep2025_forecasts_three_panel.png)
+
+Each model forecasts occupied and available beds; the gap is derived from them as occupied / 0.90 - available.
 
 | Forecast | Training data | Decision | Gap MAE (beds) | Mean signed gap error (beds) | Operating cost | Shortfall cost | Total realised cost | Excess over hindsight |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
@@ -22,5 +24,11 @@ All forecasting methods use the same 24 months before the origin (October 2023 -
 Costs in millions of model cost units. Mean signed gap error = actual - forecast.
 
 ![September 2025 origin: realised cost by method](figures/sep2025_realised_cost_by_plan.png)
+
+### Month by month: cost
+
+![September 2025 origin: what each plan cost, month by month](figures/sep2025_monthly_cost_heatmap.png)
+
+Monthly cost includes running, opening and closing beds plus the 5,000-per-bed shortfall penalty; 'short' and 'spare' show how far each plan was below or above the actual gap that month.
 
 **Result.** Seasonal naive had the lowest gap MAE (313 beds), and SARIMA-24 LP had the lowest realised cost (16.11m, 0.87m above hindsight). Rule and LP plans were identical for Mean-24 and Persistence, and LP was cheaper than Rule by 0.43m for Seasonal naive, 0.44m for SARIMA-24 and 0.11m for ExtraTrees-24 (differences computed before rounding). This is a single origin (one six-month window), SARIMA-24 and ExtraTrees-24 are fitted on only 24 months, and costs are illustrative model units (validated: False).
