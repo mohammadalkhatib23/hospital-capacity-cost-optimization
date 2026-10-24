@@ -2,9 +2,25 @@
 
 All forecasting methods use the same 24 months before the origin (October 2023 - September 2025) and forecast the next six months (October 2025 - March 2026). "Rule" opens exactly the extra capacity the forecast says is needed each month, ignoring costs. "LP" feeds the same forecast into a linear program that chooses monthly extra capacity to minimise running (500 per bed-month), opening (550), closing (300) and shortfall (5,000 per bed-month) costs, with capacity carrying over between months, at most 5,000 beds opened or closed per month, at most 15,000 in total, and zero starting capacity. SARIMA-full (trained on all history) is shown only as a reference.
 
-![September 2025 origin: monthly forecasts vs actual](figures/sep2025_forecasts_three_panel.png)
+### Forecasts by series
 
-Each model forecasts occupied and available beds; the gap is derived from them as occupied / 0.90 - available.
+Seasonal naive and SARIMA-24 are shown against the actual values; all methods are in the table below.
+
+![Occupied beds: forecast vs actual](figures/sep2025_forecast_occupied.png)
+
+**Occupied beds:** Seasonal naive was closer in 6 of 6 months (MAE 1,028 vs 1,039). Best of all methods: ExtraTrees-24 (MAE 677).
+
+![Available beds: forecast vs actual](figures/sep2025_forecast_available.png)
+
+**Available beds:** SARIMA-24 was closer in 6 of 6 months (MAE 808 vs 842). Best of all methods: ExtraTrees-24 (MAE 764).
+
+![Planning gap: forecast vs actual](figures/sep2025_forecast_gap.png)
+
+**Planning gap:** Seasonal naive was closer in 5 of 6 months; SARIMA-24 in 1 (January). Best of all methods: Seasonal naive (MAE 313).
+
+### Why the gap is the forecast that matters
+
+The planner never uses occupied or available beds on their own; it uses the gap, occupied / 0.90 - available. Errors in the two forecasts can cancel or add up: overestimating occupied beds raises the gap, while overestimating available beds lowers it. Seasonal naive and SARIMA-24 both overestimated occupied and available beds by similar amounts, so their errors largely cancelled and their gaps were close to the actual values. ExtraTrees-24 was the most accurate on both bed series, but it overestimated available beds by more than occupied beds in most months, so its gap came out too low and its plans ran short.
 
 | Forecast | Training data | Decision | Gap MAE (beds) | Mean signed gap error (beds) | Operating cost | Shortfall cost | Total realised cost | Excess over hindsight |
 | --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
