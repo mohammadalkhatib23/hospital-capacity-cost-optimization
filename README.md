@@ -48,3 +48,42 @@ Costs in millions of model cost units. Mean signed gap error = actual - forecast
 Monthly cost includes running, opening and closing beds plus the 5,000-per-bed shortfall penalty; 'short' and 'spare' show how far each plan was below or above the actual gap that month.
 
 **Result.** Seasonal naive had the lowest gap MAE (313 beds), and SARIMA-24 LP had the lowest realised cost (16.11m, 0.87m above hindsight). SARIMA-24 LP, Seasonal naive LP and SARIMA-full LP were within 0.04m of one another. Rule and LP plans were identical for Mean-24 and Persistence, and LP was cheaper than Rule by 0.43m for Seasonal naive, 0.44m for SARIMA-24 and 0.11m for ExtraTrees-24 (differences computed before rounding). This is a single origin (one six-month window), SARIMA-24 and ExtraTrees-24 are fitted on only 24 months, and costs are illustrative model units (validated: False).
+
+## Does more training data help? 24 vs 36 months vs full history (September 2025 origin)
+
+SARIMA and ExtraTrees are retrained on 24 months, 36 months and all history before the origin, with unchanged specifications; Seasonal naive is the same in every case and serves as the benchmark.
+
+| Model | Training window | Training rows / labels | Occupied MAE | Available MAE | Gap MAE | Gap months closer than SN | LP total cost | Shortfall cost | Excess over hindsight |
+| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Seasonal naive | same month one year earlier | - | 1,028 | 842 | 313 | - | 16.14 | 0.19 | 0.90 |
+| SARIMA-24 | Oct 2023 - Sep 2025 | 24 labels | 1,039 | 808 | 346 | 1 of 6 | 16.11 | 0.00 | 0.87 |
+| SARIMA-36 | Oct 2022 - Sep 2025 | 36 labels | 1,037 | 815 | 339 | 1 of 6 | 16.11 | 0.03 | 0.87 |
+| SARIMA-full | Dec 2020 - Sep 2025 | 58 labels | 1,050 | 805 | 362 | 1 of 6 | 16.17 | 0.00 | 0.93 |
+| ExtraTrees-24 | Oct 2023 - Sep 2025 | 12 rows | 677 | 764 | 454 | 3 of 6 | 23.66 | 9.89 | 8.42 |
+| ExtraTrees-36 | Oct 2022 - Sep 2025 | 24 rows | 834 | 688 | 272 | 3 of 6 | 16.00 | 0.50 | 0.76 |
+| ExtraTrees-full | Dec 2020 - Sep 2025 | 46 rows | 889 | 792 | 272 | 3 of 6 | 16.73 | 1.49 | 1.49 |
+| Hindsight | - | - | - | - | - | - | 15.24 | 0.00 | 0.00 |
+
+Costs in millions of model cost units. SARIMA-full here fits all 58 months as labels, so it differs from the SARIMA-full reference in the section above (46 labels).
+
+![Gap MAE by training window](figures/sep2025_windows_gap_mae.png)
+
+ExtraTrees-full (271.8) and ExtraTrees-36 (272.5) had the lowest gap MAEs; all three SARIMA variants (339-362) were above Seasonal naive (313).
+
+![Occupied and available bed MAE by training window](figures/sep2025_windows_bed_mae.png)
+
+ExtraTrees-24 had the lowest occupied-bed MAE (677) and ExtraTrees-36 the lowest available-bed MAE (688); every SARIMA variant was above Seasonal naive on occupied beds and below it on available beds.
+
+![LP total realised cost by training window](figures/sep2025_windows_total_cost.png)
+
+ExtraTrees-36 LP had the lowest total realised cost (16.00m), followed by SARIMA-36 LP and SARIMA-24 LP (both 16.11m); Seasonal naive LP cost 16.14m and Hindsight 15.24m.
+
+![Planning gap by month and training window](figures/sep2025_windows_gap_forecasts.png)
+
+ExtraTrees-24 gave the lowest gap forecast in every month, and every forecast was above the actual gap in December 2025.
+
+![Monthly realised cost by training window](figures/sep2025_windows_monthly_cost_heatmap.png)
+
+ExtraTrees-24 LP was short in 5 of 6 months, ExtraTrees-full LP in 3, ExtraTrees-36 LP, SARIMA-36 LP and Seasonal naive LP in 1 (January 2026), and SARIMA-24 LP and SARIMA-full LP in none.
+
+**Result.** For SARIMA, more data did not consistently lower gap MAE or cost (gap MAE 346, 339, 362 and LP cost 16.11m, 16.11m, 16.17m for 24 months, 36 months and full history); for ExtraTrees, moving from 24 to 36 months lowered gap MAE from 454 to 272 and LP cost from 23.66m to 16.00m, while full history gave a gap MAE of 272 and an LP cost of 16.73m. ExtraTrees-36 and ExtraTrees-full beat Seasonal naive on gap MAE (313), and ExtraTrees-36, SARIMA-36 and SARIMA-24 beat it on LP cost (16.14m), by at most 0.14m. This is a single origin (one six-month window); costs are illustrative model units (validated: False).
