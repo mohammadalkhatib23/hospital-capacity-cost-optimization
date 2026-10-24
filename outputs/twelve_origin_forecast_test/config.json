@@ -1,0 +1,70 @@
+{
+ "name": "twelve-origin forecast test (pre-registered)",
+ "origins": [
+  "2025-04-01",
+  "2025-05-01",
+  "2025-06-01",
+  "2025-07-01",
+  "2025-08-01",
+  "2025-09-01",
+  "2025-10-01",
+  "2025-11-01",
+  "2025-12-01",
+  "2026-01-01",
+  "2026-02-01",
+  "2026-03-01"
+ ],
+ "selection_origin": "2025-09-01",
+ "cutoff_rule": "v6: outcomes up to and including the origin month; forecasts cover the six following months",
+ "data": {
+  "file": "data/raw_v5/Beds-publication-Timeseries-March-2020-September-2026.xlsx",
+  "sha256": "cc8de264e98bba3614566f5cf0a8a6ee7d27c3ecbc673b91936965f38c387c87",
+  "loader": "formulation_robustness_helpers.v5b_load('2026-09-01')"
+ },
+ "models": {
+  "Seasonal naive": "same calendar month one year earlier",
+  "ExtraTrees-36": "ExtraTreesRegressor_target_only_features (forecasting_evaluation.py:759; 300 trees, min_samples_leaf 2, seed 42, 16 target-only features, recursive six steps), occupied and available beds, 36 months ending at the origin",
+  "SARIMA-24": "order (1,0,0)(0,1,0,12), trend n, StandardScaler, lbfgs, maxiter 400, all 24 months ending at the origin as labels",
+  "SARIMA-36": "as SARIMA-24 with the 36 months ending at the origin"
+ },
+ "exclusion_rules": "SARIMA non-convergence, or fewer than 12 ExtraTrees training rows for a target: the model-origin is excluded from summaries",
+ "lp": {
+  "running": 500.0,
+  "opening": 550.0,
+  "closing": 300.0,
+  "shortfall": 5000.0,
+  "cap": 15000.0,
+  "ramp": 5000.0,
+  "x0": 0,
+  "terminal_charge": 0,
+  "tau": 0.9
+ },
+ "hindsight": "saved v6 E0 Hindsight plans and scores",
+ "seasonal_naive_check": "recomputed SN LP must match saved v6 plan and cost within 1e-6 relative",
+ "primary": {
+  "comparison": "ExtraTrees-36 vs Seasonal naive, per origin",
+  "E1": "gap MAE (beds) over the six months: better if lower by more than 5 beds; tie if within 5 beds; otherwise loss",
+  "E2": "LP realised cost: better if lower by more than 1% of that origin's hindsight cost; tie within that band; otherwise loss"
+ },
+ "secondary": [
+  "SARIMA-24 vs Seasonal naive",
+  "SARIMA-36 vs Seasonal naive",
+  "ExtraTrees-36 vs SARIMA-24"
+ ],
+ "summaries": {
+  "S1": "wins/ties/losses per comparison and endpoint",
+  "S2": "mean gap MAE and mean LP cost per model",
+  "S3": "non-overlapping subsets: offset r = 0..5, origins r and r+6 (0-based in time order); ET-36 vs SN wins/ties/losses per subset",
+  "S4": "mean absolute gap error by horizon 1..6 per model",
+  "populations": [
+   "all 12 origins",
+   "11 origins excluding 2025-09-01"
+  ]
+ },
+ "hypothesis": "ExtraTrees-36 has lower gap MAE than Seasonal naive at a majority of origins (E1 wins > half of the origins) and lower mean LP cost than Seasonal naive; assessed separately for all 12 and for the 11 excluding Sep 2025",
+ "reused_code": {
+  "scripts/compare_methods_sep2025.py": "9fd8610257a70afce95185974a89a07f833469697e1d76cf91c7c18c65189876",
+  "scripts/plot_sep2025_windows.py": "54ea186afb0cefc63ef118aeac67c00b7e83f73000fe8811ea908ca54fb70463"
+ },
+ "amendments": []
+}
