@@ -1,0 +1,80 @@
+{
+ "name": "backward test: SARIMA-36 vs Seasonal naive before April 2025 (pre-registered)",
+ "origin_rule": "every month o with 36 published months ending at o (v6 cut-off: up to and including o), up to and including 2025-03-01",
+ "origins": [
+  "2023-11-01",
+  "2023-12-01",
+  "2024-01-01",
+  "2024-02-01",
+  "2024-03-01",
+  "2024-04-01",
+  "2024-05-01",
+  "2024-06-01",
+  "2024-07-01",
+  "2024-08-01",
+  "2024-09-01",
+  "2024-10-01",
+  "2024-11-01",
+  "2024-12-01",
+  "2025-01-01",
+  "2025-02-01",
+  "2025-03-01"
+ ],
+ "overlapping_origins": [
+  "2024-11-01",
+  "2024-12-01",
+  "2025-01-01",
+  "2025-02-01",
+  "2025-03-01"
+ ],
+ "overlap_rule": "an origin overlaps if any of its six target months is May 2025 or later (the v6 origins' targets)",
+ "periods": {
+  "A": "origins up to 2024-12-01",
+  "B": "origins 2025-01-01 to 2025-03-01"
+ },
+ "data": {
+  "file": "data/raw_v5/Beds-publication-Timeseries-March-2020-September-2026.xlsx",
+  "sha256": "cc8de264e98bba3614566f5cf0a8a6ee7d27c3ecbc673b91936965f38c387c87",
+  "loader": "formulation_robustness_helpers.v5b_load('2026-09-01')"
+ },
+ "models": {
+  "SARIMA-36": "order (1,0,0)(0,1,0,12), trend n, StandardScaler, lbfgs, maxiter 400, all 36 months ending at the origin as labels",
+  "Seasonal naive": "same calendar month one year earlier"
+ },
+ "exclusion_rule": "SARIMA non-convergence for either target excludes that origin",
+ "lp": {
+  "running": 500.0,
+  "opening": 550.0,
+  "closing": 300.0,
+  "shortfall": 5000.0,
+  "cap": 15000.0,
+  "ramp": 5000.0,
+  "x0": 0,
+  "terminal_charge": 0,
+  "tau": 0.9
+ },
+ "hindsight": "the same LP solved per origin with the actual gaps",
+ "primary": "per origin LP realised cost, SARIMA-36 vs Seasonal naive: win if lower by more than 1% of that origin's hindsight cost; tie within that band; otherwise loss",
+ "secondary": [
+  "gap MAE: win if lower by more than 5 beds; tie within 5 beds",
+  "occupied MAE and available MAE (reported)"
+ ],
+ "summaries": {
+  "S1": "wins/ties/losses on cost and on gap MAE",
+  "S2": "mean cost, mean gap MAE, mean SARIMA-36 minus SN cost",
+  "S3": "non-overlapping subsets: every sixth origin, offsets r = 0..5 (0-based in time order), win/tie/loss on cost",
+  "S4": "cost differences sorted with cumulative sum",
+  "populations": [
+   "all backward origins",
+   "Period A",
+   "Period B",
+   "non-overlapping origins only"
+  ]
+ },
+ "hypothesis": "SARIMA-36 has lower LP cost than Seasonal naive at a majority of backward origins (cost wins > half) and lower mean cost; assessed for all backward origins, Period A and Period B",
+ "reused_code": {
+  "scripts/compare_methods_sep2025.py": "9fd8610257a70afce95185974a89a07f833469697e1d76cf91c7c18c65189876",
+  "scripts/plot_twelve_origin_test.py": "87767ce7b424df77aff8d2541737b1da94dcf269cef3c889fa401beef416ffbb"
+ },
+ "amendments": []
+}

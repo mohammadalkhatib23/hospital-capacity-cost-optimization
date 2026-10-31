@@ -130,3 +130,47 @@ ExtraTrees-36 lost to Seasonal naive more often than it won on both gap MAE and 
 SARIMA-36 had the lowest mean absolute gap error at 1-4 months ahead and ExtraTrees-36 at 5-6 months ahead; ExtraTrees-36 had the highest at 1-4 months ahead.
 
 **Result.** The pre-stated hypothesis did not hold, for all 12 origins or for the 11 excluding September 2025: ExtraTrees-36 vs Seasonal naive was 4 wins / 1 tie / 7 losses on gap MAE and 4 / 2 / 6 on LP cost (3 / 1 / 7 and 4 / 1 / 6 excluding September 2025). Across the six non-overlapping subsets of two origins, ExtraTrees-36 won 0 to 2 on gap MAE and 0 to 1 on cost. Mean LP cost over the 12 origins was 18.62m for Seasonal naive, 19.50m for ExtraTrees-36, 17.62m for SARIMA-36 and 19.13m for SARIMA-24 (10 origins), against 13.52m in hindsight. Neighbouring origins share up to five target months, so origins are not independent; costs are illustrative model units (validated: False).
+
+## Backward test: SARIMA-36 vs Seasonal naive before April 2025
+
+SARIMA-36 was identified on the April 2025 - March 2026 origins, so it is tested here on the 17 earlier origins (November 2023 - March 2025) never scored for this comparison, with the origin rule, endpoints and tie rules fixed in advance (config SHA-256 `53dd3bf8759551f09af093ae4c0d329605b19c0e5cff3f1c2b00c1d03a88cad0`). The earliest 36-month training windows include 2021 months affected by COVID-19; "overlapping" marks origins whose six target months reach May 2025 or later, which the selection origins also forecast.
+
+| Origin | Period | Gap MAE: SN / SARIMA-36 | LP cost: SN / SARIMA-36 | Hindsight | SARIMA-36 - SN | Cost result |
+| --- | :---: | ---: | ---: | ---: | ---: | :---: |
+| Nov 2023 | A | 529 / 679 | 20.32 / 18.69 | 15.02 | -1.63 | win |
+| Dec 2023 | A | 327 / 1,416 | 20.16 / 49.40 | 15.19 | +29.24 | loss |
+| Jan 2024 | A | 468 / 516 | 23.72 / 25.26 | 14.40 | +1.54 | loss |
+| Feb 2024 | A | 510 / 497 | 21.66 / 21.01 | 12.92 | -0.65 | win |
+| Mar 2024 | A | 512 / 581 | 24.56 / 26.77 | 12.67 | +2.21 | loss |
+| Apr 2024 | A | 286 / 1,072 | 18.99 / 16.88 | 12.94 | -2.10 | win |
+| May 2024 | A | 359 / 391 | 18.86 / 17.57 | 13.12 | -1.29 | win |
+| Jun 2024 | A | 359 / 355 | 18.73 / 18.47 | 13.07 | -0.26 | win |
+| Jul 2024 | A | 212 / 767 | 15.61 / 17.02 | 13.84 | +1.41 | loss |
+| Aug 2024 | A | 169 / 383 | 17.10 / 22.49 | 15.39 | +5.39 | loss |
+| Sep 2024 | A | 217 / 250 | 17.20 / 18.48 | 15.95 | +1.28 | loss |
+| Oct 2024 | A | 349 / 343 | 17.00 / 19.86 | 15.64 | +2.86 | loss |
+| Nov 2024 (overlapping) | A | 310 / 440 | 15.77 / 24.68 | 14.39 | +8.91 | loss |
+| Dec 2024 (overlapping) | A | 359 / 274 | 15.51 / 15.25 | 14.30 | -0.26 | win |
+| Jan 2025 (overlapping) | B | 403 / 322 | 14.46 / 14.26 | 13.31 | -0.20 | win |
+| Feb 2025 (overlapping) | B | 429 / 450 | 13.76 / 13.66 | 11.40 | -0.10 | tie |
+| Mar 2025 (overlapping) | B | 373 / 271 | 13.01 / 12.61 | 11.14 | -0.41 | win |
+| **All backward (n = 17)** | | mean 363 / 530; W/T/L 5 / 1 / 11 | mean 18.03 / 20.73 | | mean +2.70 | 8 / 1 / 8 |
+| **Period A (n = 14)** | | mean 355 / 569; W/T/L 3 / 1 / 10 | mean 18.94 / 22.27 | | mean +3.33 | 6 / 0 / 8 |
+| **Period B (n = 3)** | | mean 402 / 348; W/T/L 2 / 0 / 1 | mean 13.74 / 13.51 | | mean -0.23 | 2 / 1 / 0 |
+| **Non-overlapping (n = 12)** | | mean 358 / 604; W/T/L 2 / 1 / 9 | mean 19.49 / 22.66 | | mean +3.17 | 5 / 0 / 7 |
+
+Costs in millions of model cost units; "win" means SARIMA-36 cost less than Seasonal naive by more than 1% of that origin's hindsight cost, "tie" within that band. Summary rows show mean gap MAE with gap win/tie/loss (5-bed band), mean LP cost, mean SARIMA-36 minus Seasonal naive cost, and cost win/tie/loss.
+
+![LP cost above hindsight, backward and selection origins](figures/backward_excess_cost.png)
+
+SARIMA-36's excess over hindsight was highest at the December 2023 origin (34.20m, against 4.96m for Seasonal naive), and from December 2024 to March 2025 the two models' costs were within 0.41m of each other.
+
+![SARIMA-36 minus Seasonal naive LP cost, backward origins](figures/backward_cost_difference.png)
+
+SARIMA-36 was cheaper at 8 origins by 0.20m-2.10m and dearer at 8 by 1.28m-29.24m, with December 2023 (+29.24m) and November 2024 (+8.91m) the two largest differences.
+
+![SARIMA-36 vs Seasonal naive wins, ties and losses, backward origins](figures/backward_win_counts.png)
+
+On cost SARIMA-36 won 8, tied 1 and lost 8 overall (6 / 0 / 8 in Period A, 2 / 1 / 0 in Period B); on gap MAE it won 5, tied 1 and lost 11.
+
+**Result.** The pre-stated hypothesis did not hold for all backward origins (8 wins / 1 tie / 8 losses on cost; mean cost 20.73m vs 18.03m for Seasonal naive) or for Period A (6 / 0 / 8; 22.27m vs 18.94m), and held for Period B (2 / 1 / 0; 13.51m vs 13.74m, three origins). On gap MAE SARIMA-36 won 5, tied 1 and lost 11 overall. The mean difference of +2.70m is driven largely by December 2023 (+29.24m of a cumulative +45.94m), but excluding it the cumulative difference is still +16.70m, and across the six non-overlapping subsets SARIMA-36 won 1 to 2 origins on cost. Neighbouring origins share up to five target months, so origins are not independent; costs are illustrative model units (validated: False).
