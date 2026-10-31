@@ -1,4 +1,19 @@
-## Forecast vs decision method: September 2025 origin
+# Which forecast gives the best hospital capacity plan?
+
+## Question
+
+We forecast NHS England occupied and available general and acute beds six months ahead, convert them into a planning gap (occupied / 0.90 - available), and plan extra capacity with a linear program that trades off running, opening, closing and shortfall costs. The question is which forecasting method produces the cheapest realised plan, and whether a method that wins at one origin keeps winning at others.
+
+## How to read this
+
+1. [September 2025 origin](#step-1---september-2025-origin): five methods on the same 24 months.
+2. [Training window](#step-2---training-window-24-vs-36-months-vs-full-history): does more data help SARIMA and ExtraTrees?
+3. [Twelve origins (Apr 2025 - Mar 2026)](#step-3---twelve-origins): do the September winners hold up?
+4. [Seventeen earlier origins (Nov 2023 - Mar 2025)](#step-4---seventeen-earlier-origins): pre-registered test of the leading model.
+
+The planning optimisation is defined once in Step 1; every step uses the same costs and limits.
+
+## Step 1 - September 2025 origin
 
 All forecasting methods use the same 24 months before the origin (October 2023 - September 2025) and forecast the next six months (October 2025 - March 2026). "Rule" opens exactly the extra capacity the forecast says is needed each month, ignoring costs. "LP" feeds the same forecast into a linear program that chooses monthly extra capacity to minimise running (500 per bed-month), opening (550), closing (300) and shortfall (5,000 per bed-month) costs, with capacity carrying over between months, at most 5,000 beds opened or closed per month, at most 15,000 in total, and zero starting capacity. SARIMA-full (trained on all history) is shown only as a reference.
 
@@ -49,7 +64,7 @@ Monthly cost includes running, opening and closing beds plus the 5,000-per-bed s
 
 **Result.** Seasonal naive had the lowest gap MAE (313 beds), and SARIMA-24 LP had the lowest realised cost (16.11m, 0.87m above hindsight). SARIMA-24 LP, Seasonal naive LP and SARIMA-full LP were within 0.04m of one another. Rule and LP plans were identical for Mean-24 and Persistence, and LP was cheaper than Rule by 0.43m for Seasonal naive, 0.44m for SARIMA-24 and 0.11m for ExtraTrees-24 (differences computed before rounding). This is a single origin (one six-month window), SARIMA-24 and ExtraTrees-24 are fitted on only 24 months, and costs are illustrative model units (validated: False).
 
-## Does more training data help? 24 vs 36 months vs full history (September 2025 origin)
+## Step 2 - Training window: 24 vs 36 months vs full history
 
 SARIMA and ExtraTrees are retrained on 24 months, 36 months and all history before the origin, with unchanged specifications; Seasonal naive is the same in every case and serves as the benchmark.
 
@@ -64,7 +79,7 @@ SARIMA and ExtraTrees are retrained on 24 months, 36 months and all history befo
 | ExtraTrees-full | Dec 2020 - Sep 2025 | 46 rows | 889 | 792 | 272 | 3 of 6 | 16.73 | 1.49 | 1.49 |
 | Hindsight | - | - | - | - | - | - | 15.24 | 0.00 | 0.00 |
 
-Costs in millions of model cost units. SARIMA-full here fits all 58 months as labels, so it differs from the SARIMA-full reference in the section above (46 labels).
+Costs in millions of model cost units. SARIMA-full here fits all 58 months as labels, so it differs from the SARIMA-full reference in Step 1 (46 labels).
 
 ![Gap MAE by training window](figures/sep2025_windows_gap_mae.png)
 
@@ -88,7 +103,9 @@ ExtraTrees-24 LP was short in 5 of 6 months, ExtraTrees-full LP in 3, ExtraTrees
 
 **Result.** For SARIMA, more data did not consistently lower gap MAE or cost (gap MAE 346, 339, 362 and LP cost 16.11m, 16.11m, 16.17m for 24 months, 36 months and full history); for ExtraTrees, moving from 24 to 36 months lowered gap MAE from 454 to 272 and LP cost from 23.66m to 16.00m, while full history gave a gap MAE of 272 and an LP cost of 16.73m. ExtraTrees-36 and ExtraTrees-full beat Seasonal naive on gap MAE (313), and ExtraTrees-36, SARIMA-36 and SARIMA-24 beat it on LP cost (16.14m), by at most 0.14m. This is a single origin (one six-month window); costs are illustrative model units (validated: False).
 
-## ExtraTrees-36 vs Seasonal naive across 12 origins
+## Step 3 - Twelve origins
+
+### ExtraTrees-36 vs Seasonal naive
 
 The 36-month window for ExtraTrees was chosen at the September 2025 origin, so this tests it at every v6 origin (April 2025 - March 2026) with the design, endpoints and tie rules fixed in advance (config SHA-256 `915d7416c07723b590e06c8ae32266bb2402f1175670bb4c560b956b5f181ce4`). Each origin forecasts the following six months and plans with the LP; "win" means ExtraTrees-36 beat Seasonal naive by more than 5 beds of gap MAE, or by more than 1% of that origin's hindsight cost, and "tie" means within that margin.
 
@@ -131,7 +148,23 @@ SARIMA-36 had the lowest mean absolute gap error at 1-4 months ahead and ExtraTr
 
 **Result.** The pre-stated hypothesis did not hold, for all 12 origins or for the 11 excluding September 2025: ExtraTrees-36 vs Seasonal naive was 4 wins / 1 tie / 7 losses on gap MAE and 4 / 2 / 6 on LP cost (3 / 1 / 7 and 4 / 1 / 6 excluding September 2025). Across the six non-overlapping subsets of two origins, ExtraTrees-36 won 0 to 2 on gap MAE and 0 to 1 on cost. Mean LP cost over the 12 origins was 18.62m for Seasonal naive, 19.50m for ExtraTrees-36, 17.62m for SARIMA-36 and 19.13m for SARIMA-24 (10 origins), against 13.52m in hindsight. Neighbouring origins share up to five target months, so origins are not independent; costs are illustrative model units (validated: False).
 
-## Backward test: SARIMA-36 vs Seasonal naive before April 2025
+### SARIMA-36 vs Seasonal naive (pre-registered secondary endpoint)
+
+| Population | Cost W / T / L | Gap MAE W / T / L | Total SARIMA-36 - SN cost (m) | Mean per origin (m) |
+| --- | :---: | :---: | ---: | ---: |
+| All 12 origins | 8 / 2 / 2 | 7 / 0 / 5 | -11.90 | -0.99 |
+| Excluding Sep 2025 | 8 / 1 / 2 | 7 / 0 / 4 | -11.87 | -1.08 |
+
+| Origin | SARIMA-36 - SN cost (m) | Result |
+| --- | ---: | :---: |
+| Feb 2026 | -6.50 | win |
+| Mar 2026 | -5.21 | win |
+| Jan 2026 | -2.38 | win |
+| Dec 2025 (largest loss) | +4.96 | loss |
+
+Most of SARIMA-36's cost advantage came from January - March 2026 (-14.08m of -11.90m), and it lost 4.96m at December 2025.
+
+## Step 4 - Seventeen earlier origins
 
 SARIMA-36 was identified on the April 2025 - March 2026 origins, so it is tested here on the 17 earlier origins (November 2023 - March 2025) never scored for this comparison, with the origin rule, endpoints and tie rules fixed in advance (config SHA-256 `53dd3bf8759551f09af093ae4c0d329605b19c0e5cff3f1c2b00c1d03a88cad0`). The earliest 36-month training windows include 2021 months affected by COVID-19; "overlapping" marks origins whose six target months reach May 2025 or later, which the selection origins also forecast.
 
@@ -174,3 +207,31 @@ SARIMA-36 was cheaper at 8 origins by 0.20m-2.10m and dearer at 8 by 1.28m-29.24
 On cost SARIMA-36 won 8, tied 1 and lost 8 overall (6 / 0 / 8 in Period A, 2 / 1 / 0 in Period B); on gap MAE it won 5, tied 1 and lost 11.
 
 **Result.** The pre-stated hypothesis did not hold for all backward origins (8 wins / 1 tie / 8 losses on cost; mean cost 20.73m vs 18.03m for Seasonal naive) or for Period A (6 / 0 / 8; 22.27m vs 18.94m), and held for Period B (2 / 1 / 0; 13.51m vs 13.74m, three origins). On gap MAE SARIMA-36 won 5, tied 1 and lost 11 overall. The mean difference of +2.70m is driven largely by December 2023 (+29.24m of a cumulative +45.94m), but excluding it the cumulative difference is still +16.70m, and across the six non-overlapping subsets SARIMA-36 won 1 to 2 origins on cost. Neighbouring origins share up to five target months, so origins are not independent; costs are illustrative model units (validated: False).
+
+## Conclusion
+
+### All origins combined
+
+SARIMA-36 vs Seasonal naive, using the pre-registered tie rules (cost: 1% of that origin's hindsight cost; gap MAE: 5 beds).
+
+| Origins | Cost W / T / L | Gap MAE W / T / L | Total SARIMA-36 - SN cost (m) | Mean per origin (m) |
+| --- | :---: | :---: | ---: | ---: |
+| 12 origins (Apr 2025 - Mar 2026, selection) | 8 / 2 / 2 | 7 / 0 / 5 | -11.90 | -0.99 |
+| 17 earlier origins (Nov 2023 - Mar 2025, test) | 8 / 1 / 8 | 5 / 1 / 11 | +45.94 | +2.70 |
+| All 29 | 16 / 3 / 10 | 12 / 1 / 16 | +34.05 | +1.17 |
+
+Sources: `outputs/twelve_origin_forecast_test/` and `outputs/backward_sarima36_test/` (`totals.csv`, `accuracy.csv`), combined by `scripts/plot_all_origins_sarima36_vs_sn.py`.
+
+![SARIMA-36 minus Seasonal naive LP cost, all 29 origins](figures/all_origins_sarima36_minus_sn.png)
+
+### Answer
+
+At September 2025, Seasonal naive was the most accurate gap forecast (MAE 313 beds) and SARIMA-24 LP the cheapest plan (16.11m), within 0.04m of Seasonal naive LP (16.14m). With 36 months of training ExtraTrees gave the lowest LP cost at that origin (16.00m), but across the twelve origins it lost to Seasonal naive at 7 on gap MAE and 6 on cost, winning 4 on each. SARIMA-36 was cheaper than Seasonal naive at 8 of 12 origins, but on the 17 earlier origins tested with the design fixed in advance it won 8 and lost 8 on cost, lost 11 of 17 on gap MAE, and cost 45.94m more in total. Across all 29 origins SARIMA-36 vs Seasonal naive was 16 / 3 / 10 on cost and 12 / 1 / 16 on gap MAE, +34.05m in total, and no model reliably beat Seasonal naive on accuracy or cost. Neighbouring origins share up to five target months, so origins are not independent; costs are illustrative model units (validated: False).
+
+### Limitations
+
+- Univariate models only; no exogenous drivers.
+- Occupied and available beds are forecast separately and combined into the gap afterwards.
+- National monthly aggregates; no trust- or region-level detail.
+- SARIMA and ExtraTrees specifications are fixed, not tuned per window.
+- Costs are illustrative model units, not NHS cash.
