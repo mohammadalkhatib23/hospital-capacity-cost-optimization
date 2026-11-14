@@ -1,0 +1,18 @@
+[
+  {
+    "file": "figures/optimisation_value/chain_by_method.png",
+    "sha256": "60ad255ca17aeb37eed91ca02eac092015b89f9f3fa0f7793416b6bc288b8ce1"
+  },
+  {
+    "file": "figures/optimisation_value/chain_by_method.svg",
+    "sha256": "63f99b006e9760db8f7d3bbb5ecdca95ace2bcbbdfd58a475dcf096d4a92cf47"
+  },
+  {
+    "file": "figures/optimisation_value/value_of_optimisation_by_origin.png",
+    "sha256": "745338532f1a3890fadbe2e8b95f159cc0524badee7e5c6e0c4d279b329a4dd1"
+  },
+  {
+    "file": "figures/optimisation_value/value_of_optimisation_by_origin.svg",
+    "sha256": "f301d95fc30b3ad42f4bcf96e5ce5bd888072f6b1de1889bf2228d7769c1b315"
+  }
+]

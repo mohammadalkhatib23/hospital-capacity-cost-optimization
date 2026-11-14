@@ -1,0 +1,289 @@
+{
+  "name": "Value of optimisation and protection across 25 origins",
+  "source_commit": "d81495a65ccc6c467bd3a72727de547fb2e49753",
+  "source_config_sha256": "8715467371b89f2f10a0124613ce7387bdc9296d9f05026c0a91b6e63ca85e48",
+  "source_plans_sha256": "f797670d1363ffd9fe3256854b4b6cce98a2a52fd0949c44ff64dd139dae54ff",
+  "data": {
+    "file": "data/raw_v6/Beds-publication-Timeseries-March-2020-October-2026.xlsx",
+    "sha256": "a1afbe8659e4ad984628286935a957d51cbcd9099e96edf4906e671d116151cb",
+    "source_url": "https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2026/11/Beds-publication-Timeseries-March-2020-October-2026.xlsx",
+    "retrieved_utc": "2026-11-13T13:05:27Z",
+    "sheet": "TS - All Acutes",
+    "header_row": "zero-based row index 12 (Excel row 13)",
+    "available": "G&A beds available",
+    "occupied": "G&A beds occupied",
+    "blanks": "months with a blank value are dropped",
+    "cutoff_rule": "rows after a cut-off are discarded before any value is converted",
+    "not_used": "data/raw_v5"
+  },
+  "last_published_month": "2026-10",
+  "origins": [
+    "2024-02",
+    "2024-03",
+    "2024-04",
+    "2024-05",
+    "2024-06",
+    "2024-07",
+    "2024-08",
+    "2024-09",
+    "2024-10",
+    "2024-11",
+    "2024-12",
+    "2025-01",
+    "2025-02",
+    "2025-03",
+    "2025-04",
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-11",
+    "2025-12",
+    "2026-02",
+    "2026-03",
+    "2026-04"
+  ],
+  "methods": [
+    "Mean-24",
+    "Persistence",
+    "Seasonal naive",
+    "SARIMA-24",
+    "ExtraTrees-24"
+  ],
+  "exclusions": [
+    {
+      "origin": "2025-10",
+      "failed_targets": [
+        "occupied"
+      ]
+    },
+    {
+      "origin": "2026-01",
+      "failed_targets": [
+        "available"
+      ]
+    }
+  ],
+  "earlier_insufficient_origins": 15,
+  "scopes": {
+    "all": [
+      "2024-02",
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-11",
+      "2025-12",
+      "2026-02",
+      "2026-03",
+      "2026-04"
+    ],
+    "excluding_original_two": [
+      "2024-02",
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-11",
+      "2025-12",
+      "2026-02",
+      "2026-04"
+    ]
+  },
+  "subsets": {
+    "all": {
+      "0": [
+        "2024-02",
+        "2024-08",
+        "2025-02",
+        "2025-08",
+        "2026-04"
+      ],
+      "1": [
+        "2024-03",
+        "2024-09",
+        "2025-03",
+        "2025-09"
+      ],
+      "2": [
+        "2024-04",
+        "2024-10",
+        "2025-04",
+        "2025-11"
+      ],
+      "3": [
+        "2024-05",
+        "2024-11",
+        "2025-05",
+        "2025-12"
+      ],
+      "4": [
+        "2024-06",
+        "2024-12",
+        "2025-06",
+        "2026-02"
+      ],
+      "5": [
+        "2024-07",
+        "2025-01",
+        "2025-07",
+        "2026-03"
+      ]
+    },
+    "excluding_original_two": {
+      "0": [
+        "2024-02",
+        "2024-08",
+        "2025-02",
+        "2025-08"
+      ],
+      "1": [
+        "2024-03",
+        "2024-09",
+        "2025-03",
+        "2025-11"
+      ],
+      "2": [
+        "2024-04",
+        "2024-10",
+        "2025-04",
+        "2025-12"
+      ],
+      "3": [
+        "2024-05",
+        "2024-11",
+        "2025-05",
+        "2026-02"
+      ],
+      "4": [
+        "2024-06",
+        "2024-12",
+        "2025-06",
+        "2026-04"
+      ],
+      "5": [
+        "2024-07",
+        "2025-01",
+        "2025-07"
+      ]
+    }
+  },
+  "window": 24,
+  "horizon": 6,
+  "costs": {
+    "running": 500,
+    "opening": 550,
+    "closing": 300,
+    "shortfall": 5000
+  },
+  "limits": {
+    "cap": 15000,
+    "ramp": 5000,
+    "x0": 0,
+    "terminal_charge": 0
+  },
+  "source_hashes": {
+    "outputs/fair_comparison_rolling/config.json": "8715467371b89f2f10a0124613ce7387bdc9296d9f05026c0a91b6e63ca85e48",
+    "outputs/fair_comparison_rolling/config.sha256": "ce3de04cc3442a9edab943230a8d517ea325f3ab4a24413931060e6d34a6833a",
+    "outputs/fair_comparison_rolling/plans.csv": "f797670d1363ffd9fe3256854b4b6cce98a2a52fd0949c44ff64dd139dae54ff",
+    "outputs/fair_comparison_rolling/plans.sha256": "505d3fc5f439eb79e24af27c25ad98f97e5c827bb155a3a744b209d2519123e3",
+    "outputs/fair_comparison_rolling/totals.csv": "71eb1b19cf7788ba710d752c2e8f3c3032d485b54b36222e20bb59bffa48372a",
+    "outputs/fair_comparison_rolling/monthly_costs.csv": "70f19fa98904f4f307cd255b56c5c739e1d4abf13bc0fe58035b486f71a2e819",
+    "outputs/fair_comparison_rolling/fit_log.json": "9e5dda3352e4bb78a5a0d920c14dba0e790ed4642a35060ac6019bd75c5dbfd4",
+    "outputs/fair_comparison_rolling/summary.csv": "f41a354ecbdb2998511b5525cd164a43933aa6aa31f1928c33417787c0f1c5bc",
+    "outputs/fair_comparison_rolling/2024-02/forecasts.csv": "b89d0ce37c25ac6c54bd981545ca37dc231230fd498ae315807d526a6e161ba6",
+    "outputs/fair_comparison_rolling/2024-03/forecasts.csv": "4140e9447dc0900d8a8495c753e01d723f72a9b81f6421264f79d80eea709ec3",
+    "outputs/fair_comparison_rolling/2024-04/forecasts.csv": "30e0c2a1ab886cf317d92e76ae01b3ff8cbd9af0707c401e9496e93e10d84764",
+    "outputs/fair_comparison_rolling/2024-05/forecasts.csv": "0bc203bf31c7fd7c6aee6d36b26936335c16f9a2464901f3d38ac2730b215a75",
+    "outputs/fair_comparison_rolling/2024-06/forecasts.csv": "90beddb3377ee312ace2b0becd4a33a8ed5e5acd4fc783a18b7c244d5c3e1373",
+    "outputs/fair_comparison_rolling/2024-07/forecasts.csv": "69c57672ad932ce6298694a8fc71550b6912f1c2a14ff8e8967945220124fcae",
+    "outputs/fair_comparison_rolling/2024-08/forecasts.csv": "e415e8bd35fc1fc0197c33b272801388026205a1c106e41c04d06bfdab3e5ce7",
+    "outputs/fair_comparison_rolling/2024-09/forecasts.csv": "c52168441c4fb29a70e189e51a7d0c2e9bd842ac337f36bebcd381c31dde74c0",
+    "outputs/fair_comparison_rolling/2024-10/forecasts.csv": "52a7578b6c5e5c908df218d2ddcac2acda11ef8b82ab20e0376201a2f2ec28f9",
+    "outputs/fair_comparison_rolling/2024-11/forecasts.csv": "68476d4297f9dc815f6c785af41398e0d387b695ab8c07f5920ef949aaf41b1e",
+    "outputs/fair_comparison_rolling/2024-12/forecasts.csv": "0fda2c61b5dc8a162fdeb408cd4e01d94781fa5ac9a25558960eaac50dcda5df",
+    "outputs/fair_comparison_rolling/2025-01/forecasts.csv": "af4ce4184333b30e49e2dfc8c9591742751e4a8775c0d0cbc450a32782daa09a",
+    "outputs/fair_comparison_rolling/2025-02/forecasts.csv": "cf1cea9188db70ffb30e2f28f1ef343d48dcc40b334a556ffc21b1001763ad60",
+    "outputs/fair_comparison_rolling/2025-03/forecasts.csv": "c04217f2fc29b437c58ea4e73a378ef0c6364010cfb4d039d6eaac1d6f1906ca",
+    "outputs/fair_comparison_rolling/2025-04/forecasts.csv": "c45dd1931d22b825c52cc110e5fd0310242ba6e7d5cb875a81b4d0e8ff748c79",
+    "outputs/fair_comparison_rolling/2025-05/forecasts.csv": "f3be1140c22b55f5b4ce16b9f20f90df1d40f76de97e4785ea1b2605150c3958",
+    "outputs/fair_comparison_rolling/2025-06/forecasts.csv": "4cb8a8a068ddeff578fa820da1dd1c383676230a3701cc015505e4eb560dc5ef",
+    "outputs/fair_comparison_rolling/2025-07/forecasts.csv": "6dc4dc0dee4905efda5adb8986e869e883be95c818f3558fb8e08b79970d2dff",
+    "outputs/fair_comparison_rolling/2025-08/forecasts.csv": "95eff4922bdf1f8d0ca8590d87ac738bb61b78f4cab63cf7beb954d404c869eb",
+    "outputs/fair_comparison_rolling/2025-09/forecasts.csv": "68d2ddea996b92abcf0a43b14ebcdb9f4b8b1148cedcccf9e5e86068e4e33a35",
+    "outputs/fair_comparison_rolling/2025-11/forecasts.csv": "daf8c3eb4757cdcc4e174bde8655878375cee80ac8bcc08bf0846fe77f6aa76b",
+    "outputs/fair_comparison_rolling/2025-12/forecasts.csv": "9272bfc8ac52e42b81b9f36b99b475dda743c4690124ab3bcc2249bfd246ce73",
+    "outputs/fair_comparison_rolling/2026-02/forecasts.csv": "467ad7be5aff9a3d73e7cf7f994b83de4b0bb9f74477a1f64ad17d2582b551a9",
+    "outputs/fair_comparison_rolling/2026-03/forecasts.csv": "8866574b8174299a2974adef9b1be41ab0fd3f1ad6b38c78da28d33a1a233156",
+    "outputs/fair_comparison_rolling/2026-04/forecasts.csv": "81032000c178a6a4ffa211517037713ff1ba3d8fad02900c76c920a5e1a6b00f",
+    "scripts/clean_checkpoint/pipeline.py": "d30f6d6f81483d49430eb09f7acaf2425386e3268091209ecfab9f959aad853b",
+    "scripts/optimisation_value/value.py": "1c808b7095e6bf1b99a942aa3ace04da3b7599d0fbb6250bd38b6cbf3b43542f"
+  },
+  "plans": {
+    "Rule": "Use imported clean_checkpoint.pipeline.rule_plan on each saved point gap; never reimplement or refit.",
+    "LP": "Reuse saved Point LP at p=5000 and its existing score.",
+    "Protected": "Reuse saved raw-error SAA at p=5000 and its existing score.",
+    "Hindsight": "Reuse the saved actual-gap LP at p=5000 and its existing score."
+  },
+  "metrics": {
+    "M1": "Mean Rule, LP, Protected and Hindsight realized costs over origin-method cases.",
+    "M2": "Rule - LP: mean, median, min, max, cheaper/equal/dearer counts; equal iff abs difference <= 1e-6 * abs(Rule cost).",
+    "M3": "LP - Protected: mean, median, min, max; helped/tie/hurt with 1% of origin hindsight cost as tie band.",
+    "M4": "Rule - Protected: mean, median, min, max.",
+    "M5": "Ratios of sums over the reporting group: sum(Rule-LP), sum(LP-Protected), sum(Protected-Hindsight), each divided by sum(Rule-Hindsight). No clipping. Undefined if denominator zero.",
+    "M6": "Mean opening, closing, running cost, shortfall bed-months and close-then-reopen events per plan for Rule and LP.",
+    "M7": "M2 and M3 means for each of six offsets, every sixth retained origin within the scope; ranges are min/max subset means, not confidence intervals; all metrics also exclude Sep2025 and Mar2026."
+  },
+  "conventions": {
+    "relative_cost_tolerance": 1e-06,
+    "solver_schedule_tolerance_beds": 0.001,
+    "event_flow_tolerance_beds": 1e-06,
+    "close_then_reopen": "Count each removal month once if at least one addition occurs in the next 1 or 2 months; only within the 6-month plan; flow must exceed 1e-6 beds.",
+    "pooled": "Equal weight per method-origin case; repeat each origin hindsight for every method to match the numerator; pooled shares are ratios of sums.",
+    "zero_denominator": "Shares recorded as NaN with denominator 0, never replaced by zero or clipped.",
+    "expectation_E1": "Schedule equality within inherited CBC precision 1e-3 beds; report maximum raw difference.",
+    "expectation_E2": "No realized LP cost increase beyond the M2 relative tolerance.",
+    "expectation_E3": "Strictly positive mean Rule-minus-LP for Seasonal naive, SARIMA-24 and ExtraTrees-24.",
+    "expectations_are_not_stop_conditions": true
+  },
+  "procedure": [
+    "Phase 0 reproduces the two previously evaluated anchors, as explicitly required; it is the only pre-registration Rule scoring.",
+    "Register before any new rolling Rule scoring; save and hash all Rule plans before loading their scoring outcomes.",
+    "Reuse all other plans and scores. No study model refits and no new LP solves.",
+    "Compute and report the full registered metrics, including expectation failures."
+  ],
+  "disclosures": [
+    "The original outcomes and rolling comparison have already been inspected; this is not a blind evaluation.",
+    "Neighbouring origins overlap; subset ranges are descriptive. Costs are illustrative model units (validated: False)."
+  ]
+}

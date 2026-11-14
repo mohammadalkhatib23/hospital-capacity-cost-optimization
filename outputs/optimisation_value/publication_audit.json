@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "readme_sha256": "cb2ac940be43df4732efc633b91f1ed3305641acbf9572a9e85e6ba6e91cefd6",
+  "section_sha256": "f0580c8f6fc5c2459f4d3b8890b0ccc7dba7f9a10b14f6e47cd371aab1e61f82",
+  "numeric_table_cells_checked": 196,
+  "checks": [
+    {
+      "status": "PASS",
+      "detail": "Frozen config, Rule plans, source forecasts/plans/scores, all saved scientific outputs and figures match their hashes; all prior files are unchanged except the exact authorised README edit and addition."
+    },
+    {
+      "status": "PASS",
+      "detail": "Every numeric entry in all seven new README tables matches saved CSVs: 196 data cells, including counts, dates, distributions, subset ranges and excluded-anchor results."
+    },
+    {
+      "status": "PASS",
+      "detail": "All narrative numerical claims, method constants, 69 equal cases, E1-E3, five-sentence Answer, pooled shares and best combination agree with the saved outputs."
+    },
+    {
+      "status": "PASS",
+      "detail": "All new README links resolve; both unchanged PNGs are 300 dpi, both SVGs parse, and figure-data tables match the saved costs and means. Both figures were also visually inspected."
+    }
+  ]
+}

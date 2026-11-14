@@ -1,0 +1,34 @@
+{
+  "E1": {
+    "held": true,
+    "tolerance_beds": 0.001,
+    "methods": [
+      {
+        "method": "Mean-24",
+        "maximum_difference_beds": 4.814814610654139e-05,
+        "origins_matching": 25,
+        "origins": 25
+      },
+      {
+        "method": "Persistence",
+        "maximum_difference_beds": 4.4444452669267775e-05,
+        "origins_matching": 25,
+        "origins": 25
+      }
+    ]
+  },
+  "E2": {
+    "held": true,
+    "lp_dearer_cases": 0,
+    "total_cases": 125
+  },
+  "E3": {
+    "held": true,
+    "mean_values": {
+      "Seasonal naive": 895427.3578444923,
+      "SARIMA-24": 1490419.9274179863,
+      "ExtraTrees-24": 325359.98503066547
+    }
+  },
+  "not_stop_conditions": true
+}

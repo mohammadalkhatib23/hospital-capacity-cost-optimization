@@ -1,0 +1,42 @@
+[
+  {
+    "check": "Hashes, cutoff provenance and deterministic Rule regeneration",
+    "status": "PASS",
+    "detail": "All 125 Rule schedules reproduce bit-for-bit; source forecast and plan hashes verified; target dates and fitting cutoffs agree"
+  },
+  {
+    "check": "Rule feasibility",
+    "status": "PASS",
+    "detail": "All caps, up/down ramps, positive flows, month order and zero starting capacity checked"
+  },
+  {
+    "check": "Original files unchanged",
+    "status": "PASS",
+    "detail": "555 hashes match, including old scripts, outputs and pre-existing untracked files"
+  },
+  {
+    "check": "Independent cost reconstruction and hindsight bounds",
+    "status": "PASS",
+    "detail": "375 schedules; maximum relative cost difference 3.46e-16; every monthly sum reconciles; reused scores unchanged"
+  },
+  {
+    "check": "M1-M7, including pooled and excluded-anchor analyses",
+    "status": "PASS",
+    "detail": "Independent means, medians, extremes, counts, ratios of sums, event counter, and all six subset values/ranges agree"
+  },
+  {
+    "check": "Expectations evaluated without gating results",
+    "status": "PASS",
+    "detail": "E1=True, E2=True, E3=True; adverse cases retained"
+  },
+  {
+    "check": "Original files unchanged",
+    "status": "PASS",
+    "detail": "555 hashes match, including old scripts, outputs and pre-existing untracked files"
+  },
+  {
+    "check": "Existing and new pytest suites",
+    "status": "PASS",
+    "detail": "68 passed, 3278 warnings in 30.61s"
+  }
+]

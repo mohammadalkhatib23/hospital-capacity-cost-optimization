@@ -1,0 +1,156 @@
+{
+  "all": [
+    {
+      "method": "Seasonal naive",
+      "plan": "Protected",
+      "mean_cost": 16955875.542768452
+    },
+    {
+      "method": "ExtraTrees-24",
+      "plan": "Protected",
+      "mean_cost": 17324127.331088882
+    },
+    {
+      "method": "SARIMA-24",
+      "plan": "Protected",
+      "mean_cost": 17902389.692666657
+    },
+    {
+      "method": "Seasonal naive",
+      "plan": "LP",
+      "mean_cost": 17966511.244306035
+    },
+    {
+      "method": "Seasonal naive",
+      "plan": "Rule",
+      "mean_cost": 18861938.602150526
+    },
+    {
+      "method": "Mean-24",
+      "plan": "Protected",
+      "mean_cost": 19666016.958
+    },
+    {
+      "method": "ExtraTrees-24",
+      "plan": "LP",
+      "mean_cost": 20167466.394039378
+    },
+    {
+      "method": "ExtraTrees-24",
+      "plan": "Rule",
+      "mean_cost": 20492826.37907004
+    },
+    {
+      "method": "Mean-24",
+      "plan": "Rule",
+      "mean_cost": 20712375.0119474
+    },
+    {
+      "method": "Mean-24",
+      "plan": "LP",
+      "mean_cost": 20712375.035310328
+    },
+    {
+      "method": "Persistence",
+      "plan": "Protected",
+      "mean_cost": 20751727.97384443
+    },
+    {
+      "method": "SARIMA-24",
+      "plan": "LP",
+      "mean_cost": 23388466.250031263
+    },
+    {
+      "method": "SARIMA-24",
+      "plan": "Rule",
+      "mean_cost": 24878886.17744925
+    },
+    {
+      "method": "Persistence",
+      "plan": "Rule",
+      "mean_cost": 27572005.634408582
+    },
+    {
+      "method": "Persistence",
+      "plan": "LP",
+      "mean_cost": 27572005.63834189
+    }
+  ],
+  "excluding_original_two": [
+    {
+      "method": "Seasonal naive",
+      "plan": "Protected",
+      "mean_cost": 17075231.460637365
+    },
+    {
+      "method": "ExtraTrees-24",
+      "plan": "Protected",
+      "mean_cost": 17350063.177270524
+    },
+    {
+      "method": "Seasonal naive",
+      "plan": "LP",
+      "mean_cost": 17713459.942793313
+    },
+    {
+      "method": "SARIMA-24",
+      "plan": "Protected",
+      "mean_cost": 17946887.406594194
+    },
+    {
+      "method": "Seasonal naive",
+      "plan": "Rule",
+      "mean_cost": 18516657.308711234
+    },
+    {
+      "method": "Mean-24",
+      "plan": "Protected",
+      "mean_cost": 19795653.37326087
+    },
+    {
+      "method": "ExtraTrees-24",
+      "plan": "LP",
+      "mean_cost": 20286673.652289182
+    },
+    {
+      "method": "ExtraTrees-24",
+      "plan": "Rule",
+      "mean_cost": 20593794.411958355
+    },
+    {
+      "method": "Mean-24",
+      "plan": "Rule",
+      "mean_cost": 20691240.227780346
+    },
+    {
+      "method": "Mean-24",
+      "plan": "LP",
+      "mean_cost": 20691240.232554875
+    },
+    {
+      "method": "Persistence",
+      "plan": "Protected",
+      "mean_cost": 20946022.199178733
+    },
+    {
+      "method": "SARIMA-24",
+      "plan": "LP",
+      "mean_cost": 23886561.793652497
+    },
+    {
+      "method": "SARIMA-24",
+      "plan": "Rule",
+      "mean_cost": 25366868.80500815
+    },
+    {
+      "method": "Persistence",
+      "plan": "Rule",
+      "mean_cost": 27927841.148511764
+    },
+    {
+      "method": "Persistence",
+      "plan": "LP",
+      "mean_cost": 27927841.1752267
+    }
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "status": "PASS",
+  "max_rule_cost_relative_difference": 7.0521526445567094e-15,
+  "max_forecast_difference_beds": 2.9103830456733704e-11,
+  "reproduction_rows": 10,
+  "readme_rows": 5,
+  "note": "The rolling README reports mean Protected excess over hindsight and mean LP-minus-Protected, rather than raw mean totals; both were independently reconstructed from loaded totals and checked.",
+  "source_config_sha256": "8715467371b89f2f10a0124613ce7387bdc9296d9f05026c0a91b6e63ca85e48",
+  "source_plans_sha256": "f797670d1363ffd9fe3256854b4b6cce98a2a52fd0949c44ff64dd139dae54ff"
+}
