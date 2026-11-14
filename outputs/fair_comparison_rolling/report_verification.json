@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "summary_rows": 20,
+  "coverage_rows": 20,
+  "robustness_rows": 12,
+  "origin_and_exclusion_tables": "checked",
+  "primary_and_subgroup_claims": "checked",
+  "figure_files": 6,
+  "png_dpi": 300,
+  "readme_section_sha256": "93afd80cf6b5147ba6dd96a9c08c8586e8a5a14a9884c111828a4cc66df313e9",
+  "result": "Every numerical results row and reported finding matches verified outputs; source/plan hashes unchanged."
+}

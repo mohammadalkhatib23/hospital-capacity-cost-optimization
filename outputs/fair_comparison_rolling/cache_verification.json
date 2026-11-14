@@ -1,0 +1,14 @@
+[
+  {
+    "origin": "2025-09",
+    "paths": 28,
+    "maximum_difference_beds": 6.320988177321851e-11,
+    "status": "PASS"
+  },
+  {
+    "origin": "2026-03",
+    "paths": 34,
+    "maximum_difference_beds": 4.6838977141305804e-11,
+    "status": "PASS"
+  }
+]

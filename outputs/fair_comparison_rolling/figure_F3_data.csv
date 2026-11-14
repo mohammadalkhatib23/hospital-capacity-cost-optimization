@@ -1,0 +1,31 @@
+scope,method,horizon,covered,months,coverage
+all,Mean-24,1,25,25,1
+all,Mean-24,2,25,25,1
+all,Mean-24,3,25,25,1
+all,Mean-24,4,25,25,1
+all,Mean-24,5,25,25,1
+all,Mean-24,6,25,25,1
+all,Persistence,1,21,25,0.83999999999999997
+all,Persistence,2,23,25,0.92000000000000004
+all,Persistence,3,25,25,1
+all,Persistence,4,25,25,1
+all,Persistence,5,23,25,0.92000000000000004
+all,Persistence,6,23,25,0.92000000000000004
+all,Seasonal naive,1,25,25,1
+all,Seasonal naive,2,25,25,1
+all,Seasonal naive,3,25,25,1
+all,Seasonal naive,4,25,25,1
+all,Seasonal naive,5,21,25,0.83999999999999997
+all,Seasonal naive,6,22,25,0.88
+all,SARIMA-24,1,25,25,1
+all,SARIMA-24,2,23,25,0.92000000000000004
+all,SARIMA-24,3,24,25,0.95999999999999996
+all,SARIMA-24,4,24,25,0.95999999999999996
+all,SARIMA-24,5,22,25,0.88
+all,SARIMA-24,6,24,25,0.95999999999999996
+all,ExtraTrees-24,1,25,25,1
+all,ExtraTrees-24,2,24,25,0.95999999999999996
+all,ExtraTrees-24,3,23,25,0.92000000000000004
+all,ExtraTrees-24,4,24,25,0.95999999999999996
+all,ExtraTrees-24,5,25,25,1
+all,ExtraTrees-24,6,24,25,0.95999999999999996

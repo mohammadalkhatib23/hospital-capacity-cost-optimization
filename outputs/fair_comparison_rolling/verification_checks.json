@@ -1,0 +1,87 @@
+[
+  {
+    "check": "Source, registered config and frozen plan hashes",
+    "status": "PASS",
+    "detail": "config 8715467371b89f2f10a0124613ce7387bdc9296d9f05026c0a91b6e63ca85e48; plans f797670d1363ffd9fe3256854b4b6cce98a2a52fd0949c44ff64dd139dae54ff"
+  },
+  {
+    "check": "Approved publication boundary",
+    "status": "PASS",
+    "detail": "71 complete observations; 5 blank trailing rows ignored; no internal blanks"
+  },
+  {
+    "check": "Planning-origin exclusions before scoring",
+    "status": "PASS",
+    "detail": "[{\"origin\": \"2025-10\", \"failed_targets\": [\"occupied\"]}, {\"origin\": \"2026-01\", \"failed_targets\": [\"available\"]}]"
+  },
+  {
+    "check": "All frozen plans feasible",
+    "status": "PASS",
+    "detail": "500 six-month plans; cap, ramp, zero start, flows, dates and finiteness"
+  },
+  {
+    "check": "Cutoff, training and shared-cache isolation",
+    "status": "PASS",
+    "detail": "25 origins and 532 reused whole paths checked; each path ends by its planning origin"
+  },
+  {
+    "check": "Raw paired scenarios and 0.9 quantiles",
+    "status": "PASS",
+    "detail": "All methods/origins match independent reconstruction; no centering or clipping"
+  },
+  {
+    "check": "Identical-scenario Protected equals Point",
+    "status": "PASS",
+    "detail": "['2024-02', '2026-04']; max difference 0 beds"
+  },
+  {
+    "check": "Preservation of pre-existing files",
+    "status": "PASS",
+    "detail": "212 original file hashes checked; README exemption=False"
+  },
+  {
+    "check": "Original and rolling pytest suites",
+    "status": "PASS",
+    "detail": "61 passed, 3278 warnings in 20.23s"
+  },
+  {
+    "check": "Independent accounting and hindsight lower bound",
+    "status": "PASS",
+    "detail": "575 plans including hindsight; max relative cost difference 3.8e-16; monthly costs reconcile"
+  },
+  {
+    "check": "Forecast errors, pinball and coverage",
+    "status": "PASS",
+    "detail": "Recomputed directly from actual observations and saved point/quantile forecasts"
+  },
+  {
+    "check": "Fable origins reproduced inside full run",
+    "status": "PASS",
+    "detail": "max relative primary protected-cost difference 0"
+  },
+  {
+    "check": "Complete reruns at two registered sample origins",
+    "status": "PASS",
+    "detail": "max forecast 2.91e-11 beds; bank 5.82e-11; plan 0"
+  },
+  {
+    "check": "Preservation of pre-existing files",
+    "status": "PASS",
+    "detail": "212 original file hashes checked; README exemption=False"
+  },
+  {
+    "check": "Registered decision rules and every summary table",
+    "status": "PASS",
+    "detail": "Independent loops reproduce all four scopes, three penalties, six offset subsets, ranks, pairwise counts, coverage and protection value"
+  },
+  {
+    "check": "README numbers, claims, links and figure files",
+    "status": "PASS",
+    "detail": "20 result rows, 20 horizon rows, 12 robustness rows, all exclusions and winner claims verified; 3 PNGs at 300 dpi plus 3 SVGs."
+  },
+  {
+    "check": "Visual review of all three figures",
+    "status": "PASS",
+    "detail": "Inspected PNGs: readable labels and legends, no clipping; specified colors, distinct markers/line styles; subset ranges labeled as descriptive."
+  }
+]

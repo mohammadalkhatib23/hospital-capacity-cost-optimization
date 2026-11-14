@@ -1,0 +1,203 @@
+{
+ "name": "Fair comparison: equal protection for every forecast",
+ "approved": "design_review.md, approved by the project owner with: raw errors primary and centred errors as sensitivity; bias-corrected point plan added; ExtraTrees-24 point plans may differ from the checkpoint by up to 1e-6 beds, the other four must match exactly; the 0.95 level is indicative only",
+ "problem": "a point forecast that runs high gets free insurance under a cost that punishes shortfalls ten times more than spare beds; every method therefore gets the same deliberate protection, built from its own past errors",
+ "data": {
+  "file": "data/raw_v6/Beds-publication-Timeseries-March-2020-October-2026.xlsx",
+  "sha256": "a1afbe8659e4ad984628286935a957d51cbcd9099e96edf4906e671d116151cb",
+  "source_url": "https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2026/11/Beds-publication-Timeseries-March-2020-October-2026.xlsx",
+  "retrieved_utc": "2026-11-13T13:05:27Z",
+  "sheet": "TS - All Acutes",
+  "header_row": "zero-based row index 12 (Excel row 13)",
+  "available": "G&A beds available",
+  "occupied": "G&A beds occupied",
+  "blanks": "months with a blank value are dropped",
+  "cutoff_rule": "rows after a cut-off are discarded before any value is converted",
+  "not_used": "data/raw_v5"
+ },
+ "origins": {
+  "O1_sep2025": {
+   "cutoff": "2025-09",
+   "training_window": [
+    "2023-10",
+    "2025-09"
+   ],
+   "forecast_months": [
+    "2025-10",
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03"
+   ]
+  },
+  "O2_mar2026": {
+   "cutoff": "2026-03",
+   "training_window": [
+    "2024-04",
+    "2026-03"
+   ],
+   "forecast_months": [
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08",
+    "2026-09"
+   ]
+  }
+ },
+ "gap": "d = occupied / 0.90 - available",
+ "forecasts": {
+  "common": "each method forecasts occupied and available separately, six months ahead, from the 24-month training window only",
+  "Mean-24": "mean of the window, flat",
+  "Persistence": "last month of the window, flat",
+  "Seasonal naive": "same calendar month one year earlier",
+  "SARIMA-24": {
+   "order": [
+    1,
+    0,
+    0
+   ],
+   "seasonal_order": [
+    0,
+    1,
+    0,
+    12
+   ],
+   "trend": "n",
+   "enforce_stationarity": true,
+   "enforce_invertibility": true,
+   "simple_differencing": false,
+   "target_scaling": "StandardScaler fitted on the 24 window values; forecasts inverse-transformed",
+   "fit": "lbfgs, maxiter 400, cov_type none",
+   "labels": "all 24 window months",
+   "bounds": "forecasts clipped at 0",
+   "non_convergence": "stop; no rescue"
+  },
+  "ExtraTrees-24": {
+   "estimator": "ExtraTreesRegressor",
+   "n_estimators": 300,
+   "min_samples_leaf": 2,
+   "random_state": 42,
+   "n_jobs": -1,
+   "features": [
+    "target_lag_1",
+    "target_lag_2",
+    "target_lag_3",
+    "target_lag_6",
+    "target_lag_12",
+    "target_roll_mean_3",
+    "target_roll_std_3",
+    "target_roll_mean_6",
+    "target_roll_std_6",
+    "target_roll_mean_12",
+    "target_roll_std_12",
+    "month_number",
+    "quarter",
+    "year",
+    "month_sin",
+    "month_cos"
+   ],
+   "feature_rule": "lags and shifted rolling mean/std (ddof 1) of the target, plus calendar values",
+   "training_rows": "rows whose features need data before the window are dropped (12 rows expected)",
+   "forecasting": "recursive, six steps, earlier predictions feed later features",
+   "bounds": "forecasts clipped at 0",
+   "note": "the project pipeline's median imputer is a no-op here because no feature is missing"
+  }
+ },
+ "costs": {
+  "running": 500.0,
+  "opening": 550.0,
+  "closing": 300.0,
+  "shortfall_base": 5000.0,
+  "shortfall_sweep": [
+   1000.0,
+   2500.0,
+   5000.0,
+   10000.0
+  ]
+ },
+ "limits": {
+  "cap": 15000.0,
+  "ramp": 5000.0,
+  "x0": 0.0,
+  "terminal_charge": 0
+ },
+ "reuse": "scripts/clean_checkpoint/pipeline.py imported unedited: load, forecast_origin, lp_plan, cost_table, rank_origin, overall",
+ "error_bank": {
+  "backtest_origins": "every month b whose 24-month window starts at or after the first data month and with b + 6 months <= the planning origin",
+  "expected_paths": {
+   "O1_sep2025": 29,
+   "O2_mar2026": 35
+  },
+  "procedure": "at each b refit all five methods on the 24 months ending at b with the unchanged specification and forecast six months",
+  "error": "actual - forecast for occupied and available; gap error = occupied error / 0.90 - available error; one six-month path per backtest",
+  "non_convergence": "if SARIMA-24 does not converge at b, b is dropped for all methods at that origin and logged; stop below 20 paths"
+ },
+ "scenarios": {
+  "primary": "gap forecast path of the method plus each of its own raw error paths; equal weights",
+  "sensitivity": "the same with errors centred per horizon",
+  "quantile": "level q for month t: the ceil((n + 1) q)-th smallest scenario gap (the largest if the rank exceeds n)"
+ },
+ "plans": {
+  "point": "LP on the point forecast (reference, no protection); at p = 5,000 it is the clean-checkpoint LP plan",
+  "bias_corrected": "LP on the point forecast plus the mean error path (reference: bias removed, no margin), p = 5,000",
+  "protected": "PRIMARY. SAA: one shared plan (x, a, r) minimising the average over scenarios of running, opening, closing and shortfall cost, same limits, p = 5,000",
+  "protected_centred": "SAA with centred errors, p = 5,000 (sensitivity)",
+  "penalty_sweep": "point and protected plans at p = 1,000, 2,500 and 10,000; each planned and scored at its own p with its own hindsight",
+  "service_level": "minimise operating cost subject to x_t >= the (1 - alpha) quantile of the scenario gaps (not below zero), alpha = 0.10 and 0.05; if the ramp or the cap makes it unreachable the requirement is lowered to the reachable level and logged; scored with operating cost, short months, shortfall bed-months and cost at p = 5,000",
+  "hindsight": "the LP on the actual gaps, for each p",
+  "tie_break": "inside the SAA program 0.0001 is added to the running cost per bed-month so that equally cheap plans resolve to the smaller one; reported costs never include it",
+  "solver": "PuLP CBC, one thread"
+ },
+ "measures": [
+  "gap MAE and mean signed gap error (actual - forecast) of the point forecast",
+  "pinball loss at 0.9 of the 0.9 quantile forecast (beds), and of the point forecast as a reference",
+  "coverage: months with the actual gap at or below the 0.9 quantile, of 6 per origin and of 12 pooled",
+  "CRPS of the scenario set; pinball loss at 0.5, 0.8 and 0.95",
+  "error bank summary: paths, mean and standard deviation of the gap error, average margin (0.9 quantile - point forecast)",
+  "per plan: operating cost, shortfall bed-months, short months, shortfall cost, total, excess over hindsight"
+ ],
+ "rules": {
+  "primary_endpoint": "realised cost of the protected plan at p = 5,000; five plans per origin",
+  "per_origin": [
+   "tie band for cost: 1% of that origin's hindsight cost",
+   "tie band for pinball loss and MAE: 5 beds",
+   "rank the five protected plans by realised cost; plans within the tie band of the cheapest are 'joint best'"
+  ],
+  "across_origins": [
+   "overall ranking: combined excess over hindsight",
+   "'clear winner': a method whose protected plan is joint best at both origins, or that beats the overall runner-up by more than the tie band at each origin; otherwise 'no clear winner' with the joint-best methods; if more than one method meets the definition all are reported as joint winners",
+   "previous winner: at each origin the method with the cheapest point plan; it 'still wins' if its protected plan is joint best at that origin, otherwise it 'no longer wins'; its protected rank is reported",
+   "did protection help: point cost - protected cost per method and origin; 'helped' above the tie band, 'hurt' below minus the tie band, otherwise 'no material difference'",
+   "best-calibrated forecast: lowest mean pinball loss at 0.9 across both origins; 'clear' only if lowest at both origins by more than 5 beds; coverage is reported without a rule",
+   "robust to the penalty: the clear-winner rule is applied at each p; the base result is 'robust' if the outcome (the same winner, or 'no clear winner') is the same at all four levels",
+   "service level: no winner is declared"
+  ],
+  "improvement_measures": [
+   "value of protection: point cost - protected cost, split into bias (point - bias-corrected) and margin (bias-corrected - protected)",
+   "saving against the protected plans of Seasonal naive and of Persistence: baseline cost - plan cost",
+   "share of avoidable cost removed: (baseline cost - plan cost) / (baseline cost - hindsight cost), same baselines",
+   "skill against Seasonal naive: 1 - loss / Seasonal naive loss, for pinball loss at 0.9 and for gap MAE",
+   "excess over hindsight, in model units and as a percentage of hindsight cost",
+   "per origin and combined; combined ratios are ratios of sums"
+  ],
+  "indicative": "the 0.95 level (p = 10,000 and alpha = 0.05) is the largest past error and is indicative only"
+ },
+ "disclosures": [
+  "the outcome months, the bias of each method in each window, the Persistence result at March 2026 and the earlier SARIMA SAA result were known before this design was written; the rules are fixed in advance but not blind",
+  "error paths overlap: 29 and 35 paths carry the information of about 5 and 6 independent six-month blocks",
+  "the 0.95 level (p = 10,000 and alpha = 0.05) is the largest past error and is indicative only",
+  "the gap is measured against 90% occupancy, itself a safety ceiling; a shortfall means occupancy above 90%",
+  "all six months are fixed at the origin; there is no re-planning",
+  "NHS revised Sep 2026 between the September and October 2026 publications (available -87, occupied -2); the October 2026 publication is used throughout",
+  "SARIMA-24 and ExtraTrees-24 are the small-sample variants of the clean checkpoint",
+  "costs are illustrative model units (validated: False)"
+ ],
+ "procedure": [
+  "write and hash this config before any backtest or forecast",
+  "plan stage: data up to each origin only; backtests, scenarios and all plans for both origins; hash them",
+  "score stage: verify both hashes, load the target months, solve hindsight, score once, apply the rules"
+ ]
+}

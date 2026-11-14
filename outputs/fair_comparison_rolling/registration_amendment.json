@@ -1,0 +1,24 @@
+{
+  "status": "PASS",
+  "superseded_config_sha256": "1d93530aa10a4a110c3f60f979617d50a7c1f0fc50775657ccecacdf08f2f15d",
+  "final_config_sha256": "8715467371b89f2f10a0124613ce7387bdc9296d9f05026c0a91b6e63ca85e48",
+  "scoring_started": false,
+  "excluded": [
+    {
+      "origin": "2025-10",
+      "failed_targets": [
+        "occupied"
+      ]
+    },
+    {
+      "origin": "2026-01",
+      "failed_targets": [
+        "available"
+      ]
+    }
+  ],
+  "implementation_review_before_planning": {
+    "previous_config_sha256": "86142628266cd7e35476d3a6f372911ab6a2abdd634d72588d4322c93f6bd976",
+    "change": "Monthly exported shortfall_cost uses each sensitivity penalty; inherited score_plan totals and monthly_cost already use that penalty. No model, LP, decision rule or scoring formula change."
+  }
+}

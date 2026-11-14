@@ -1,0 +1,26 @@
+[
+  {
+    "file": "figures/fair_comparison_rolling/F1_excess_by_origin.png",
+    "sha256": "4e92ec34eb2f22fc19b6fe2f5922ca7122ced0161687cf50df7b73de6f8ae125"
+  },
+  {
+    "file": "figures/fair_comparison_rolling/F1_excess_by_origin.svg",
+    "sha256": "a40c024cbc8758bd2dd1fd6fc821962359631e6a44932259683117c1a993fe18"
+  },
+  {
+    "file": "figures/fair_comparison_rolling/F2_mean_and_subset_range.png",
+    "sha256": "a20ba6b2283210e7da41b04de5fcc6fa4bf8e551e7103ba22466b3dd584c80c2"
+  },
+  {
+    "file": "figures/fair_comparison_rolling/F2_mean_and_subset_range.svg",
+    "sha256": "4f3bc8d81ff21ba6e51d723474407bb991b61a19e790ceda8cf53a53bf631a55"
+  },
+  {
+    "file": "figures/fair_comparison_rolling/F3_coverage_by_horizon.png",
+    "sha256": "40a59fec433a7f707de155c127b58f74d5a734358c4f7e62f83af2da0a68ec31"
+  },
+  {
+    "file": "figures/fair_comparison_rolling/F3_coverage_by_horizon.svg",
+    "sha256": "e9f7f1443cd7d5622bd52f638df0f1e9883460888aeedee116bff3ab3e50f0d4"
+  }
+]

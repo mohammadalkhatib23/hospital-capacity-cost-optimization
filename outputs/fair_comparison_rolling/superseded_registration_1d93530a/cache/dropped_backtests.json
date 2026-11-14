@@ -1,0 +1,10 @@
+[
+  {
+    "backtest_origin": "2023-01",
+    "reason": "SARIMA-24 did not converge for available at 2023-01; stopping"
+  },
+  {
+    "backtest_origin": "2025-10",
+    "reason": "SARIMA-24 did not converge for occupied at 2025-10; stopping"
+  }
+]

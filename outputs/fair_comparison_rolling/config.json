@@ -1,0 +1,1071 @@
+{
+  "name": "Fair comparison across many origins",
+  "data": {
+    "file": "data/raw_v6/Beds-publication-Timeseries-March-2020-October-2026.xlsx",
+    "sha256": "a1afbe8659e4ad984628286935a957d51cbcd9099e96edf4906e671d116151cb",
+    "source_url": "https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2026/11/Beds-publication-Timeseries-March-2020-October-2026.xlsx",
+    "retrieved_utc": "2026-11-13T13:05:27Z",
+    "sheet": "TS - All Acutes",
+    "header_row": "zero-based row index 12 (Excel row 13)",
+    "available": "G&A beds available",
+    "occupied": "G&A beds occupied",
+    "blanks": "months with a blank value are dropped",
+    "cutoff_rule": "rows after a cut-off are discarded before any value is converted",
+    "not_used": "data/raw_v5"
+  },
+  "window": 24,
+  "horizon": 6,
+  "minimum_paths": 9,
+  "quantile_level": 0.9,
+  "cost_band": 0.01,
+  "subset_count": 6,
+  "required_subset_wins": 4,
+  "first_data_month": "2020-12",
+  "last_published_month": "2026-10",
+  "observed_months": [
+    "2020-12",
+    "2021-01",
+    "2021-02",
+    "2021-03",
+    "2021-04",
+    "2021-05",
+    "2021-06",
+    "2021-07",
+    "2021-08",
+    "2021-09",
+    "2021-10",
+    "2021-11",
+    "2021-12",
+    "2022-01",
+    "2022-02",
+    "2022-03",
+    "2022-04",
+    "2022-05",
+    "2022-06",
+    "2022-07",
+    "2022-08",
+    "2022-09",
+    "2022-10",
+    "2022-11",
+    "2022-12",
+    "2023-01",
+    "2023-02",
+    "2023-03",
+    "2023-04",
+    "2023-05",
+    "2023-06",
+    "2023-07",
+    "2023-08",
+    "2023-09",
+    "2023-10",
+    "2023-11",
+    "2023-12",
+    "2024-01",
+    "2024-02",
+    "2024-03",
+    "2024-04",
+    "2024-05",
+    "2024-06",
+    "2024-07",
+    "2024-08",
+    "2024-09",
+    "2024-10",
+    "2024-11",
+    "2024-12",
+    "2025-01",
+    "2025-02",
+    "2025-03",
+    "2025-04",
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-10",
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08",
+    "2026-09",
+    "2026-10"
+  ],
+  "blank_placeholder_months": [
+    "2026-11",
+    "2026-12",
+    "2027-01",
+    "2027-02",
+    "2027-03"
+  ],
+  "boundary_correction": "Approved before rolling scoring: final data month requires both bed series non-blank; assert October 2026 and no internal blanks.",
+  "methods": [
+    "Mean-24",
+    "Persistence",
+    "Seasonal naive",
+    "SARIMA-24",
+    "ExtraTrees-24"
+  ],
+  "origins": [
+    "2024-02",
+    "2024-03",
+    "2024-04",
+    "2024-05",
+    "2024-06",
+    "2024-07",
+    "2024-08",
+    "2024-09",
+    "2024-10",
+    "2024-11",
+    "2024-12",
+    "2025-01",
+    "2025-02",
+    "2025-03",
+    "2025-04",
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-09",
+    "2025-11",
+    "2025-12",
+    "2026-02",
+    "2026-03",
+    "2026-04"
+  ],
+  "origin_records": [
+    {
+      "origin": "2022-11",
+      "training_start": "2020-12",
+      "target_start": "2022-12",
+      "target_end": "2023-05",
+      "bank_paths": 0,
+      "dropped_backtests": [],
+      "status": "excluded",
+      "reason": "fewer than 9 complete retained paths",
+      "failed_targets": []
+    },
+    {
+      "origin": "2022-12",
+      "training_start": "2021-01",
+      "target_start": "2023-01",
+      "target_end": "2023-06",
+      "bank_paths": 0,
+      "dropped_backtests": [],
+      "status": "excluded",
+      "reason": "fewer than 9 complete retained paths",
+      "failed_targets": []
+    },
+    {
+      "origin": "2023-01",
+      "training_start": "2021-02",
+      "target_start": "2023-02",
+      "target_end": "2023-07",
+      "bank_paths": 0,
+      "dropped_backtests": [],
+      "status": "excluded",
+      "reason": "fewer than 9 complete retained paths",
+      "failed_targets": []
+    },
+    {
+      "origin": "2023-02",
+      "training_start": "2021-03",
+      "target_start": "2023-03",
+      "target_end": "2023-08",
+      "bank_paths": 0,
+      "dropped_backtests": [],
+      "status": "excluded",
+      "reason": "fewer than 9 complete retained paths",
+      "failed_targets": []
+    },
+    {
+      "origin": "2023-03",
+      "training_start": "2021-04",
+      "target_start": "2023-04",
+      "target_end": "2023-09",
+      "bank_paths": 0,
+      "dropped_backtests": [],
+      "status": "excluded",
+      "reason": "fewer than 9 complete retained paths",
+      "failed_targets": []
+    },
+    {
+      "origin": "2023-04",
+      "training_start": "2021-05",
+      "target_start": "2023-05",
+      "target_end": "2023-10",
+      "bank_paths": 0,
+      "dropped_backtests": [],
+      "status": "excluded",
+      "reason": "fewer than 9 complete retained paths",
+      "failed_targets": []
+    },
+    {
+      "origin": "2023-05",
+      "training_start": "2021-06",
+      "target_start": "2023-06",
+      "target_end": "2023-11",
+      "bank_paths": 1,
+      "dropped_backtests": [],
+      "status": "excluded",
+      "reason": "fewer than 9 complete retained paths",
+      "failed_targets": []
+    },
+    {
+      "origin": "2023-06",
+      "training_start": "2021-07",
+      "target_start": "2023-07",
+      "target_end": "2023-12",
+      "bank_paths": 2,
+      "dropped_backtests": [],
+      "status": "excluded",
+      "reason": "fewer than 9 complete retained paths",
+      "failed_targets": []
+    },
+    {
+      "origin": "2023-07",
+      "training_start": "2021-08",
+      "target_start": "2023-08",
+      "target_end": "2024-01",
+      "bank_paths": 2,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "excluded",
+      "reason": "fewer than 9 complete retained paths",
+      "failed_targets": []
+    },
+    {
+      "origin": "2023-08",
+      "training_start": "2021-09",
+      "target_start": "2023-09",
+      "target_end": "2024-02",
+      "bank_paths": 3,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "excluded",
+      "reason": "fewer than 9 complete retained paths",
+      "failed_targets": []
+    },
+    {
+      "origin": "2023-09",
+      "training_start": "2021-10",
+      "target_start": "2023-10",
+      "target_end": "2024-03",
+      "bank_paths": 4,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "excluded",
+      "reason": "fewer than 9 complete retained paths",
+      "failed_targets": []
+    },
+    {
+      "origin": "2023-10",
+      "training_start": "2021-11",
+      "target_start": "2023-11",
+      "target_end": "2024-04",
+      "bank_paths": 5,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "excluded",
+      "reason": "fewer than 9 complete retained paths",
+      "failed_targets": []
+    },
+    {
+      "origin": "2023-11",
+      "training_start": "2021-12",
+      "target_start": "2023-12",
+      "target_end": "2024-05",
+      "bank_paths": 6,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "excluded",
+      "reason": "fewer than 9 complete retained paths",
+      "failed_targets": []
+    },
+    {
+      "origin": "2023-12",
+      "training_start": "2022-01",
+      "target_start": "2024-01",
+      "target_end": "2024-06",
+      "bank_paths": 7,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "excluded",
+      "reason": "fewer than 9 complete retained paths",
+      "failed_targets": []
+    },
+    {
+      "origin": "2024-01",
+      "training_start": "2022-02",
+      "target_start": "2024-02",
+      "target_end": "2024-07",
+      "bank_paths": 8,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "excluded",
+      "reason": "fewer than 9 complete retained paths",
+      "failed_targets": []
+    },
+    {
+      "origin": "2024-02",
+      "training_start": "2022-03",
+      "target_start": "2024-03",
+      "target_end": "2024-08",
+      "bank_paths": 9,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2024-03",
+      "training_start": "2022-04",
+      "target_start": "2024-04",
+      "target_end": "2024-09",
+      "bank_paths": 10,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2024-04",
+      "training_start": "2022-05",
+      "target_start": "2024-05",
+      "target_end": "2024-10",
+      "bank_paths": 11,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2024-05",
+      "training_start": "2022-06",
+      "target_start": "2024-06",
+      "target_end": "2024-11",
+      "bank_paths": 12,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2024-06",
+      "training_start": "2022-07",
+      "target_start": "2024-07",
+      "target_end": "2024-12",
+      "bank_paths": 13,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2024-07",
+      "training_start": "2022-08",
+      "target_start": "2024-08",
+      "target_end": "2025-01",
+      "bank_paths": 14,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2024-08",
+      "training_start": "2022-09",
+      "target_start": "2024-09",
+      "target_end": "2025-02",
+      "bank_paths": 15,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2024-09",
+      "training_start": "2022-10",
+      "target_start": "2024-10",
+      "target_end": "2025-03",
+      "bank_paths": 16,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2024-10",
+      "training_start": "2022-11",
+      "target_start": "2024-11",
+      "target_end": "2025-04",
+      "bank_paths": 17,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2024-11",
+      "training_start": "2022-12",
+      "target_start": "2024-12",
+      "target_end": "2025-05",
+      "bank_paths": 18,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2024-12",
+      "training_start": "2023-01",
+      "target_start": "2025-01",
+      "target_end": "2025-06",
+      "bank_paths": 19,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2025-01",
+      "training_start": "2023-02",
+      "target_start": "2025-02",
+      "target_end": "2025-07",
+      "bank_paths": 20,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2025-02",
+      "training_start": "2023-03",
+      "target_start": "2025-03",
+      "target_end": "2025-08",
+      "bank_paths": 21,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2025-03",
+      "training_start": "2023-04",
+      "target_start": "2025-04",
+      "target_end": "2025-09",
+      "bank_paths": 22,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2025-04",
+      "training_start": "2023-05",
+      "target_start": "2025-05",
+      "target_end": "2025-10",
+      "bank_paths": 23,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2025-05",
+      "training_start": "2023-06",
+      "target_start": "2025-06",
+      "target_end": "2025-11",
+      "bank_paths": 24,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2025-06",
+      "training_start": "2023-07",
+      "target_start": "2025-07",
+      "target_end": "2025-12",
+      "bank_paths": 25,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2025-07",
+      "training_start": "2023-08",
+      "target_start": "2025-08",
+      "target_end": "2026-01",
+      "bank_paths": 26,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2025-08",
+      "training_start": "2023-09",
+      "target_start": "2025-09",
+      "target_end": "2026-02",
+      "bank_paths": 27,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2025-09",
+      "training_start": "2023-10",
+      "target_start": "2025-10",
+      "target_end": "2026-03",
+      "bank_paths": 28,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2025-10",
+      "training_start": "2023-11",
+      "target_start": "2025-11",
+      "target_end": "2026-04",
+      "bank_paths": 29,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "excluded",
+      "reason": "SARIMA-24 did not converge for occupied at planning origin; excluded for all methods",
+      "failed_targets": [
+        "occupied"
+      ]
+    },
+    {
+      "origin": "2025-11",
+      "training_start": "2023-12",
+      "target_start": "2025-12",
+      "target_end": "2026-05",
+      "bank_paths": 30,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2025-12",
+      "training_start": "2024-01",
+      "target_start": "2026-01",
+      "target_end": "2026-06",
+      "bank_paths": 31,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2026-01",
+      "training_start": "2024-02",
+      "target_start": "2026-02",
+      "target_end": "2026-07",
+      "bank_paths": 32,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "excluded",
+      "reason": "SARIMA-24 did not converge for available at planning origin; excluded for all methods",
+      "failed_targets": [
+        "available"
+      ]
+    },
+    {
+      "origin": "2026-02",
+      "training_start": "2024-03",
+      "target_start": "2026-03",
+      "target_end": "2026-08",
+      "bank_paths": 33,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2026-03",
+      "training_start": "2024-04",
+      "target_start": "2026-04",
+      "target_end": "2026-09",
+      "bank_paths": 34,
+      "dropped_backtests": [
+        "2023-01"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    },
+    {
+      "origin": "2026-04",
+      "training_start": "2024-05",
+      "target_start": "2026-05",
+      "target_end": "2026-10",
+      "bank_paths": 34,
+      "dropped_backtests": [
+        "2023-01",
+        "2025-10"
+      ],
+      "status": "included",
+      "reason": "",
+      "failed_targets": []
+    }
+  ],
+  "scopes": {
+    "all": [
+      "2024-02",
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-11",
+      "2025-12",
+      "2026-02",
+      "2026-03",
+      "2026-04"
+    ],
+    "excluding_fable": [
+      "2024-02",
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-11",
+      "2025-12",
+      "2026-02",
+      "2026-04"
+    ],
+    "through_2024": [
+      "2024-02",
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12"
+    ],
+    "from_2025": [
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-11",
+      "2025-12",
+      "2026-02",
+      "2026-03",
+      "2026-04"
+    ]
+  },
+  "subsets": {
+    "all": {
+      "0": [
+        "2024-02",
+        "2024-08",
+        "2025-02",
+        "2025-08",
+        "2026-04"
+      ],
+      "1": [
+        "2024-03",
+        "2024-09",
+        "2025-03",
+        "2025-09"
+      ],
+      "2": [
+        "2024-04",
+        "2024-10",
+        "2025-04",
+        "2025-11"
+      ],
+      "3": [
+        "2024-05",
+        "2024-11",
+        "2025-05",
+        "2025-12"
+      ],
+      "4": [
+        "2024-06",
+        "2024-12",
+        "2025-06",
+        "2026-02"
+      ],
+      "5": [
+        "2024-07",
+        "2025-01",
+        "2025-07",
+        "2026-03"
+      ]
+    },
+    "excluding_fable": {
+      "0": [
+        "2024-02",
+        "2024-08",
+        "2025-02",
+        "2025-08"
+      ],
+      "1": [
+        "2024-03",
+        "2024-09",
+        "2025-03",
+        "2025-11"
+      ],
+      "2": [
+        "2024-04",
+        "2024-10",
+        "2025-04",
+        "2025-12"
+      ],
+      "3": [
+        "2024-05",
+        "2024-11",
+        "2025-05",
+        "2026-02"
+      ],
+      "4": [
+        "2024-06",
+        "2024-12",
+        "2025-06",
+        "2026-04"
+      ],
+      "5": [
+        "2024-07",
+        "2025-01",
+        "2025-07"
+      ]
+    },
+    "through_2024": {
+      "0": [
+        "2024-02",
+        "2024-08"
+      ],
+      "1": [
+        "2024-03",
+        "2024-09"
+      ],
+      "2": [
+        "2024-04",
+        "2024-10"
+      ],
+      "3": [
+        "2024-05",
+        "2024-11"
+      ],
+      "4": [
+        "2024-06",
+        "2024-12"
+      ],
+      "5": [
+        "2024-07"
+      ]
+    },
+    "from_2025": {
+      "0": [
+        "2025-01",
+        "2025-07",
+        "2026-03"
+      ],
+      "1": [
+        "2025-02",
+        "2025-08",
+        "2026-04"
+      ],
+      "2": [
+        "2025-03",
+        "2025-09"
+      ],
+      "3": [
+        "2025-04",
+        "2025-11"
+      ],
+      "4": [
+        "2025-05",
+        "2025-12"
+      ],
+      "5": [
+        "2025-06",
+        "2026-02"
+      ]
+    }
+  },
+  "forecasts": {
+    "common": "each method forecasts occupied and available separately, six months ahead, from the 24-month training window only",
+    "Mean-24": "mean of the window, flat",
+    "Persistence": "last month of the window, flat",
+    "Seasonal naive": "same calendar month one year earlier",
+    "SARIMA-24": {
+      "order": [
+        1,
+        0,
+        0
+      ],
+      "seasonal_order": [
+        0,
+        1,
+        0,
+        12
+      ],
+      "trend": "n",
+      "enforce_stationarity": true,
+      "enforce_invertibility": true,
+      "simple_differencing": false,
+      "target_scaling": "StandardScaler fitted on the 24 window values; forecasts inverse-transformed",
+      "fit": "lbfgs, maxiter 400, cov_type none",
+      "labels": "all 24 window months",
+      "bounds": "forecasts clipped at 0",
+      "non_convergence": "stop; no rescue"
+    },
+    "ExtraTrees-24": {
+      "estimator": "ExtraTreesRegressor",
+      "n_estimators": 300,
+      "min_samples_leaf": 2,
+      "random_state": 42,
+      "n_jobs": -1,
+      "features": [
+        "target_lag_1",
+        "target_lag_2",
+        "target_lag_3",
+        "target_lag_6",
+        "target_lag_12",
+        "target_roll_mean_3",
+        "target_roll_std_3",
+        "target_roll_mean_6",
+        "target_roll_std_6",
+        "target_roll_mean_12",
+        "target_roll_std_12",
+        "month_number",
+        "quarter",
+        "year",
+        "month_sin",
+        "month_cos"
+      ],
+      "feature_rule": "lags and shifted rolling mean/std (ddof 1) of the target, plus calendar values",
+      "training_rows": "rows whose features need data before the window are dropped (12 rows expected)",
+      "forecasting": "recursive, six steps, earlier predictions feed later features",
+      "bounds": "forecasts clipped at 0",
+      "note": "the project pipeline's median imputer is a no-op here because no feature is missing"
+    }
+  },
+  "gap": "d = occupied / 0.90 - available",
+  "costs": {
+    "running": 500.0,
+    "opening": 550.0,
+    "closing": 300.0,
+    "shortfall_base": 5000.0,
+    "shortfall_sweep": [
+      2500.0,
+      5000.0,
+      10000.0
+    ]
+  },
+  "limits": {
+    "cap": 15000.0,
+    "ramp": 5000.0,
+    "x0": 0.0,
+    "terminal_charge": 0
+  },
+  "source_hashes": {
+    "scripts/clean_checkpoint/pipeline.py": "d30f6d6f81483d49430eb09f7acaf2425386e3268091209ecfab9f959aad853b",
+    "scripts/fair_comparison/fair.py": "eade460ea42912782edccdf624fa70cb9b9162c1b55daec4a53c35f6967523f4",
+    "scripts/fair_comparison_rolling/rolling.py": "e19c181ebf4e45ea0378d1ad8703e6540d0943261cc60e30001918e2d3c87c1c",
+    "scripts/fair_comparison_rolling/summarize.py": "fa8c47f866e79426da4be23e33e984061db5605aafbead5a882c69cc9f14cb99"
+  },
+  "original_config_sha256": "164f4ba712b154929dc09cd8a34630af5c84867e740125e0b06466c41ab4c950",
+  "cache_sha256": "6887c97589ef9596ee6f4aa2dc37ba17b340e5a5fa431785981bfabdd122a6e6",
+  "error_bank": {
+    "construction": {
+      "backtest_origins": "every month b whose 24-month window starts at or after the first data month and with b + 6 months <= the planning origin",
+      "expected_paths": {
+        "O1_sep2025": 29,
+        "O2_mar2026": 35
+      },
+      "procedure": "at each b refit all five methods on the 24 months ending at b with the unchanged specification and forecast six months",
+      "error": "actual - forecast for occupied and available; gap error = occupied error / 0.90 - available error; one six-month path per backtest",
+      "non_convergence": "if SARIMA-24 does not converge at b, b is dropped for all methods at that origin and logged; stop below 20 paths"
+    },
+    "minimum_paths": 9,
+    "override": "user-requested eligibility minimum 9 replaces the original orchestration minimum 20; no model or bank recipe changes",
+    "dropped_backtests": [
+      {
+        "backtest_origin": "2023-01",
+        "reason": "SARIMA-24 did not converge for available at 2023-01; stopping"
+      },
+      {
+        "backtest_origin": "2025-10",
+        "reason": "SARIMA-24 did not converge for occupied at 2025-10; stopping"
+      }
+    ],
+    "sharing": "one original build_bank call through April 2026; each origin receives only whole paths ending by its cutoff"
+  },
+  "scenarios": "gap forecast path of the method plus each of its own raw error paths; equal weights",
+  "quantile": "level q for month t: the ceil((n + 1) q)-th smallest scenario gap (the largest if the rank exceeds n)",
+  "plans": {
+    "point": "original point LP at p=5000 only (reference)",
+    "protected_penalties": [
+      2500.0,
+      5000.0,
+      10000.0
+    ],
+    "hindsight": "original hindsight_plan at each penalty; evaluated only after all practical plans are frozen",
+    "tie_break": "inside the SAA program 0.0001 is added to the running cost per bed-month so that equally cheap plans resolve to the smaller one; reported costs never include it",
+    "solver": "PuLP CBC, one thread",
+    "omitted": [
+      "bias-corrected point",
+      "centred SAA",
+      "service-level plans",
+      "penalty 1000",
+      "point penalty sensitivities"
+    ]
+  },
+  "rules": {
+    "primary_penalty": 5000,
+    "joint_best": "cost <= cheapest protected cost + 0.01 * origin hindsight cost",
+    "ranking": "ascending mean excess over hindsight over all origins in the reporting scope",
+    "subsets": "for each scope sorted chronologically, offsets r=0..5 use origin_list[r::6]; gaps from exclusions are retained",
+    "clear_winner": "unique lowest mean excess, lowest subset mean in at least 4 of 6 subsets, and more wins than losses against overall runner-up",
+    "pairwise": "a win is cost difference below minus 1% of origin hindsight; a loss above plus 1%; equality at boundaries is a tie",
+    "exact_ties": "all exactly tied subset minima count as lowest; no unique overall minimum means no clear winner; fixed method order is presentation only",
+    "robustness": "same clear winner at all three penalties OR same top method at all three; report these separately",
+    "quantile_metrics": "pinball and coverage at 0.9, actual <= quantile counts as covered; aggregate equally over method-origin-horizon rows",
+    "protection": "point cost minus protected cost at p=5000; positive means protection lowered cost"
+  },
+  "disclosures": [
+    "Rules fixed before new scoring, not a blind experiment; earlier outcomes and two-origin results were known.",
+    "Neighbouring origins share up to five target months; offset subsets overlap each other.",
+    "Calibration for a later origin may use earlier origins' target months, but never its own future outcomes.",
+    "p=10000 is indicative; small banks cannot reliably resolve the 0.95 tail.",
+    "Final publication vintage, not reconstructed real-time publication availability.",
+    "Costs are illustrative model units (validated: False)."
+  ],
+  "planning_origin_convergence": {
+    "rule": "Before scoring, fit unchanged SARIMA-24 separately to occupied and available at every otherwise-eligible planning origin. If either fails to converge, exclude the origin for all five methods. No rescue or model change.",
+    "excluded": [
+      {
+        "origin": "2025-10",
+        "failed_targets": [
+          "occupied"
+        ]
+      },
+      {
+        "origin": "2026-01",
+        "failed_targets": [
+          "available"
+        ]
+      }
+    ],
+    "determined_before_scoring": true
+  },
+  "supersedes": {
+    "config_sha256": "1d93530aa10a4a110c3f60f979617d50a7c1f0fc50775657ccecacdf08f2f15d",
+    "reason": "User-authorized planning-origin convergence exclusion, registered before any rolling scoring"
+  },
+  "verification": {
+    "cost_relative_tolerance": 1e-06,
+    "forecast_absolute_tolerance_beds": 1e-06,
+    "solver_plan_tolerance_beds": 0.001,
+    "rerun_sample_origins": [
+      "2024-02",
+      "2026-04"
+    ]
+  }
+}

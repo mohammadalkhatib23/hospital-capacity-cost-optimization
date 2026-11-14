@@ -1,0 +1,11 @@
+{
+  "stage": "register",
+  "status": "FAIL",
+  "check": "Latest parsed workbook date label must equal October 2026",
+  "expected": "2026-10-01",
+  "observed": "2027-03-01",
+  "cause": "The new eligibility precheck treated dated blank template rows as published observations. November 2026 through March 2027 have no occupied or available values.",
+  "data_status": "SHA-256 matches SOURCE.json. Existing loader returns 71 complete months, December 2020 through October 2026.",
+  "action": "Stopped as instructed. No fix, rolling configuration, rolling plans, rolling scoring, README edit, commit or push.",
+  "resolution": "User approved the correction before rolling registration/scoring. See verification.md and test_rolling.py."
+}

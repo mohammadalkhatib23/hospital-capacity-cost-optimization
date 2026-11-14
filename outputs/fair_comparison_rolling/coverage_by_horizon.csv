@@ -1,0 +1,121 @@
+scope,method,horizon,covered,months,coverage
+all,Mean-24,1,25,25,1
+all,Mean-24,2,25,25,1
+all,Mean-24,3,25,25,1
+all,Mean-24,4,25,25,1
+all,Mean-24,5,25,25,1
+all,Mean-24,6,25,25,1
+all,Persistence,1,21,25,0.83999999999999997
+all,Persistence,2,23,25,0.92000000000000004
+all,Persistence,3,25,25,1
+all,Persistence,4,25,25,1
+all,Persistence,5,23,25,0.92000000000000004
+all,Persistence,6,23,25,0.92000000000000004
+all,Seasonal naive,1,25,25,1
+all,Seasonal naive,2,25,25,1
+all,Seasonal naive,3,25,25,1
+all,Seasonal naive,4,25,25,1
+all,Seasonal naive,5,21,25,0.83999999999999997
+all,Seasonal naive,6,22,25,0.88
+all,SARIMA-24,1,25,25,1
+all,SARIMA-24,2,23,25,0.92000000000000004
+all,SARIMA-24,3,24,25,0.95999999999999996
+all,SARIMA-24,4,24,25,0.95999999999999996
+all,SARIMA-24,5,22,25,0.88
+all,SARIMA-24,6,24,25,0.95999999999999996
+all,ExtraTrees-24,1,25,25,1
+all,ExtraTrees-24,2,24,25,0.95999999999999996
+all,ExtraTrees-24,3,23,25,0.92000000000000004
+all,ExtraTrees-24,4,24,25,0.95999999999999996
+all,ExtraTrees-24,5,25,25,1
+all,ExtraTrees-24,6,24,25,0.95999999999999996
+excluding_fable,Mean-24,1,23,23,1
+excluding_fable,Mean-24,2,23,23,1
+excluding_fable,Mean-24,3,23,23,1
+excluding_fable,Mean-24,4,23,23,1
+excluding_fable,Mean-24,5,23,23,1
+excluding_fable,Mean-24,6,23,23,1
+excluding_fable,Persistence,1,19,23,0.82608695652173914
+excluding_fable,Persistence,2,21,23,0.91304347826086951
+excluding_fable,Persistence,3,23,23,1
+excluding_fable,Persistence,4,23,23,1
+excluding_fable,Persistence,5,21,23,0.91304347826086951
+excluding_fable,Persistence,6,21,23,0.91304347826086951
+excluding_fable,Seasonal naive,1,23,23,1
+excluding_fable,Seasonal naive,2,23,23,1
+excluding_fable,Seasonal naive,3,23,23,1
+excluding_fable,Seasonal naive,4,23,23,1
+excluding_fable,Seasonal naive,5,20,23,0.86956521739130432
+excluding_fable,Seasonal naive,6,20,23,0.86956521739130432
+excluding_fable,SARIMA-24,1,23,23,1
+excluding_fable,SARIMA-24,2,21,23,0.91304347826086951
+excluding_fable,SARIMA-24,3,22,23,0.95652173913043481
+excluding_fable,SARIMA-24,4,22,23,0.95652173913043481
+excluding_fable,SARIMA-24,5,20,23,0.86956521739130432
+excluding_fable,SARIMA-24,6,22,23,0.95652173913043481
+excluding_fable,ExtraTrees-24,1,23,23,1
+excluding_fable,ExtraTrees-24,2,22,23,0.95652173913043481
+excluding_fable,ExtraTrees-24,3,21,23,0.91304347826086951
+excluding_fable,ExtraTrees-24,4,22,23,0.95652173913043481
+excluding_fable,ExtraTrees-24,5,23,23,1
+excluding_fable,ExtraTrees-24,6,22,23,0.95652173913043481
+through_2024,Mean-24,1,11,11,1
+through_2024,Mean-24,2,11,11,1
+through_2024,Mean-24,3,11,11,1
+through_2024,Mean-24,4,11,11,1
+through_2024,Mean-24,5,11,11,1
+through_2024,Mean-24,6,11,11,1
+through_2024,Persistence,1,9,11,0.81818181818181823
+through_2024,Persistence,2,10,11,0.90909090909090906
+through_2024,Persistence,3,11,11,1
+through_2024,Persistence,4,11,11,1
+through_2024,Persistence,5,10,11,0.90909090909090906
+through_2024,Persistence,6,10,11,0.90909090909090906
+through_2024,Seasonal naive,1,11,11,1
+through_2024,Seasonal naive,2,11,11,1
+through_2024,Seasonal naive,3,11,11,1
+through_2024,Seasonal naive,4,11,11,1
+through_2024,Seasonal naive,5,10,11,0.90909090909090906
+through_2024,Seasonal naive,6,11,11,1
+through_2024,SARIMA-24,1,11,11,1
+through_2024,SARIMA-24,2,9,11,0.81818181818181823
+through_2024,SARIMA-24,3,10,11,0.90909090909090906
+through_2024,SARIMA-24,4,10,11,0.90909090909090906
+through_2024,SARIMA-24,5,8,11,0.72727272727272729
+through_2024,SARIMA-24,6,10,11,0.90909090909090906
+through_2024,ExtraTrees-24,1,11,11,1
+through_2024,ExtraTrees-24,2,10,11,0.90909090909090906
+through_2024,ExtraTrees-24,3,9,11,0.81818181818181823
+through_2024,ExtraTrees-24,4,10,11,0.90909090909090906
+through_2024,ExtraTrees-24,5,11,11,1
+through_2024,ExtraTrees-24,6,11,11,1
+from_2025,Mean-24,1,14,14,1
+from_2025,Mean-24,2,14,14,1
+from_2025,Mean-24,3,14,14,1
+from_2025,Mean-24,4,14,14,1
+from_2025,Mean-24,5,14,14,1
+from_2025,Mean-24,6,14,14,1
+from_2025,Persistence,1,12,14,0.8571428571428571
+from_2025,Persistence,2,13,14,0.9285714285714286
+from_2025,Persistence,3,14,14,1
+from_2025,Persistence,4,14,14,1
+from_2025,Persistence,5,13,14,0.9285714285714286
+from_2025,Persistence,6,13,14,0.9285714285714286
+from_2025,Seasonal naive,1,14,14,1
+from_2025,Seasonal naive,2,14,14,1
+from_2025,Seasonal naive,3,14,14,1
+from_2025,Seasonal naive,4,14,14,1
+from_2025,Seasonal naive,5,11,14,0.7857142857142857
+from_2025,Seasonal naive,6,11,14,0.7857142857142857
+from_2025,SARIMA-24,1,14,14,1
+from_2025,SARIMA-24,2,14,14,1
+from_2025,SARIMA-24,3,14,14,1
+from_2025,SARIMA-24,4,14,14,1
+from_2025,SARIMA-24,5,14,14,1
+from_2025,SARIMA-24,6,14,14,1
+from_2025,ExtraTrees-24,1,14,14,1
+from_2025,ExtraTrees-24,2,14,14,1
+from_2025,ExtraTrees-24,3,14,14,1
+from_2025,ExtraTrees-24,4,14,14,1
+from_2025,ExtraTrees-24,5,14,14,1
+from_2025,ExtraTrees-24,6,13,14,0.9285714285714286

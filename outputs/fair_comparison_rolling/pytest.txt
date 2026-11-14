@@ -1,0 +1,3 @@
+C:\Users\ASUS\AppData\Local\Programs\Python\Python310\python.exe -B -m pytest -p no:cacheprovider scripts/clean_checkpoint/test_pipeline.py scripts/fair_comparison/test_fair.py scripts/fair_comparison_rolling -q --disable-warnings
+.............................................................            [100%]
+61 passed, 3278 warnings in 20.23s

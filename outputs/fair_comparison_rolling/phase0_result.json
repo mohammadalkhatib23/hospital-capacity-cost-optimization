@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "check": "Original config, plan and workbook hashes",
+      "status": "PASS"
+    },
+    {
+      "check": "O1_sep2025",
+      "status": "PASS",
+      "forecast_max_abs_beds": 4.3655745685100555e-11,
+      "protected_max_relative_difference": 0.0,
+      "protected_totals": {
+        "Mean-24": 18416830.325,
+        "Persistence": 17548522.165,
+        "Seasonal naive": 17608505.63,
+        "SARIMA-24": 19459321.295,
+        "ExtraTrees-24": 17049516.7
+      }
+    },
+    {
+      "check": "O2_mar2026",
+      "status": "PASS",
+      "forecast_max_abs_beds": 2.9103830456733704e-11,
+      "protected_max_relative_difference": 0.0,
+      "protected_totals": {
+        "Mean-24": 17933566.04,
+        "Persistence": 19486166.6,
+        "Seasonal naive": 13558059.344551902,
+        "SARIMA-24": 15322010.670000004,
+        "ExtraTrees-24": 17002213.5
+      }
+    }
+  ],
+  "config_sha256": "164f4ba712b154929dc09cd8a34630af5c84867e740125e0b06466c41ab4c950",
+  "plans_sha256": "a3a0d180b952032cc51b76cb047d55ab742810431228e7359e0aec528093a131"
+}

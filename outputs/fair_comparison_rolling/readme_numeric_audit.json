@@ -1,0 +1,2620 @@
+[
+  {
+    "source": "config.json",
+    "field": "window",
+    "value": 24,
+    "display": "24",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "horizon",
+    "value": 6,
+    "display": "6",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "minimum_paths",
+    "value": 9,
+    "display": "9",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "origin_records.length",
+    "value": 42,
+    "display": "42",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "excluded.length",
+    "value": 17,
+    "display": "17",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "insufficient_history.length",
+    "value": 15,
+    "display": "15",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "planning_origin_convergence.excluded.length",
+    "value": 2,
+    "display": "2",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "origins.length",
+    "value": 25,
+    "display": "25",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2024-02/bank_paths",
+    "value": 9,
+    "display": "9",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2024-03/bank_paths",
+    "value": 10,
+    "display": "10",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2024-04/bank_paths",
+    "value": 11,
+    "display": "11",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2024-05/bank_paths",
+    "value": 12,
+    "display": "12",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2024-06/bank_paths",
+    "value": 13,
+    "display": "13",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2024-07/bank_paths",
+    "value": 14,
+    "display": "14",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2024-08/bank_paths",
+    "value": 15,
+    "display": "15",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2024-09/bank_paths",
+    "value": 16,
+    "display": "16",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2024-10/bank_paths",
+    "value": 17,
+    "display": "17",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2024-11/bank_paths",
+    "value": 18,
+    "display": "18",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2024-12/bank_paths",
+    "value": 19,
+    "display": "19",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2025-01/bank_paths",
+    "value": 20,
+    "display": "20",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2025-02/bank_paths",
+    "value": 21,
+    "display": "21",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2025-03/bank_paths",
+    "value": 22,
+    "display": "22",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2025-04/bank_paths",
+    "value": 23,
+    "display": "23",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2025-05/bank_paths",
+    "value": 24,
+    "display": "24",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2025-06/bank_paths",
+    "value": 25,
+    "display": "25",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2025-07/bank_paths",
+    "value": 26,
+    "display": "26",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2025-08/bank_paths",
+    "value": 27,
+    "display": "27",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2025-09/bank_paths",
+    "value": 28,
+    "display": "28",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2025-11/bank_paths",
+    "value": 30,
+    "display": "30",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2025-12/bank_paths",
+    "value": 31,
+    "display": "31",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2026-02/bank_paths",
+    "value": 33,
+    "display": "33",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2026-03/bank_paths",
+    "value": 34,
+    "display": "34",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "2026-04/bank_paths",
+    "value": 34,
+    "display": "34",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Seasonal naive/mean_excess_over_hindsight",
+    "value": 3501162.8204817865,
+    "display": "3.50",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Seasonal naive/joint_best_count",
+    "value": 14,
+    "display": "14",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Seasonal naive/wins_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Seasonal naive/ties_vs_seasonal_naive",
+    "value": 25,
+    "display": "25",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Seasonal naive/losses_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Seasonal naive/mean_pinball_090",
+    "value": 194.34006690561498,
+    "display": "194.3",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Seasonal naive/coverage_090",
+    "value": 0.9533333333333334,
+    "display": "95.3%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Seasonal naive/covered_090",
+    "value": 143,
+    "display": "143",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Seasonal naive/months",
+    "value": 150,
+    "display": "150",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Seasonal naive/mean_value_of_protection",
+    "value": 1010635.7015375858,
+    "display": "1.01",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/ExtraTrees-24/mean_excess_over_hindsight",
+    "value": 3869414.6088022185,
+    "display": "3.87",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/ExtraTrees-24/joint_best_count",
+    "value": 6,
+    "display": "6",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/ExtraTrees-24/wins_vs_seasonal_naive",
+    "value": 8,
+    "display": "8",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/ExtraTrees-24/ties_vs_seasonal_naive",
+    "value": 3,
+    "display": "3",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/ExtraTrees-24/losses_vs_seasonal_naive",
+    "value": 14,
+    "display": "14",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/ExtraTrees-24/mean_pinball_090",
+    "value": 167.66897848812567,
+    "display": "167.7",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/ExtraTrees-24/coverage_090",
+    "value": 0.9666666666666667,
+    "display": "96.7%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/ExtraTrees-24/covered_090",
+    "value": 145,
+    "display": "145",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/ExtraTrees-24/months",
+    "value": 150,
+    "display": "150",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/ExtraTrees-24/mean_value_of_protection",
+    "value": 2843339.0629504942,
+    "display": "2.84",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/SARIMA-24/mean_excess_over_hindsight",
+    "value": 4447676.970379993,
+    "display": "4.45",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/SARIMA-24/joint_best_count",
+    "value": 7,
+    "display": "7",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/SARIMA-24/wins_vs_seasonal_naive",
+    "value": 8,
+    "display": "8",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/SARIMA-24/ties_vs_seasonal_naive",
+    "value": 2,
+    "display": "2",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/SARIMA-24/losses_vs_seasonal_naive",
+    "value": 15,
+    "display": "15",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/SARIMA-24/mean_pinball_090",
+    "value": 160.55923794849613,
+    "display": "160.6",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/SARIMA-24/coverage_090",
+    "value": 0.9466666666666667,
+    "display": "94.7%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/SARIMA-24/covered_090",
+    "value": 142,
+    "display": "142",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/SARIMA-24/months",
+    "value": 150,
+    "display": "150",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/SARIMA-24/mean_value_of_protection",
+    "value": 5486076.557364607,
+    "display": "5.49",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Mean-24/mean_excess_over_hindsight",
+    "value": 6211304.235713336,
+    "display": "6.21",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Mean-24/joint_best_count",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Mean-24/wins_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Mean-24/ties_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Mean-24/losses_vs_seasonal_naive",
+    "value": 25,
+    "display": "25",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Mean-24/mean_pinball_090",
+    "value": 309.2454034249306,
+    "display": "309.2",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Mean-24/coverage_090",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Mean-24/covered_090",
+    "value": 150,
+    "display": "150",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Mean-24/months",
+    "value": 150,
+    "display": "150",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Mean-24/mean_value_of_protection",
+    "value": 1046358.077310329,
+    "display": "1.05",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Persistence/mean_excess_over_hindsight",
+    "value": 7297015.251557771,
+    "display": "7.30",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Persistence/joint_best_count",
+    "value": 3,
+    "display": "3",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Persistence/wins_vs_seasonal_naive",
+    "value": 4,
+    "display": "4",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Persistence/ties_vs_seasonal_naive",
+    "value": 1,
+    "display": "1",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Persistence/losses_vs_seasonal_naive",
+    "value": 20,
+    "display": "20",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Persistence/mean_pinball_090",
+    "value": 264.5098972520911,
+    "display": "264.5",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Persistence/coverage_090",
+    "value": 0.9333333333333333,
+    "display": "93.3%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Persistence/covered_090",
+    "value": 140,
+    "display": "140",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Persistence/months",
+    "value": 150,
+    "display": "150",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/5000/Persistence/mean_value_of_protection",
+    "value": 6820277.664497453,
+    "display": "6.82",
+    "format": "m"
+  },
+  {
+    "source": "config.json",
+    "field": "excluding_fable/origins.length",
+    "value": 23,
+    "display": "23",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Seasonal naive/mean_excess_over_hindsight",
+    "value": 3663857.919098556,
+    "display": "3.66",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Seasonal naive/joint_best_count",
+    "value": 13,
+    "display": "13",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Seasonal naive/wins_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Seasonal naive/ties_vs_seasonal_naive",
+    "value": 23,
+    "display": "23",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Seasonal naive/losses_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Seasonal naive/mean_pinball_090",
+    "value": 197.3956755493219,
+    "display": "197.4",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Seasonal naive/coverage_090",
+    "value": 0.9565217391304348,
+    "display": "95.7%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Seasonal naive/covered_090",
+    "value": 132,
+    "display": "132",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Seasonal naive/months",
+    "value": 138,
+    "display": "138",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Seasonal naive/mean_value_of_protection",
+    "value": 638228.4821559476,
+    "display": "0.64",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/ExtraTrees-24/mean_excess_over_hindsight",
+    "value": 3938689.6357317166,
+    "display": "3.94",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/ExtraTrees-24/joint_best_count",
+    "value": 5,
+    "display": "5",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/ExtraTrees-24/wins_vs_seasonal_naive",
+    "value": 7,
+    "display": "7",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/ExtraTrees-24/ties_vs_seasonal_naive",
+    "value": 3,
+    "display": "3",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/ExtraTrees-24/losses_vs_seasonal_naive",
+    "value": 13,
+    "display": "13",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/ExtraTrees-24/mean_pinball_090",
+    "value": 169.61615565353705,
+    "display": "169.6",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/ExtraTrees-24/coverage_090",
+    "value": 0.9637681159420289,
+    "display": "96.4%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/ExtraTrees-24/covered_090",
+    "value": 133,
+    "display": "133",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/ExtraTrees-24/months",
+    "value": 138,
+    "display": "138",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/ExtraTrees-24/mean_value_of_protection",
+    "value": 2936610.475018658,
+    "display": "2.94",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/SARIMA-24/mean_excess_over_hindsight",
+    "value": 4535513.865055384,
+    "display": "4.54",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/SARIMA-24/joint_best_count",
+    "value": 7,
+    "display": "7",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/SARIMA-24/wins_vs_seasonal_naive",
+    "value": 8,
+    "display": "8",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/SARIMA-24/ties_vs_seasonal_naive",
+    "value": 2,
+    "display": "2",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/SARIMA-24/losses_vs_seasonal_naive",
+    "value": 13,
+    "display": "13",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/SARIMA-24/mean_pinball_090",
+    "value": 161.51816939763316,
+    "display": "161.5",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/SARIMA-24/coverage_090",
+    "value": 0.9420289855072463,
+    "display": "94.2%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/SARIMA-24/covered_090",
+    "value": 130,
+    "display": "130",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/SARIMA-24/months",
+    "value": 138,
+    "display": "138",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/SARIMA-24/mean_value_of_protection",
+    "value": 5939674.387058307,
+    "display": "5.94",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Mean-24/mean_excess_over_hindsight",
+    "value": 6384279.831722063,
+    "display": "6.38",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Mean-24/joint_best_count",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Mean-24/wins_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Mean-24/ties_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Mean-24/losses_vs_seasonal_naive",
+    "value": 23,
+    "display": "23",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Mean-24/mean_pinball_090",
+    "value": 315.1391614937754,
+    "display": "315.1",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Mean-24/coverage_090",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Mean-24/covered_090",
+    "value": 138,
+    "display": "138",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Mean-24/months",
+    "value": 138,
+    "display": "138",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Mean-24/mean_value_of_protection",
+    "value": 895586.8592940001,
+    "display": "0.90",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Persistence/mean_excess_over_hindsight",
+    "value": 7534648.657639926,
+    "display": "7.53",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Persistence/joint_best_count",
+    "value": 3,
+    "display": "3",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Persistence/wins_vs_seasonal_naive",
+    "value": 4,
+    "display": "4",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Persistence/ties_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Persistence/losses_vs_seasonal_naive",
+    "value": 19,
+    "display": "19",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Persistence/mean_pinball_090",
+    "value": 267.85488546049584,
+    "display": "267.9",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Persistence/coverage_090",
+    "value": 0.927536231884058,
+    "display": "92.8%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Persistence/covered_090",
+    "value": 128,
+    "display": "128",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Persistence/months",
+    "value": 138,
+    "display": "138",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "excluding_fable/5000/Persistence/mean_value_of_protection",
+    "value": 6981818.97604796,
+    "display": "6.98",
+    "format": "m"
+  },
+  {
+    "source": "decisions.json",
+    "field": "excluding_fable/primary/subset_wins",
+    "value": 2,
+    "display": "2",
+    "format": "d"
+  },
+  {
+    "source": "decisions.json",
+    "field": "excluding_fable/primary/wins",
+    "value": 13,
+    "display": "13",
+    "format": "d"
+  },
+  {
+    "source": "decisions.json",
+    "field": "excluding_fable/primary/ties",
+    "value": 3,
+    "display": "3",
+    "format": "d"
+  },
+  {
+    "source": "decisions.json",
+    "field": "excluding_fable/primary/losses",
+    "value": 7,
+    "display": "7",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "through_2024/origins.length",
+    "value": 11,
+    "display": "11",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Seasonal naive/mean_excess_over_hindsight",
+    "value": 4283658.228989953,
+    "display": "4.28",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Seasonal naive/joint_best_count",
+    "value": 3,
+    "display": "3",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Seasonal naive/wins_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Seasonal naive/ties_vs_seasonal_naive",
+    "value": 11,
+    "display": "11",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Seasonal naive/losses_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Seasonal naive/mean_pinball_090",
+    "value": 224.5109427609427,
+    "display": "224.5",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Seasonal naive/coverage_090",
+    "value": 0.9848484848484849,
+    "display": "98.5%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Seasonal naive/covered_090",
+    "value": 65,
+    "display": "65",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Seasonal naive/months",
+    "value": 66,
+    "display": "66",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Seasonal naive/mean_value_of_protection",
+    "value": -31825.366868732835,
+    "display": "-0.03",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/ExtraTrees-24/mean_excess_over_hindsight",
+    "value": 4344408.999697015,
+    "display": "4.34",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/ExtraTrees-24/joint_best_count",
+    "value": 2,
+    "display": "2",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/ExtraTrees-24/wins_vs_seasonal_naive",
+    "value": 5,
+    "display": "5",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/ExtraTrees-24/ties_vs_seasonal_naive",
+    "value": 1,
+    "display": "1",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/ExtraTrees-24/losses_vs_seasonal_naive",
+    "value": 5,
+    "display": "5",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/ExtraTrees-24/mean_pinball_090",
+    "value": 185.5865193135169,
+    "display": "185.6",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/ExtraTrees-24/coverage_090",
+    "value": 0.9393939393939394,
+    "display": "93.9%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/ExtraTrees-24/covered_090",
+    "value": 62,
+    "display": "62",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/ExtraTrees-24/months",
+    "value": 66,
+    "display": "66",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/ExtraTrees-24/mean_value_of_protection",
+    "value": 4142436.545858553,
+    "display": "4.14",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/SARIMA-24/mean_excess_over_hindsight",
+    "value": 5360124.615454578,
+    "display": "5.36",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/SARIMA-24/joint_best_count",
+    "value": 4,
+    "display": "4",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/SARIMA-24/wins_vs_seasonal_naive",
+    "value": 6,
+    "display": "6",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/SARIMA-24/ties_vs_seasonal_naive",
+    "value": 1,
+    "display": "1",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/SARIMA-24/losses_vs_seasonal_naive",
+    "value": 4,
+    "display": "4",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/SARIMA-24/mean_pinball_090",
+    "value": 169.33600350288842,
+    "display": "169.3",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/SARIMA-24/coverage_090",
+    "value": 0.8787878787878788,
+    "display": "87.9%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/SARIMA-24/covered_090",
+    "value": 58,
+    "display": "58",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/SARIMA-24/months",
+    "value": 66,
+    "display": "66",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/SARIMA-24/mean_value_of_protection",
+    "value": 11238208.644984791,
+    "display": "11.24",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Mean-24/mean_excess_over_hindsight",
+    "value": 6978050.27893945,
+    "display": "6.98",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Mean-24/joint_best_count",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Mean-24/wins_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Mean-24/ties_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Mean-24/losses_vs_seasonal_naive",
+    "value": 11,
+    "display": "11",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Mean-24/mean_pinball_090",
+    "value": 342.52257996632994,
+    "display": "342.5",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Mean-24/coverage_090",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Mean-24/covered_090",
+    "value": 66,
+    "display": "66",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Mean-24/months",
+    "value": 66,
+    "display": "66",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Mean-24/mean_value_of_protection",
+    "value": 1763129.6734847908,
+    "display": "1.76",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Persistence/mean_excess_over_hindsight",
+    "value": 7511059.173535401,
+    "display": "7.51",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Persistence/joint_best_count",
+    "value": 3,
+    "display": "3",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Persistence/wins_vs_seasonal_naive",
+    "value": 4,
+    "display": "4",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Persistence/ties_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Persistence/losses_vs_seasonal_naive",
+    "value": 7,
+    "display": "7",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Persistence/mean_pinball_090",
+    "value": 278.7272727272731,
+    "display": "278.7",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Persistence/coverage_090",
+    "value": 0.9242424242424242,
+    "display": "92.4%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Persistence/covered_090",
+    "value": 61,
+    "display": "61",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Persistence/months",
+    "value": 66,
+    "display": "66",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "through_2024/5000/Persistence/mean_value_of_protection",
+    "value": 7431847.517474712,
+    "display": "7.43",
+    "format": "m"
+  },
+  {
+    "source": "decisions.json",
+    "field": "through_2024/primary/subset_wins",
+    "value": 3,
+    "display": "3",
+    "format": "d"
+  },
+  {
+    "source": "decisions.json",
+    "field": "through_2024/primary/wins",
+    "value": 5,
+    "display": "5",
+    "format": "d"
+  },
+  {
+    "source": "decisions.json",
+    "field": "through_2024/primary/ties",
+    "value": 1,
+    "display": "1",
+    "format": "d"
+  },
+  {
+    "source": "decisions.json",
+    "field": "through_2024/primary/losses",
+    "value": 5,
+    "display": "5",
+    "format": "d"
+  },
+  {
+    "source": "config.json",
+    "field": "from_2025/origins.length",
+    "value": 14,
+    "display": "14",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Seasonal naive/mean_excess_over_hindsight",
+    "value": 2886344.999511083,
+    "display": "2.89",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Seasonal naive/joint_best_count",
+    "value": 11,
+    "display": "11",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Seasonal naive/wins_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Seasonal naive/ties_vs_seasonal_naive",
+    "value": 14,
+    "display": "14",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Seasonal naive/losses_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Seasonal naive/mean_pinball_090",
+    "value": 170.63437873357185,
+    "display": "170.6",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Seasonal naive/coverage_090",
+    "value": 0.9285714285714286,
+    "display": "92.9%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Seasonal naive/covered_090",
+    "value": 78,
+    "display": "78",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Seasonal naive/months",
+    "value": 84,
+    "display": "84",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Seasonal naive/mean_value_of_protection",
+    "value": 1829712.2552854076,
+    "display": "1.83",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/ExtraTrees-24/mean_excess_over_hindsight",
+    "value": 3496204.73024202,
+    "display": "3.50",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/ExtraTrees-24/joint_best_count",
+    "value": 4,
+    "display": "4",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/ExtraTrees-24/wins_vs_seasonal_naive",
+    "value": 3,
+    "display": "3",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/ExtraTrees-24/ties_vs_seasonal_naive",
+    "value": 2,
+    "display": "2",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/ExtraTrees-24/losses_vs_seasonal_naive",
+    "value": 9,
+    "display": "9",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/ExtraTrees-24/mean_pinball_090",
+    "value": 153.59091069674693,
+    "display": "153.6",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/ExtraTrees-24/coverage_090",
+    "value": 0.9880952380952381,
+    "display": "98.8%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/ExtraTrees-24/covered_090",
+    "value": 83,
+    "display": "83",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/ExtraTrees-24/months",
+    "value": 84,
+    "display": "84",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/ExtraTrees-24/mean_value_of_protection",
+    "value": 1822619.6120941618,
+    "display": "1.82",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/SARIMA-24/mean_excess_over_hindsight",
+    "value": 3730753.8206785335,
+    "display": "3.73",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/SARIMA-24/joint_best_count",
+    "value": 3,
+    "display": "3",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/SARIMA-24/wins_vs_seasonal_naive",
+    "value": 2,
+    "display": "2",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/SARIMA-24/ties_vs_seasonal_naive",
+    "value": 1,
+    "display": "1",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/SARIMA-24/losses_vs_seasonal_naive",
+    "value": 11,
+    "display": "11",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/SARIMA-24/mean_pinball_090",
+    "value": 153.66320787004503,
+    "display": "153.7",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/SARIMA-24/coverage_090",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/SARIMA-24/covered_090",
+    "value": 84,
+    "display": "84",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/SARIMA-24/months",
+    "value": 84,
+    "display": "84",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/SARIMA-24/mean_value_of_protection",
+    "value": 966544.2028058886,
+    "display": "0.97",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Mean-24/mean_excess_over_hindsight",
+    "value": 5608860.916035675,
+    "display": "5.61",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Mean-24/joint_best_count",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Mean-24/wins_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Mean-24/ties_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Mean-24/losses_vs_seasonal_naive",
+    "value": 14,
+    "display": "14",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Mean-24/mean_pinball_090",
+    "value": 283.0990504281168,
+    "display": "283.1",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Mean-24/coverage_090",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Mean-24/covered_090",
+    "value": 84,
+    "display": "84",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Mean-24/months",
+    "value": 84,
+    "display": "84",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Mean-24/mean_value_of_protection",
+    "value": 483180.39460182324,
+    "display": "0.48",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Persistence/mean_excess_over_hindsight",
+    "value": 7128837.884289635,
+    "display": "7.13",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Persistence/joint_best_count",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Persistence/wins_vs_seasonal_naive",
+    "value": 0,
+    "display": "0",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Persistence/ties_vs_seasonal_naive",
+    "value": 1,
+    "display": "1",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Persistence/losses_vs_seasonal_naive",
+    "value": 13,
+    "display": "13",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Persistence/mean_pinball_090",
+    "value": 253.3391022358766,
+    "display": "253.3",
+    "format": "bed"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Persistence/coverage_090",
+    "value": 0.9404761904761905,
+    "display": "94.0%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Persistence/covered_090",
+    "value": 79,
+    "display": "79",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Persistence/months",
+    "value": 84,
+    "display": "84",
+    "format": "d"
+  },
+  {
+    "source": "summary.csv",
+    "field": "from_2025/5000/Persistence/mean_value_of_protection",
+    "value": 6339758.494301037,
+    "display": "6.34",
+    "format": "m"
+  },
+  {
+    "source": "decisions.json",
+    "field": "from_2025/primary/subset_wins",
+    "value": 5,
+    "display": "5",
+    "format": "d"
+  },
+  {
+    "source": "decisions.json",
+    "field": "from_2025/primary/wins",
+    "value": 9,
+    "display": "9",
+    "format": "d"
+  },
+  {
+    "source": "decisions.json",
+    "field": "from_2025/primary/ties",
+    "value": 2,
+    "display": "2",
+    "format": "d"
+  },
+  {
+    "source": "decisions.json",
+    "field": "from_2025/primary/losses",
+    "value": 3,
+    "display": "3",
+    "format": "d"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Mean-24/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Mean-24/2/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Mean-24/3/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Mean-24/4/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Mean-24/5/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Mean-24/6/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Persistence/1/coverage",
+    "value": 0.84,
+    "display": "84.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Persistence/2/coverage",
+    "value": 0.92,
+    "display": "92.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Persistence/3/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Persistence/4/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Persistence/5/coverage",
+    "value": 0.92,
+    "display": "92.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Persistence/6/coverage",
+    "value": 0.92,
+    "display": "92.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Seasonal naive/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Seasonal naive/2/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Seasonal naive/3/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Seasonal naive/4/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Seasonal naive/5/coverage",
+    "value": 0.84,
+    "display": "84.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/Seasonal naive/6/coverage",
+    "value": 0.88,
+    "display": "88.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/SARIMA-24/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/SARIMA-24/2/coverage",
+    "value": 0.92,
+    "display": "92.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/SARIMA-24/3/coverage",
+    "value": 0.96,
+    "display": "96.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/SARIMA-24/4/coverage",
+    "value": 0.96,
+    "display": "96.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/SARIMA-24/5/coverage",
+    "value": 0.88,
+    "display": "88.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/SARIMA-24/6/coverage",
+    "value": 0.96,
+    "display": "96.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/ExtraTrees-24/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/ExtraTrees-24/2/coverage",
+    "value": 0.96,
+    "display": "96.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/ExtraTrees-24/3/coverage",
+    "value": 0.92,
+    "display": "92.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/ExtraTrees-24/4/coverage",
+    "value": 0.96,
+    "display": "96.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/ExtraTrees-24/5/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "all/ExtraTrees-24/6/coverage",
+    "value": 0.96,
+    "display": "96.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Mean-24/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Mean-24/2/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Mean-24/3/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Mean-24/4/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Mean-24/5/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Mean-24/6/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Persistence/1/coverage",
+    "value": 0.8260869565217391,
+    "display": "82.6%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Persistence/2/coverage",
+    "value": 0.9130434782608695,
+    "display": "91.3%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Persistence/3/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Persistence/4/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Persistence/5/coverage",
+    "value": 0.9130434782608695,
+    "display": "91.3%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Persistence/6/coverage",
+    "value": 0.9130434782608695,
+    "display": "91.3%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Seasonal naive/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Seasonal naive/2/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Seasonal naive/3/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Seasonal naive/4/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Seasonal naive/5/coverage",
+    "value": 0.8695652173913043,
+    "display": "87.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/Seasonal naive/6/coverage",
+    "value": 0.8695652173913043,
+    "display": "87.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/SARIMA-24/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/SARIMA-24/2/coverage",
+    "value": 0.9130434782608695,
+    "display": "91.3%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/SARIMA-24/3/coverage",
+    "value": 0.9565217391304348,
+    "display": "95.7%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/SARIMA-24/4/coverage",
+    "value": 0.9565217391304348,
+    "display": "95.7%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/SARIMA-24/5/coverage",
+    "value": 0.8695652173913043,
+    "display": "87.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/SARIMA-24/6/coverage",
+    "value": 0.9565217391304348,
+    "display": "95.7%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/ExtraTrees-24/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/ExtraTrees-24/2/coverage",
+    "value": 0.9565217391304348,
+    "display": "95.7%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/ExtraTrees-24/3/coverage",
+    "value": 0.9130434782608695,
+    "display": "91.3%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/ExtraTrees-24/4/coverage",
+    "value": 0.9565217391304348,
+    "display": "95.7%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/ExtraTrees-24/5/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "excluding_fable/ExtraTrees-24/6/coverage",
+    "value": 0.9565217391304348,
+    "display": "95.7%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Mean-24/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Mean-24/2/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Mean-24/3/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Mean-24/4/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Mean-24/5/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Mean-24/6/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Persistence/1/coverage",
+    "value": 0.8181818181818182,
+    "display": "81.8%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Persistence/2/coverage",
+    "value": 0.9090909090909091,
+    "display": "90.9%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Persistence/3/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Persistence/4/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Persistence/5/coverage",
+    "value": 0.9090909090909091,
+    "display": "90.9%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Persistence/6/coverage",
+    "value": 0.9090909090909091,
+    "display": "90.9%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Seasonal naive/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Seasonal naive/2/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Seasonal naive/3/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Seasonal naive/4/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Seasonal naive/5/coverage",
+    "value": 0.9090909090909091,
+    "display": "90.9%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/Seasonal naive/6/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/SARIMA-24/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/SARIMA-24/2/coverage",
+    "value": 0.8181818181818182,
+    "display": "81.8%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/SARIMA-24/3/coverage",
+    "value": 0.9090909090909091,
+    "display": "90.9%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/SARIMA-24/4/coverage",
+    "value": 0.9090909090909091,
+    "display": "90.9%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/SARIMA-24/5/coverage",
+    "value": 0.7272727272727273,
+    "display": "72.7%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/SARIMA-24/6/coverage",
+    "value": 0.9090909090909091,
+    "display": "90.9%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/ExtraTrees-24/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/ExtraTrees-24/2/coverage",
+    "value": 0.9090909090909091,
+    "display": "90.9%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/ExtraTrees-24/3/coverage",
+    "value": 0.8181818181818182,
+    "display": "81.8%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/ExtraTrees-24/4/coverage",
+    "value": 0.9090909090909091,
+    "display": "90.9%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/ExtraTrees-24/5/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "through_2024/ExtraTrees-24/6/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Mean-24/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Mean-24/2/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Mean-24/3/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Mean-24/4/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Mean-24/5/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Mean-24/6/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Persistence/1/coverage",
+    "value": 0.8571428571428571,
+    "display": "85.7%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Persistence/2/coverage",
+    "value": 0.9285714285714286,
+    "display": "92.9%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Persistence/3/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Persistence/4/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Persistence/5/coverage",
+    "value": 0.9285714285714286,
+    "display": "92.9%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Persistence/6/coverage",
+    "value": 0.9285714285714286,
+    "display": "92.9%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Seasonal naive/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Seasonal naive/2/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Seasonal naive/3/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Seasonal naive/4/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Seasonal naive/5/coverage",
+    "value": 0.7857142857142857,
+    "display": "78.6%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/Seasonal naive/6/coverage",
+    "value": 0.7857142857142857,
+    "display": "78.6%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/SARIMA-24/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/SARIMA-24/2/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/SARIMA-24/3/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/SARIMA-24/4/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/SARIMA-24/5/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/SARIMA-24/6/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/ExtraTrees-24/1/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/ExtraTrees-24/2/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/ExtraTrees-24/3/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/ExtraTrees-24/4/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/ExtraTrees-24/5/coverage",
+    "value": 1.0,
+    "display": "100.0%",
+    "format": "pct"
+  },
+  {
+    "source": "coverage_by_horizon.csv",
+    "field": "from_2025/ExtraTrees-24/6/coverage",
+    "value": 0.9285714285714286,
+    "display": "92.9%",
+    "format": "pct"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/Seasonal naive/mean_excess",
+    "value": 3501162.8204817865,
+    "display": "3.50",
+    "format": "m"
+  },
+  {
+    "source": "summary.csv",
+    "field": "all/ExtraTrees-24/mean_excess",
+    "value": 3869414.6088022185,
+    "display": "3.87",
+    "format": "m"
+  },
+  {
+    "source": "decisions.json",
+    "field": "all/primary/subset_wins",
+    "value": 4,
+    "display": "4",
+    "format": "d"
+  },
+  {
+    "source": "decisions.json",
+    "field": "all/primary/wins",
+    "value": 14,
+    "display": "14",
+    "format": "d"
+  },
+  {
+    "source": "decisions.json",
+    "field": "all/primary/ties",
+    "value": 3,
+    "display": "3",
+    "format": "d"
+  },
+  {
+    "source": "decisions.json",
+    "field": "all/primary/losses",
+    "value": 8,
+    "display": "8",
+    "format": "d"
+  }
+]

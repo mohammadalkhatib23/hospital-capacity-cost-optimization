@@ -1,0 +1,363 @@
+{
+ "per_origin": {
+  "O1_sep2025": {
+   "hindsight_cost": 15235867.195555475,
+   "cost_tie_band": 152358.67195555475,
+   "cheapest_protected": "ExtraTrees-24",
+   "joint_best_protected": [
+    "ExtraTrees-24"
+   ],
+   "protected_rank": {
+    "Mean-24": 4,
+    "Persistence": 2,
+    "Seasonal naive": 3,
+    "SARIMA-24": 5,
+    "ExtraTrees-24": 1
+   },
+   "previous_winner": {
+    "method": "SARIMA-24",
+    "still_wins": false,
+    "protected_rank": 5,
+    "protected_joint_best": [
+     "ExtraTrees-24"
+    ]
+   },
+   "protection": {
+    "Mean-24": {
+     "point": 27718354.543333214,
+     "protected": 18416830.325,
+     "value": 9301524.218333215,
+     "effect": "helped"
+    },
+    "Persistence": {
+     "point": 33210249.523333214,
+     "protected": 17548522.165,
+     "value": 15661727.358333215,
+     "effect": "helped"
+    },
+    "Seasonal naive": {
+     "point": 16137166.666111097,
+     "protected": 17608505.63,
+     "value": -1471338.9638889022,
+     "effect": "hurt"
+    },
+    "SARIMA-24": {
+     "point": 16108035.020000001,
+     "protected": 19459321.295,
+     "value": -3351286.2750000004,
+     "effect": "hurt"
+    },
+    "ExtraTrees-24": {
+     "point": 23658618.82333321,
+     "protected": 17049516.7,
+     "value": 6609102.123333212,
+     "effect": "helped"
+    }
+   },
+   "lowest_pinball_090": "ExtraTrees-24",
+   "lowest_gap_mae": "Seasonal naive",
+   "coverage_090": {
+    "Mean-24": "6 of 6",
+    "Persistence": "6 of 6",
+    "Seasonal naive": "6 of 6",
+    "SARIMA-24": "6 of 6",
+    "ExtraTrees-24": "6 of 6"
+   }
+  },
+  "O2_mar2026": {
+   "hindsight_cost": 12670359.40621855,
+   "cost_tie_band": 126703.5940621855,
+   "cheapest_protected": "Seasonal naive",
+   "joint_best_protected": [
+    "Seasonal naive"
+   ],
+   "protected_rank": {
+    "Mean-24": 4,
+    "Persistence": 5,
+    "Seasonal naive": 1,
+    "SARIMA-24": 2,
+    "ExtraTrees-24": 3
+   },
+   "previous_winner": {
+    "method": "Persistence",
+    "still_wins": false,
+    "protected_rank": 5,
+    "protected_joint_best": [
+     "Seasonal naive"
+    ]
+   },
+   "protection": {
+    "Mean-24": {
+     "point": 14192495.990663003,
+     "protected": 17933566.04,
+     "value": -3741070.049336996,
+     "effect": "hurt"
+    },
+    "Persistence": {
+     "point": 13749544.405000001,
+     "protected": 19486166.6,
+     "value": -5736622.195,
+     "effect": "hurt"
+    },
+    "Seasonal naive": {
+     "point": 25616035.757293656,
+     "protected": 13558059.344551902,
+     "value": 12057976.412741754,
+     "effect": "helped"
+    },
+    "SARIMA-24": {
+     "point": 19212699.976774096,
+     "protected": 15322010.670000004,
+     "value": 3890689.306774093,
+     "effect": "helped"
+    },
+    "ExtraTrees-24": {
+     "point": 13934547.025,
+     "protected": 17002213.5,
+     "value": -3067666.4749999996,
+     "effect": "hurt"
+    }
+   },
+   "lowest_pinball_090": "SARIMA-24",
+   "lowest_gap_mae": "Mean-24",
+   "coverage_090": {
+    "Mean-24": "6 of 6",
+    "Persistence": "6 of 6",
+    "Seasonal naive": "5 of 6",
+    "SARIMA-24": "6 of 6",
+    "ExtraTrees-24": "6 of 6"
+   }
+  }
+ },
+ "overall": {
+  "ranking": [
+   "Seasonal naive",
+   "ExtraTrees-24",
+   "SARIMA-24",
+   "Mean-24",
+   "Persistence"
+  ],
+  "first": "Seasonal naive",
+  "runner_up": "ExtraTrees-24",
+  "joint_best": {
+   "O1_sep2025": [
+    "ExtraTrees-24"
+   ],
+   "O2_mar2026": [
+    "Seasonal naive"
+   ]
+  },
+  "joint_best_at_both": [],
+  "beats_runner_up_at_each_origin": false,
+  "clear_winners": [],
+  "outcome": "no clear winner",
+  "combined_excess": {
+   "Mean-24": 8444169.763225975,
+   "Persistence": 9128462.163225977,
+   "Seasonal naive": 3260338.3727778774,
+   "SARIMA-24": 6875105.363225982,
+   "ExtraTrees-24": 6145503.598225975
+  }
+ },
+ "centred_sensitivity": {
+  "outcome": "no clear winner",
+  "ranking": [
+   "Seasonal naive",
+   "Mean-24",
+   "SARIMA-24",
+   "ExtraTrees-24",
+   "Persistence"
+  ],
+  "joint_best": {
+   "O1_sep2025": [
+    "Mean-24",
+    "ExtraTrees-24"
+   ],
+   "O2_mar2026": [
+    "Seasonal naive"
+   ]
+  }
+ },
+ "best_calibrated": {
+  "method": "ExtraTrees-24",
+  "mean_pinball_090": 145.27644108589573,
+  "clear": false,
+  "lowest_per_origin": {
+   "O1_sep2025": "ExtraTrees-24",
+   "O2_mar2026": "SARIMA-24"
+  },
+  "margin_over_next_best": {
+   "O1_sep2025": 53.01726481480074,
+   "O2_mar2026": -67.7286332105121
+  }
+ },
+ "penalty_sweep": {
+  "1000": {
+   "q_star": 0.5,
+   "ranking": [
+    "Mean-24",
+    "ExtraTrees-24",
+    "SARIMA-24",
+    "Seasonal naive",
+    "Persistence"
+   ],
+   "first": "Mean-24",
+   "runner_up": "ExtraTrees-24",
+   "joint_best": {
+    "O1_sep2025": [
+     "Mean-24",
+     "Seasonal naive"
+    ],
+    "O2_mar2026": [
+     "Mean-24",
+     "Persistence",
+     "ExtraTrees-24"
+    ]
+   },
+   "joint_best_at_both": [
+    "Mean-24"
+   ],
+   "beats_runner_up_at_each_origin": false,
+   "clear_winners": [
+    "Mean-24"
+   ],
+   "outcome": "Mean-24",
+   "combined_excess": {
+    "Mean-24": 416981.6088888906,
+    "Persistence": 1873538.8338888902,
+    "Seasonal naive": 1682990.749103928,
+    "SARIMA-24": 1312373.3183333427,
+    "ExtraTrees-24": 854364.3655555621
+   },
+   "point": [
+    "Mean-24",
+    "SARIMA-24",
+    "ExtraTrees-24",
+    "Seasonal naive",
+    "Persistence"
+   ]
+  },
+  "2500": {
+   "q_star": 0.8,
+   "ranking": [
+    "Seasonal naive",
+    "ExtraTrees-24",
+    "SARIMA-24",
+    "Mean-24",
+    "Persistence"
+   ],
+   "first": "Seasonal naive",
+   "runner_up": "ExtraTrees-24",
+   "joint_best": {
+    "O1_sep2025": [
+     "ExtraTrees-24"
+    ],
+    "O2_mar2026": [
+     "SARIMA-24"
+    ]
+   },
+   "joint_best_at_both": [],
+   "beats_runner_up_at_each_origin": false,
+   "clear_winners": [],
+   "outcome": "no clear winner",
+   "combined_excess": {
+    "Mean-24": 5150322.081612984,
+    "Persistence": 6848057.085501859,
+    "Seasonal naive": 3425006.258333357,
+    "SARIMA-24": 4096213.186612984,
+    "ExtraTrees-24": 3590996.6105018537
+   },
+   "point": [
+    "SARIMA-24",
+    "ExtraTrees-24",
+    "Mean-24",
+    "Seasonal naive",
+    "Persistence"
+   ]
+  },
+  "5000": {
+   "q_star": 0.9,
+   "ranking": [
+    "Seasonal naive",
+    "ExtraTrees-24",
+    "SARIMA-24",
+    "Mean-24",
+    "Persistence"
+   ],
+   "first": "Seasonal naive",
+   "runner_up": "ExtraTrees-24",
+   "joint_best": {
+    "O1_sep2025": [
+     "ExtraTrees-24"
+    ],
+    "O2_mar2026": [
+     "Seasonal naive"
+    ]
+   },
+   "joint_best_at_both": [],
+   "beats_runner_up_at_each_origin": false,
+   "clear_winners": [],
+   "outcome": "no clear winner",
+   "combined_excess": {
+    "Mean-24": 8444169.763225975,
+    "Persistence": 9128462.163225977,
+    "Seasonal naive": 3260338.3727778774,
+    "SARIMA-24": 6875105.363225982,
+    "ExtraTrees-24": 6145503.598225975
+   },
+   "point": [
+    "SARIMA-24",
+    "ExtraTrees-24",
+    "Seasonal naive",
+    "Mean-24",
+    "Persistence"
+   ]
+  },
+  "10000": {
+   "q_star": 0.95,
+   "ranking": [
+    "Seasonal naive",
+    "SARIMA-24",
+    "ExtraTrees-24",
+    "Mean-24",
+    "Persistence"
+   ],
+   "first": "Seasonal naive",
+   "runner_up": "SARIMA-24",
+   "joint_best": {
+    "O1_sep2025": [
+     "ExtraTrees-24"
+    ],
+    "O2_mar2026": [
+     "Seasonal naive"
+    ]
+   },
+   "joint_best_at_both": [],
+   "beats_runner_up_at_each_origin": true,
+   "clear_winners": [
+    "Seasonal naive"
+   ],
+   "outcome": "Seasonal naive",
+   "combined_excess": {
+    "Mean-24": 12125324.13645195,
+    "Persistence": 15322000.13645195,
+    "Seasonal naive": 6881283.386451948,
+    "SARIMA-24": 8692365.121451952,
+    "ExtraTrees-24": 8723847.481451957
+   },
+   "point": [
+    "SARIMA-24",
+    "ExtraTrees-24",
+    "Seasonal naive",
+    "Mean-24",
+    "Persistence"
+   ]
+  }
+ },
+ "robust_to_penalty": false,
+ "indicative": "the 0.95 level (p = 10,000 and alpha = 0.05) is the largest past error and is indicative only",
+ "hashes": {
+  "config": "164f4ba712b154929dc09cd8a34630af5c84867e740125e0b06466c41ab4c950",
+  "plans_frozen": "a3a0d180b952032cc51b76cb047d55ab742810431228e7359e0aec528093a131"
+ }
+}

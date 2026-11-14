@@ -1,0 +1,1016 @@
+[
+  {
+    "origin": "2024-02",
+    "data_cutoff": "2024-02",
+    "training_start": "2022-03",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 11,
+        "labels": 24,
+        "label_start": "2022-03",
+        "label_end": "2024-02",
+        "params": {
+          "ar.L1": 0.7632102681518496,
+          "sigma2": 0.5301710759442432
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2022-03",
+        "label_end": "2024-02",
+        "params": {
+          "ar.L1": 0.9430526500975114,
+          "sigma2": 0.27275914452741057
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2024-03",
+    "data_cutoff": "2024-03",
+    "training_start": "2022-04",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 5,
+        "labels": 24,
+        "label_start": "2022-04",
+        "label_end": "2024-03",
+        "params": {
+          "ar.L1": 0.6068838258326226,
+          "sigma2": 0.2941454967077617
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 5,
+        "labels": 24,
+        "label_start": "2022-04",
+        "label_end": "2024-03",
+        "params": {
+          "ar.L1": 0.9204140548556082,
+          "sigma2": 0.1746599898688177
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2024-04",
+    "data_cutoff": "2024-04",
+    "training_start": "2022-05",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 4,
+        "labels": 24,
+        "label_start": "2022-05",
+        "label_end": "2024-04",
+        "params": {
+          "ar.L1": 0.7309118280748014,
+          "sigma2": 0.39375665733625753
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 13,
+        "labels": 24,
+        "label_start": "2022-05",
+        "label_end": "2024-04",
+        "params": {
+          "ar.L1": 0.9330378327137921,
+          "sigma2": 0.1739938352063313
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2024-05",
+    "data_cutoff": "2024-05",
+    "training_start": "2022-06",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 4,
+        "labels": 24,
+        "label_start": "2022-06",
+        "label_end": "2024-05",
+        "params": {
+          "ar.L1": 0.6250803187192048,
+          "sigma2": 0.40779045795653374
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 6,
+        "labels": 24,
+        "label_start": "2022-06",
+        "label_end": "2024-05",
+        "params": {
+          "ar.L1": 0.9120246768765224,
+          "sigma2": 0.1841838592341019
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2024-06",
+    "data_cutoff": "2024-06",
+    "training_start": "2022-07",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 7,
+        "labels": 24,
+        "label_start": "2022-07",
+        "label_end": "2024-06",
+        "params": {
+          "ar.L1": 0.6634625964727586,
+          "sigma2": 0.3521504861968496
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 9,
+        "labels": 24,
+        "label_start": "2022-07",
+        "label_end": "2024-06",
+        "params": {
+          "ar.L1": 0.8880238734766176,
+          "sigma2": 0.17183297289231325
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2024-07",
+    "data_cutoff": "2024-07",
+    "training_start": "2022-08",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 8,
+        "labels": 24,
+        "label_start": "2022-08",
+        "label_end": "2024-07",
+        "params": {
+          "ar.L1": 0.7140056719360797,
+          "sigma2": 0.4346663615133728
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2022-08",
+        "label_end": "2024-07",
+        "params": {
+          "ar.L1": 0.9001967832347879,
+          "sigma2": 0.19865351720966765
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2024-08",
+    "data_cutoff": "2024-08",
+    "training_start": "2022-09",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 7,
+        "labels": 24,
+        "label_start": "2022-09",
+        "label_end": "2024-08",
+        "params": {
+          "ar.L1": 0.6744261977542837,
+          "sigma2": 0.47678887747271403
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 13,
+        "labels": 24,
+        "label_start": "2022-09",
+        "label_end": "2024-08",
+        "params": {
+          "ar.L1": 0.890071992090279,
+          "sigma2": 0.22106410351430775
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2024-09",
+    "data_cutoff": "2024-09",
+    "training_start": "2022-10",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 7,
+        "labels": 24,
+        "label_start": "2022-10",
+        "label_end": "2024-09",
+        "params": {
+          "ar.L1": 0.6945371666965195,
+          "sigma2": 0.5194121445300738
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 9,
+        "labels": 24,
+        "label_start": "2022-10",
+        "label_end": "2024-09",
+        "params": {
+          "ar.L1": 0.9005011254715632,
+          "sigma2": 0.23816467721836096
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2024-10",
+    "data_cutoff": "2024-10",
+    "training_start": "2022-11",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 5,
+        "labels": 24,
+        "label_start": "2022-11",
+        "label_end": "2024-10",
+        "params": {
+          "ar.L1": 0.7856364584645575,
+          "sigma2": 0.4554584517848605
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 15,
+        "labels": 24,
+        "label_start": "2022-11",
+        "label_end": "2024-10",
+        "params": {
+          "ar.L1": 0.9626794124380369,
+          "sigma2": 0.15727359782296846
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2024-11",
+    "data_cutoff": "2024-11",
+    "training_start": "2022-12",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 8,
+        "labels": 24,
+        "label_start": "2022-12",
+        "label_end": "2024-11",
+        "params": {
+          "ar.L1": 0.7679124322453015,
+          "sigma2": 0.3588159030445924
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 13,
+        "labels": 24,
+        "label_start": "2022-12",
+        "label_end": "2024-11",
+        "params": {
+          "ar.L1": 0.9310921548859248,
+          "sigma2": 0.18640653971645996
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2024-12",
+    "data_cutoff": "2024-12",
+    "training_start": "2023-01",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 9,
+        "labels": 24,
+        "label_start": "2023-01",
+        "label_end": "2024-12",
+        "params": {
+          "ar.L1": 0.8049110655256249,
+          "sigma2": 0.33310260275198794
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2023-01",
+        "label_end": "2024-12",
+        "params": {
+          "ar.L1": 0.938311601025186,
+          "sigma2": 0.17953653182714105
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2025-01",
+    "data_cutoff": "2025-01",
+    "training_start": "2023-02",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 6,
+        "labels": 24,
+        "label_start": "2023-02",
+        "label_end": "2025-01",
+        "params": {
+          "ar.L1": 0.8139433144348495,
+          "sigma2": 0.3012682143295669
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2023-02",
+        "label_end": "2025-01",
+        "params": {
+          "ar.L1": 0.950570307011043,
+          "sigma2": 0.14950327489109994
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2025-02",
+    "data_cutoff": "2025-02",
+    "training_start": "2023-03",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 4,
+        "labels": 24,
+        "label_start": "2023-03",
+        "label_end": "2025-02",
+        "params": {
+          "ar.L1": 0.7851525153121832,
+          "sigma2": 0.271802282766132
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 11,
+        "labels": 24,
+        "label_start": "2023-03",
+        "label_end": "2025-02",
+        "params": {
+          "ar.L1": 0.9348920550887014,
+          "sigma2": 0.14273854525892885
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2025-03",
+    "data_cutoff": "2025-03",
+    "training_start": "2023-04",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2023-04",
+        "label_end": "2025-03",
+        "params": {
+          "ar.L1": 0.8874698504488151,
+          "sigma2": 0.22175844498391037
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 15,
+        "labels": 24,
+        "label_start": "2023-04",
+        "label_end": "2025-03",
+        "params": {
+          "ar.L1": 0.9504585115587024,
+          "sigma2": 0.1272917850259606
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2025-04",
+    "data_cutoff": "2025-04",
+    "training_start": "2023-05",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 7,
+        "labels": 24,
+        "label_start": "2023-05",
+        "label_end": "2025-04",
+        "params": {
+          "ar.L1": 0.8215235694831396,
+          "sigma2": 0.17442551661395678
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2023-05",
+        "label_end": "2025-04",
+        "params": {
+          "ar.L1": 0.9306704892173495,
+          "sigma2": 0.11578077385854393
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2025-05",
+    "data_cutoff": "2025-05",
+    "training_start": "2023-06",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 5,
+        "labels": 24,
+        "label_start": "2023-06",
+        "label_end": "2025-05",
+        "params": {
+          "ar.L1": 0.7713322373408764,
+          "sigma2": 0.16663768954625166
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 9,
+        "labels": 24,
+        "label_start": "2023-06",
+        "label_end": "2025-05",
+        "params": {
+          "ar.L1": 0.9119372920494977,
+          "sigma2": 0.10917074274693582
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2025-06",
+    "data_cutoff": "2025-06",
+    "training_start": "2023-07",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 13,
+        "labels": 24,
+        "label_start": "2023-07",
+        "label_end": "2025-06",
+        "params": {
+          "ar.L1": 0.8525515736583473,
+          "sigma2": 0.15453235701360635
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 13,
+        "labels": 24,
+        "label_start": "2023-07",
+        "label_end": "2025-06",
+        "params": {
+          "ar.L1": 0.9309904221636113,
+          "sigma2": 0.10799747079810972
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2025-07",
+    "data_cutoff": "2025-07",
+    "training_start": "2023-08",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 6,
+        "labels": 24,
+        "label_start": "2023-08",
+        "label_end": "2025-07",
+        "params": {
+          "ar.L1": 0.7864896439870978,
+          "sigma2": 0.11457707439178477
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 11,
+        "labels": 24,
+        "label_start": "2023-08",
+        "label_end": "2025-07",
+        "params": {
+          "ar.L1": 0.9095964595575865,
+          "sigma2": 0.11296306974712322
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2025-08",
+    "data_cutoff": "2025-08",
+    "training_start": "2023-09",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 10,
+        "labels": 24,
+        "label_start": "2023-09",
+        "label_end": "2025-08",
+        "params": {
+          "ar.L1": 0.7854485541093298,
+          "sigma2": 0.1335074382833235
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 11,
+        "labels": 24,
+        "label_start": "2023-09",
+        "label_end": "2025-08",
+        "params": {
+          "ar.L1": 0.9095876381764083,
+          "sigma2": 0.13034852805928057
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2025-09",
+    "data_cutoff": "2025-09",
+    "training_start": "2023-10",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2023-10",
+        "label_end": "2025-09",
+        "params": {
+          "ar.L1": 0.7661388476288494,
+          "sigma2": 0.1478742946518279
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 13,
+        "labels": 24,
+        "label_start": "2023-10",
+        "label_end": "2025-09",
+        "params": {
+          "ar.L1": 0.9474564474362285,
+          "sigma2": 0.13930794800819962
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2025-10",
+    "data_cutoff": "2025-10",
+    "training_start": "2023-11",
+    "status": "excluded",
+    "failed_targets": [
+      "occupied"
+    ],
+    "failures": [
+      {
+        "target": "occupied",
+        "reason": "SARIMA-24 did not converge for occupied at 2025-10; stopping"
+      }
+    ],
+    "sarima": {
+      "available": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2023-11",
+        "label_end": "2025-10",
+        "params": {
+          "ar.L1": 0.8962522032781043,
+          "sigma2": 0.10691918374857338
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2025-11",
+    "data_cutoff": "2025-11",
+    "training_start": "2023-12",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2023-12",
+        "label_end": "2025-11",
+        "params": {
+          "ar.L1": 0.8268713004529096,
+          "sigma2": 0.10547233581002782
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 14,
+        "labels": 24,
+        "label_start": "2023-12",
+        "label_end": "2025-11",
+        "params": {
+          "ar.L1": 0.8805070520440309,
+          "sigma2": 0.14033260695569238
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2025-12",
+    "data_cutoff": "2025-12",
+    "training_start": "2024-01",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 19,
+        "labels": 24,
+        "label_start": "2024-01",
+        "label_end": "2025-12",
+        "params": {
+          "ar.L1": 0.868193227082829,
+          "sigma2": 0.08690047408386369
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2024-01",
+        "label_end": "2025-12",
+        "params": {
+          "ar.L1": 0.8607058102905409,
+          "sigma2": 0.08491332133836103
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2026-01",
+    "data_cutoff": "2026-01",
+    "training_start": "2024-02",
+    "status": "excluded",
+    "failed_targets": [
+      "available"
+    ],
+    "failures": [
+      {
+        "target": "available",
+        "reason": "SARIMA-24 did not converge for available at 2026-01; stopping"
+      }
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 8,
+        "labels": 24,
+        "label_start": "2024-02",
+        "label_end": "2026-01",
+        "params": {
+          "ar.L1": 0.6756890956035352,
+          "sigma2": 0.11610323914625101
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2026-02",
+    "data_cutoff": "2026-02",
+    "training_start": "2024-03",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 7,
+        "labels": 24,
+        "label_start": "2024-03",
+        "label_end": "2026-02",
+        "params": {
+          "ar.L1": 0.6967605918815147,
+          "sigma2": 0.1335995889386524
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 11,
+        "labels": 24,
+        "label_start": "2024-03",
+        "label_end": "2026-02",
+        "params": {
+          "ar.L1": 0.7782722417371581,
+          "sigma2": 0.11720912943652831
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2026-03",
+    "data_cutoff": "2026-03",
+    "training_start": "2024-04",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 5,
+        "labels": 24,
+        "label_start": "2024-04",
+        "label_end": "2026-03",
+        "params": {
+          "ar.L1": 0.8091030830162979,
+          "sigma2": 0.15571526746401657
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 13,
+        "labels": 24,
+        "label_start": "2024-04",
+        "label_end": "2026-03",
+        "params": {
+          "ar.L1": 0.8980944489219158,
+          "sigma2": 0.17655195286407765
+        },
+        "warnings": [
+          "UserWarning: Non-stationary starting autoregressive parameters found. Using zeros as starting parameters.",
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  },
+  {
+    "origin": "2026-04",
+    "data_cutoff": "2026-04",
+    "training_start": "2024-05",
+    "status": "included",
+    "failed_targets": [],
+    "failures": [],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 6,
+        "labels": 24,
+        "label_start": "2024-05",
+        "label_end": "2026-04",
+        "params": {
+          "ar.L1": 0.7574855697194092,
+          "sigma2": 0.15011489733497252
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2024-05",
+        "label_end": "2026-04",
+        "params": {
+          "ar.L1": 0.9000442693171736,
+          "sigma2": 0.17635943270361265
+        },
+        "warnings": [
+          "UserWarning: Non-stationary starting autoregressive parameters found. Using zeros as starting parameters.",
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    }
+  }
+]

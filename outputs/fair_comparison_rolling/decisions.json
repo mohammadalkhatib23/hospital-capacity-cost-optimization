@@ -1,0 +1,545 @@
+{
+  "scopes": {
+    "all": {
+      "origins": [
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12",
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-11",
+        "2025-12",
+        "2026-02",
+        "2026-03",
+        "2026-04"
+      ],
+      "penalties": {
+        "2500": {
+          "top": "Seasonal naive",
+          "runner_up": "ExtraTrees-24",
+          "ranking": [
+            "Seasonal naive",
+            "ExtraTrees-24",
+            "SARIMA-24",
+            "Mean-24",
+            "Persistence"
+          ],
+          "clear_winner": "Seasonal naive",
+          "mean_excess": {
+            "Mean-24": 4418989.1697677765,
+            "Persistence": 5313225.672014362,
+            "Seasonal naive": 1924285.847822246,
+            "SARIMA-24": 3000474.861145548,
+            "ExtraTrees-24": 2686535.355305404
+          },
+          "subset_wins": {
+            "Mean-24": 0,
+            "Persistence": 0,
+            "Seasonal naive": 5,
+            "SARIMA-24": 1,
+            "ExtraTrees-24": 0
+          },
+          "wins_ties_losses_vs_runner": {
+            "wins": 20,
+            "ties": 2,
+            "losses": 3
+          },
+          "unique_aggregate_minimum": true
+        },
+        "5000": {
+          "top": "Seasonal naive",
+          "runner_up": "ExtraTrees-24",
+          "ranking": [
+            "Seasonal naive",
+            "ExtraTrees-24",
+            "SARIMA-24",
+            "Mean-24",
+            "Persistence"
+          ],
+          "clear_winner": "Seasonal naive",
+          "mean_excess": {
+            "Mean-24": 6211304.235713337,
+            "Persistence": 7297015.251557768,
+            "Seasonal naive": 3501162.8204817856,
+            "SARIMA-24": 4447676.970379992,
+            "ExtraTrees-24": 3869414.608802218
+          },
+          "subset_wins": {
+            "Mean-24": 0,
+            "Persistence": 0,
+            "Seasonal naive": 4,
+            "SARIMA-24": 1,
+            "ExtraTrees-24": 1
+          },
+          "wins_ties_losses_vs_runner": {
+            "wins": 14,
+            "ties": 3,
+            "losses": 8
+          },
+          "unique_aggregate_minimum": true
+        },
+        "10000": {
+          "top": "ExtraTrees-24",
+          "runner_up": "Seasonal naive",
+          "ranking": [
+            "ExtraTrees-24",
+            "Seasonal naive",
+            "SARIMA-24",
+            "Mean-24",
+            "Persistence"
+          ],
+          "clear_winner": null,
+          "mean_excess": {
+            "Mean-24": 8602949.144626673,
+            "Persistence": 8747442.355293328,
+            "Seasonal naive": 5261105.056071117,
+            "SARIMA-24": 5460671.954937773,
+            "ExtraTrees-24": 5164588.594226666
+          },
+          "subset_wins": {
+            "Mean-24": 0,
+            "Persistence": 0,
+            "Seasonal naive": 2,
+            "SARIMA-24": 3,
+            "ExtraTrees-24": 1
+          },
+          "wins_ties_losses_vs_runner": {
+            "wins": 14,
+            "ties": 2,
+            "losses": 9
+          },
+          "unique_aggregate_minimum": true
+        }
+      },
+      "robustness": {
+        "top_methods": {
+          "2500": "Seasonal naive",
+          "5000": "Seasonal naive",
+          "10000": "ExtraTrees-24"
+        },
+        "clear_winners": {
+          "2500": "Seasonal naive",
+          "5000": "Seasonal naive",
+          "10000": null
+        },
+        "same_top_method": false,
+        "same_clear_winner": false,
+        "robust": false
+      }
+    },
+    "excluding_fable": {
+      "origins": [
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12",
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-11",
+        "2025-12",
+        "2026-02",
+        "2026-04"
+      ],
+      "penalties": {
+        "2500": {
+          "top": "Seasonal naive",
+          "runner_up": "ExtraTrees-24",
+          "ranking": [
+            "Seasonal naive",
+            "ExtraTrees-24",
+            "SARIMA-24",
+            "Mean-24",
+            "Persistence"
+          ],
+          "clear_winner": "Seasonal naive",
+          "mean_excess": {
+            "Mean-24": 4579322.05054702,
+            "Persistence": 5477503.683254661,
+            "Seasonal naive": 1942701.7364009903,
+            "SARIMA-24": 3083289.4931315533,
+            "ExtraTrees-24": 2764016.837918836
+          },
+          "subset_wins": {
+            "Mean-24": 0,
+            "Persistence": 0,
+            "Seasonal naive": 5,
+            "SARIMA-24": 0,
+            "ExtraTrees-24": 1
+          },
+          "wins_ties_losses_vs_runner": {
+            "wins": 19,
+            "ties": 2,
+            "losses": 2
+          },
+          "unique_aggregate_minimum": true
+        },
+        "5000": {
+          "top": "Seasonal naive",
+          "runner_up": "ExtraTrees-24",
+          "ranking": [
+            "Seasonal naive",
+            "ExtraTrees-24",
+            "SARIMA-24",
+            "Mean-24",
+            "Persistence"
+          ],
+          "clear_winner": null,
+          "mean_excess": {
+            "Mean-24": 6384279.831722063,
+            "Persistence": 7534648.6576399235,
+            "Seasonal naive": 3663857.9190985556,
+            "SARIMA-24": 4535513.865055383,
+            "ExtraTrees-24": 3938689.6357317157
+          },
+          "subset_wins": {
+            "Mean-24": 0,
+            "Persistence": 0,
+            "Seasonal naive": 2,
+            "SARIMA-24": 2,
+            "ExtraTrees-24": 2
+          },
+          "wins_ties_losses_vs_runner": {
+            "wins": 13,
+            "ties": 3,
+            "losses": 7
+          },
+          "unique_aggregate_minimum": true
+        },
+        "10000": {
+          "top": "ExtraTrees-24",
+          "runner_up": "Seasonal naive",
+          "ranking": [
+            "ExtraTrees-24",
+            "Seasonal naive",
+            "SARIMA-24",
+            "Mean-24",
+            "Persistence"
+          ],
+          "clear_winner": null,
+          "mean_excess": {
+            "Mean-24": 8823843.673009342,
+            "Persistence": 8841915.597647011,
+            "Seasonal naive": 5419406.21805765,
+            "SARIMA-24": 5557584.076173581,
+            "ExtraTrees-24": 5234385.538009334
+          },
+          "subset_wins": {
+            "Mean-24": 0,
+            "Persistence": 0,
+            "Seasonal naive": 1,
+            "SARIMA-24": 2,
+            "ExtraTrees-24": 3
+          },
+          "wins_ties_losses_vs_runner": {
+            "wins": 13,
+            "ties": 2,
+            "losses": 8
+          },
+          "unique_aggregate_minimum": true
+        }
+      },
+      "robustness": {
+        "top_methods": {
+          "2500": "Seasonal naive",
+          "5000": "Seasonal naive",
+          "10000": "ExtraTrees-24"
+        },
+        "clear_winners": {
+          "2500": "Seasonal naive",
+          "5000": null,
+          "10000": null
+        },
+        "same_top_method": false,
+        "same_clear_winner": false,
+        "robust": false
+      }
+    },
+    "through_2024": {
+      "origins": [
+        "2024-02",
+        "2024-03",
+        "2024-04",
+        "2024-05",
+        "2024-06",
+        "2024-07",
+        "2024-08",
+        "2024-09",
+        "2024-10",
+        "2024-11",
+        "2024-12"
+      ],
+      "penalties": {
+        "2500": {
+          "top": "Seasonal naive",
+          "runner_up": "ExtraTrees-24",
+          "ranking": [
+            "Seasonal naive",
+            "ExtraTrees-24",
+            "SARIMA-24",
+            "Mean-24",
+            "Persistence"
+          ],
+          "clear_winner": "Seasonal naive",
+          "mean_excess": {
+            "Mean-24": 4936800.616060633,
+            "Persistence": 5375432.191515169,
+            "Seasonal naive": 1837667.516919214,
+            "SARIMA-24": 3509258.6245454657,
+            "ExtraTrees-24": 3050009.544292946
+          },
+          "subset_wins": {
+            "Mean-24": 0,
+            "Persistence": 0,
+            "Seasonal naive": 5,
+            "SARIMA-24": 1,
+            "ExtraTrees-24": 0
+          },
+          "wins_ties_losses_vs_runner": {
+            "wins": 10,
+            "ties": 1,
+            "losses": 0
+          },
+          "unique_aggregate_minimum": true
+        },
+        "5000": {
+          "top": "Seasonal naive",
+          "runner_up": "ExtraTrees-24",
+          "ranking": [
+            "Seasonal naive",
+            "ExtraTrees-24",
+            "SARIMA-24",
+            "Mean-24",
+            "Persistence"
+          ],
+          "clear_winner": null,
+          "mean_excess": {
+            "Mean-24": 6978050.27893945,
+            "Persistence": 7511059.173535398,
+            "Seasonal naive": 4283658.228989953,
+            "SARIMA-24": 5360124.615454578,
+            "ExtraTrees-24": 4344408.999697015
+          },
+          "subset_wins": {
+            "Mean-24": 0,
+            "Persistence": 1,
+            "Seasonal naive": 3,
+            "SARIMA-24": 1,
+            "ExtraTrees-24": 1
+          },
+          "wins_ties_losses_vs_runner": {
+            "wins": 5,
+            "ties": 1,
+            "losses": 5
+          },
+          "unique_aggregate_minimum": true
+        },
+        "10000": {
+          "top": "ExtraTrees-24",
+          "runner_up": "Seasonal naive",
+          "ranking": [
+            "ExtraTrees-24",
+            "Seasonal naive",
+            "SARIMA-24",
+            "Persistence",
+            "Mean-24"
+          ],
+          "clear_winner": null,
+          "mean_excess": {
+            "Mean-24": 9961332.764697082,
+            "Persistence": 8678806.837979896,
+            "Seasonal naive": 5974142.212979907,
+            "SARIMA-24": 6207542.83131322,
+            "ExtraTrees-24": 5737049.122878884
+          },
+          "subset_wins": {
+            "Mean-24": 0,
+            "Persistence": 0,
+            "Seasonal naive": 3,
+            "SARIMA-24": 2,
+            "ExtraTrees-24": 1
+          },
+          "wins_ties_losses_vs_runner": {
+            "wins": 7,
+            "ties": 1,
+            "losses": 3
+          },
+          "unique_aggregate_minimum": true
+        }
+      },
+      "robustness": {
+        "top_methods": {
+          "2500": "Seasonal naive",
+          "5000": "Seasonal naive",
+          "10000": "ExtraTrees-24"
+        },
+        "clear_winners": {
+          "2500": "Seasonal naive",
+          "5000": null,
+          "10000": null
+        },
+        "same_top_method": false,
+        "same_clear_winner": false,
+        "robust": false
+      }
+    },
+    "from_2025": {
+      "origins": [
+        "2025-01",
+        "2025-02",
+        "2025-03",
+        "2025-04",
+        "2025-05",
+        "2025-06",
+        "2025-07",
+        "2025-08",
+        "2025-09",
+        "2025-11",
+        "2025-12",
+        "2026-02",
+        "2026-03",
+        "2026-04"
+      ],
+      "penalties": {
+        "2500": {
+          "top": "Seasonal naive",
+          "runner_up": "ExtraTrees-24",
+          "ranking": [
+            "Seasonal naive",
+            "ExtraTrees-24",
+            "SARIMA-24",
+            "Mean-24",
+            "Persistence"
+          ],
+          "clear_winner": "Seasonal naive",
+          "mean_excess": {
+            "Mean-24": 4012137.3191091036,
+            "Persistence": 5264349.120978015,
+            "Seasonal naive": 1992343.1078174845,
+            "SARIMA-24": 2600716.1899027564,
+            "ExtraTrees-24": 2400948.4925294775
+          },
+          "subset_wins": {
+            "Mean-24": 0,
+            "Persistence": 0,
+            "Seasonal naive": 5,
+            "SARIMA-24": 1,
+            "ExtraTrees-24": 0
+          },
+          "wins_ties_losses_vs_runner": {
+            "wins": 10,
+            "ties": 1,
+            "losses": 3
+          },
+          "unique_aggregate_minimum": true
+        },
+        "5000": {
+          "top": "Seasonal naive",
+          "runner_up": "ExtraTrees-24",
+          "ranking": [
+            "Seasonal naive",
+            "ExtraTrees-24",
+            "SARIMA-24",
+            "Mean-24",
+            "Persistence"
+          ],
+          "clear_winner": "Seasonal naive",
+          "mean_excess": {
+            "Mean-24": 5608860.916035675,
+            "Persistence": 7128837.884289633,
+            "Seasonal naive": 2886344.999511083,
+            "SARIMA-24": 3730753.8206785335,
+            "ExtraTrees-24": 3496204.730242021
+          },
+          "subset_wins": {
+            "Mean-24": 0,
+            "Persistence": 0,
+            "Seasonal naive": 5,
+            "SARIMA-24": 1,
+            "ExtraTrees-24": 0
+          },
+          "wins_ties_losses_vs_runner": {
+            "wins": 9,
+            "ties": 2,
+            "losses": 3
+          },
+          "unique_aggregate_minimum": true
+        },
+        "10000": {
+          "top": "Seasonal naive",
+          "runner_up": "ExtraTrees-24",
+          "ranking": [
+            "Seasonal naive",
+            "ExtraTrees-24",
+            "SARIMA-24",
+            "Mean-24",
+            "Persistence"
+          ],
+          "clear_winner": null,
+          "mean_excess": {
+            "Mean-24": 7535647.728857063,
+            "Persistence": 8801370.261753885,
+            "Seasonal naive": 4700861.575642779,
+            "SARIMA-24": 4873844.837785636,
+            "ExtraTrees-24": 4714798.178857066
+          },
+          "subset_wins": {
+            "Mean-24": 0,
+            "Persistence": 0,
+            "Seasonal naive": 2,
+            "SARIMA-24": 1,
+            "ExtraTrees-24": 3
+          },
+          "wins_ties_losses_vs_runner": {
+            "wins": 6,
+            "ties": 1,
+            "losses": 7
+          },
+          "unique_aggregate_minimum": true
+        }
+      },
+      "robustness": {
+        "top_methods": {
+          "2500": "Seasonal naive",
+          "5000": "Seasonal naive",
+          "10000": "Seasonal naive"
+        },
+        "clear_winners": {
+          "2500": "Seasonal naive",
+          "5000": "Seasonal naive",
+          "10000": null
+        },
+        "same_top_method": true,
+        "same_clear_winner": false,
+        "robust": true
+      }
+    }
+  }
+}

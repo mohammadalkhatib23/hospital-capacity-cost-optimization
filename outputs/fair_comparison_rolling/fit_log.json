@@ -1,0 +1,1754 @@
+{
+  "2024-02": {
+    "cutoff": "2024-02",
+    "data_last_month": "2024-02",
+    "window": [
+      "2022-03",
+      "2024-02"
+    ],
+    "forecast_months": [
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08"
+    ],
+    "seasonal_naive_source": [
+      "2023-03",
+      "2023-04",
+      "2023-05",
+      "2023-06",
+      "2023-07",
+      "2023-08"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 11,
+        "labels": 24,
+        "label_start": "2022-03",
+        "label_end": "2024-02",
+        "params": {
+          "ar.L1": 0.7632102681518496,
+          "sigma2": 0.5301710759442432
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2022-03",
+        "label_end": "2024-02",
+        "params": {
+          "ar.L1": 0.9430526500975114,
+          "sigma2": 0.27275914452741057
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2023-03",
+        "last_row": "2024-02",
+        "earliest_month_used": "2022-03",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2023-03",
+        "last_row": "2024-02",
+        "earliest_month_used": "2022-03",
+        "features": 16
+      }
+    }
+  },
+  "2024-03": {
+    "cutoff": "2024-03",
+    "data_last_month": "2024-03",
+    "window": [
+      "2022-04",
+      "2024-03"
+    ],
+    "forecast_months": [
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09"
+    ],
+    "seasonal_naive_source": [
+      "2023-04",
+      "2023-05",
+      "2023-06",
+      "2023-07",
+      "2023-08",
+      "2023-09"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 5,
+        "labels": 24,
+        "label_start": "2022-04",
+        "label_end": "2024-03",
+        "params": {
+          "ar.L1": 0.6068838258326226,
+          "sigma2": 0.2941454967077617
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 5,
+        "labels": 24,
+        "label_start": "2022-04",
+        "label_end": "2024-03",
+        "params": {
+          "ar.L1": 0.9204140548556082,
+          "sigma2": 0.1746599898688177
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2023-04",
+        "last_row": "2024-03",
+        "earliest_month_used": "2022-04",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2023-04",
+        "last_row": "2024-03",
+        "earliest_month_used": "2022-04",
+        "features": 16
+      }
+    }
+  },
+  "2024-04": {
+    "cutoff": "2024-04",
+    "data_last_month": "2024-04",
+    "window": [
+      "2022-05",
+      "2024-04"
+    ],
+    "forecast_months": [
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10"
+    ],
+    "seasonal_naive_source": [
+      "2023-05",
+      "2023-06",
+      "2023-07",
+      "2023-08",
+      "2023-09",
+      "2023-10"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 4,
+        "labels": 24,
+        "label_start": "2022-05",
+        "label_end": "2024-04",
+        "params": {
+          "ar.L1": 0.7309118280748014,
+          "sigma2": 0.39375665733625753
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 13,
+        "labels": 24,
+        "label_start": "2022-05",
+        "label_end": "2024-04",
+        "params": {
+          "ar.L1": 0.9330378327137921,
+          "sigma2": 0.1739938352063313
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2023-05",
+        "last_row": "2024-04",
+        "earliest_month_used": "2022-05",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2023-05",
+        "last_row": "2024-04",
+        "earliest_month_used": "2022-05",
+        "features": 16
+      }
+    }
+  },
+  "2024-05": {
+    "cutoff": "2024-05",
+    "data_last_month": "2024-05",
+    "window": [
+      "2022-06",
+      "2024-05"
+    ],
+    "forecast_months": [
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11"
+    ],
+    "seasonal_naive_source": [
+      "2023-06",
+      "2023-07",
+      "2023-08",
+      "2023-09",
+      "2023-10",
+      "2023-11"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 4,
+        "labels": 24,
+        "label_start": "2022-06",
+        "label_end": "2024-05",
+        "params": {
+          "ar.L1": 0.6250803187192048,
+          "sigma2": 0.40779045795653374
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 6,
+        "labels": 24,
+        "label_start": "2022-06",
+        "label_end": "2024-05",
+        "params": {
+          "ar.L1": 0.9120246768765224,
+          "sigma2": 0.1841838592341019
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2023-06",
+        "last_row": "2024-05",
+        "earliest_month_used": "2022-06",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2023-06",
+        "last_row": "2024-05",
+        "earliest_month_used": "2022-06",
+        "features": 16
+      }
+    }
+  },
+  "2024-06": {
+    "cutoff": "2024-06",
+    "data_last_month": "2024-06",
+    "window": [
+      "2022-07",
+      "2024-06"
+    ],
+    "forecast_months": [
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12"
+    ],
+    "seasonal_naive_source": [
+      "2023-07",
+      "2023-08",
+      "2023-09",
+      "2023-10",
+      "2023-11",
+      "2023-12"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 7,
+        "labels": 24,
+        "label_start": "2022-07",
+        "label_end": "2024-06",
+        "params": {
+          "ar.L1": 0.6634625964727586,
+          "sigma2": 0.3521504861968496
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 9,
+        "labels": 24,
+        "label_start": "2022-07",
+        "label_end": "2024-06",
+        "params": {
+          "ar.L1": 0.8880238734766176,
+          "sigma2": 0.17183297289231325
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2023-07",
+        "last_row": "2024-06",
+        "earliest_month_used": "2022-07",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2023-07",
+        "last_row": "2024-06",
+        "earliest_month_used": "2022-07",
+        "features": 16
+      }
+    }
+  },
+  "2024-07": {
+    "cutoff": "2024-07",
+    "data_last_month": "2024-07",
+    "window": [
+      "2022-08",
+      "2024-07"
+    ],
+    "forecast_months": [
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01"
+    ],
+    "seasonal_naive_source": [
+      "2023-08",
+      "2023-09",
+      "2023-10",
+      "2023-11",
+      "2023-12",
+      "2024-01"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 8,
+        "labels": 24,
+        "label_start": "2022-08",
+        "label_end": "2024-07",
+        "params": {
+          "ar.L1": 0.7140056719360797,
+          "sigma2": 0.4346663615133728
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2022-08",
+        "label_end": "2024-07",
+        "params": {
+          "ar.L1": 0.9001967832347879,
+          "sigma2": 0.19865351720966765
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2023-08",
+        "last_row": "2024-07",
+        "earliest_month_used": "2022-08",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2023-08",
+        "last_row": "2024-07",
+        "earliest_month_used": "2022-08",
+        "features": 16
+      }
+    }
+  },
+  "2024-08": {
+    "cutoff": "2024-08",
+    "data_last_month": "2024-08",
+    "window": [
+      "2022-09",
+      "2024-08"
+    ],
+    "forecast_months": [
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01",
+      "2025-02"
+    ],
+    "seasonal_naive_source": [
+      "2023-09",
+      "2023-10",
+      "2023-11",
+      "2023-12",
+      "2024-01",
+      "2024-02"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 7,
+        "labels": 24,
+        "label_start": "2022-09",
+        "label_end": "2024-08",
+        "params": {
+          "ar.L1": 0.6744261977542837,
+          "sigma2": 0.47678887747271403
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 13,
+        "labels": 24,
+        "label_start": "2022-09",
+        "label_end": "2024-08",
+        "params": {
+          "ar.L1": 0.890071992090279,
+          "sigma2": 0.22106410351430775
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2023-09",
+        "last_row": "2024-08",
+        "earliest_month_used": "2022-09",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2023-09",
+        "last_row": "2024-08",
+        "earliest_month_used": "2022-09",
+        "features": 16
+      }
+    }
+  },
+  "2024-09": {
+    "cutoff": "2024-09",
+    "data_last_month": "2024-09",
+    "window": [
+      "2022-10",
+      "2024-09"
+    ],
+    "forecast_months": [
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01",
+      "2025-02",
+      "2025-03"
+    ],
+    "seasonal_naive_source": [
+      "2023-10",
+      "2023-11",
+      "2023-12",
+      "2024-01",
+      "2024-02",
+      "2024-03"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 7,
+        "labels": 24,
+        "label_start": "2022-10",
+        "label_end": "2024-09",
+        "params": {
+          "ar.L1": 0.6945371666965195,
+          "sigma2": 0.5194121445300738
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 9,
+        "labels": 24,
+        "label_start": "2022-10",
+        "label_end": "2024-09",
+        "params": {
+          "ar.L1": 0.9005011254715632,
+          "sigma2": 0.23816467721836096
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2023-10",
+        "last_row": "2024-09",
+        "earliest_month_used": "2022-10",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2023-10",
+        "last_row": "2024-09",
+        "earliest_month_used": "2022-10",
+        "features": 16
+      }
+    }
+  },
+  "2024-10": {
+    "cutoff": "2024-10",
+    "data_last_month": "2024-10",
+    "window": [
+      "2022-11",
+      "2024-10"
+    ],
+    "forecast_months": [
+      "2024-11",
+      "2024-12",
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04"
+    ],
+    "seasonal_naive_source": [
+      "2023-11",
+      "2023-12",
+      "2024-01",
+      "2024-02",
+      "2024-03",
+      "2024-04"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 5,
+        "labels": 24,
+        "label_start": "2022-11",
+        "label_end": "2024-10",
+        "params": {
+          "ar.L1": 0.7856364584645575,
+          "sigma2": 0.4554584517848605
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 15,
+        "labels": 24,
+        "label_start": "2022-11",
+        "label_end": "2024-10",
+        "params": {
+          "ar.L1": 0.9626794124380369,
+          "sigma2": 0.15727359782296846
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2023-11",
+        "last_row": "2024-10",
+        "earliest_month_used": "2022-11",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2023-11",
+        "last_row": "2024-10",
+        "earliest_month_used": "2022-11",
+        "features": 16
+      }
+    }
+  },
+  "2024-11": {
+    "cutoff": "2024-11",
+    "data_last_month": "2024-11",
+    "window": [
+      "2022-12",
+      "2024-11"
+    ],
+    "forecast_months": [
+      "2024-12",
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05"
+    ],
+    "seasonal_naive_source": [
+      "2023-12",
+      "2024-01",
+      "2024-02",
+      "2024-03",
+      "2024-04",
+      "2024-05"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 8,
+        "labels": 24,
+        "label_start": "2022-12",
+        "label_end": "2024-11",
+        "params": {
+          "ar.L1": 0.7679124322453015,
+          "sigma2": 0.3588159030445924
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 13,
+        "labels": 24,
+        "label_start": "2022-12",
+        "label_end": "2024-11",
+        "params": {
+          "ar.L1": 0.9310921548859248,
+          "sigma2": 0.18640653971645996
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2023-12",
+        "last_row": "2024-11",
+        "earliest_month_used": "2022-12",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2023-12",
+        "last_row": "2024-11",
+        "earliest_month_used": "2022-12",
+        "features": 16
+      }
+    }
+  },
+  "2024-12": {
+    "cutoff": "2024-12",
+    "data_last_month": "2024-12",
+    "window": [
+      "2023-01",
+      "2024-12"
+    ],
+    "forecast_months": [
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06"
+    ],
+    "seasonal_naive_source": [
+      "2024-01",
+      "2024-02",
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 9,
+        "labels": 24,
+        "label_start": "2023-01",
+        "label_end": "2024-12",
+        "params": {
+          "ar.L1": 0.8049110655256249,
+          "sigma2": 0.33310260275198794
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2023-01",
+        "label_end": "2024-12",
+        "params": {
+          "ar.L1": 0.938311601025186,
+          "sigma2": 0.17953653182714105
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2024-01",
+        "last_row": "2024-12",
+        "earliest_month_used": "2023-01",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2024-01",
+        "last_row": "2024-12",
+        "earliest_month_used": "2023-01",
+        "features": 16
+      }
+    }
+  },
+  "2025-01": {
+    "cutoff": "2025-01",
+    "data_last_month": "2025-01",
+    "window": [
+      "2023-02",
+      "2025-01"
+    ],
+    "forecast_months": [
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07"
+    ],
+    "seasonal_naive_source": [
+      "2024-02",
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 6,
+        "labels": 24,
+        "label_start": "2023-02",
+        "label_end": "2025-01",
+        "params": {
+          "ar.L1": 0.8139433144348495,
+          "sigma2": 0.3012682143295669
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2023-02",
+        "label_end": "2025-01",
+        "params": {
+          "ar.L1": 0.950570307011043,
+          "sigma2": 0.14950327489109994
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2024-02",
+        "last_row": "2025-01",
+        "earliest_month_used": "2023-02",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2024-02",
+        "last_row": "2025-01",
+        "earliest_month_used": "2023-02",
+        "features": 16
+      }
+    }
+  },
+  "2025-02": {
+    "cutoff": "2025-02",
+    "data_last_month": "2025-02",
+    "window": [
+      "2023-03",
+      "2025-02"
+    ],
+    "forecast_months": [
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08"
+    ],
+    "seasonal_naive_source": [
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 4,
+        "labels": 24,
+        "label_start": "2023-03",
+        "label_end": "2025-02",
+        "params": {
+          "ar.L1": 0.7851525153121832,
+          "sigma2": 0.271802282766132
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 11,
+        "labels": 24,
+        "label_start": "2023-03",
+        "label_end": "2025-02",
+        "params": {
+          "ar.L1": 0.9348920550887014,
+          "sigma2": 0.14273854525892885
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2024-03",
+        "last_row": "2025-02",
+        "earliest_month_used": "2023-03",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2024-03",
+        "last_row": "2025-02",
+        "earliest_month_used": "2023-03",
+        "features": 16
+      }
+    }
+  },
+  "2025-03": {
+    "cutoff": "2025-03",
+    "data_last_month": "2025-03",
+    "window": [
+      "2023-04",
+      "2025-03"
+    ],
+    "forecast_months": [
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09"
+    ],
+    "seasonal_naive_source": [
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2023-04",
+        "label_end": "2025-03",
+        "params": {
+          "ar.L1": 0.8874698504488151,
+          "sigma2": 0.22175844498391037
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 15,
+        "labels": 24,
+        "label_start": "2023-04",
+        "label_end": "2025-03",
+        "params": {
+          "ar.L1": 0.9504585115587024,
+          "sigma2": 0.1272917850259606
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2024-04",
+        "last_row": "2025-03",
+        "earliest_month_used": "2023-04",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2024-04",
+        "last_row": "2025-03",
+        "earliest_month_used": "2023-04",
+        "features": 16
+      }
+    }
+  },
+  "2025-04": {
+    "cutoff": "2025-04",
+    "data_last_month": "2025-04",
+    "window": [
+      "2023-05",
+      "2025-04"
+    ],
+    "forecast_months": [
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10"
+    ],
+    "seasonal_naive_source": [
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 7,
+        "labels": 24,
+        "label_start": "2023-05",
+        "label_end": "2025-04",
+        "params": {
+          "ar.L1": 0.8215235694831396,
+          "sigma2": 0.17442551661395678
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2023-05",
+        "label_end": "2025-04",
+        "params": {
+          "ar.L1": 0.9306704892173495,
+          "sigma2": 0.11578077385854393
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2024-05",
+        "last_row": "2025-04",
+        "earliest_month_used": "2023-05",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2024-05",
+        "last_row": "2025-04",
+        "earliest_month_used": "2023-05",
+        "features": 16
+      }
+    }
+  },
+  "2025-05": {
+    "cutoff": "2025-05",
+    "data_last_month": "2025-05",
+    "window": [
+      "2023-06",
+      "2025-05"
+    ],
+    "forecast_months": [
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11"
+    ],
+    "seasonal_naive_source": [
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 5,
+        "labels": 24,
+        "label_start": "2023-06",
+        "label_end": "2025-05",
+        "params": {
+          "ar.L1": 0.7713322373408764,
+          "sigma2": 0.16663768954625166
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 9,
+        "labels": 24,
+        "label_start": "2023-06",
+        "label_end": "2025-05",
+        "params": {
+          "ar.L1": 0.9119372920494977,
+          "sigma2": 0.10917074274693582
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2024-06",
+        "last_row": "2025-05",
+        "earliest_month_used": "2023-06",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2024-06",
+        "last_row": "2025-05",
+        "earliest_month_used": "2023-06",
+        "features": 16
+      }
+    }
+  },
+  "2025-06": {
+    "cutoff": "2025-06",
+    "data_last_month": "2025-06",
+    "window": [
+      "2023-07",
+      "2025-06"
+    ],
+    "forecast_months": [
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12"
+    ],
+    "seasonal_naive_source": [
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 13,
+        "labels": 24,
+        "label_start": "2023-07",
+        "label_end": "2025-06",
+        "params": {
+          "ar.L1": 0.8525515736583473,
+          "sigma2": 0.15453235701360635
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 13,
+        "labels": 24,
+        "label_start": "2023-07",
+        "label_end": "2025-06",
+        "params": {
+          "ar.L1": 0.9309904221636113,
+          "sigma2": 0.10799747079810972
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2024-07",
+        "last_row": "2025-06",
+        "earliest_month_used": "2023-07",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2024-07",
+        "last_row": "2025-06",
+        "earliest_month_used": "2023-07",
+        "features": 16
+      }
+    }
+  },
+  "2025-07": {
+    "cutoff": "2025-07",
+    "data_last_month": "2025-07",
+    "window": [
+      "2023-08",
+      "2025-07"
+    ],
+    "forecast_months": [
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01"
+    ],
+    "seasonal_naive_source": [
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 6,
+        "labels": 24,
+        "label_start": "2023-08",
+        "label_end": "2025-07",
+        "params": {
+          "ar.L1": 0.7864896439870978,
+          "sigma2": 0.11457707439178477
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 11,
+        "labels": 24,
+        "label_start": "2023-08",
+        "label_end": "2025-07",
+        "params": {
+          "ar.L1": 0.9095964595575865,
+          "sigma2": 0.11296306974712322
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2024-08",
+        "last_row": "2025-07",
+        "earliest_month_used": "2023-08",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2024-08",
+        "last_row": "2025-07",
+        "earliest_month_used": "2023-08",
+        "features": 16
+      }
+    }
+  },
+  "2025-08": {
+    "cutoff": "2025-08",
+    "data_last_month": "2025-08",
+    "window": [
+      "2023-09",
+      "2025-08"
+    ],
+    "forecast_months": [
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02"
+    ],
+    "seasonal_naive_source": [
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01",
+      "2025-02"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 10,
+        "labels": 24,
+        "label_start": "2023-09",
+        "label_end": "2025-08",
+        "params": {
+          "ar.L1": 0.7854485541093298,
+          "sigma2": 0.1335074382833235
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 11,
+        "labels": 24,
+        "label_start": "2023-09",
+        "label_end": "2025-08",
+        "params": {
+          "ar.L1": 0.9095876381764083,
+          "sigma2": 0.13034852805928057
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2024-09",
+        "last_row": "2025-08",
+        "earliest_month_used": "2023-09",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2024-09",
+        "last_row": "2025-08",
+        "earliest_month_used": "2023-09",
+        "features": 16
+      }
+    }
+  },
+  "2025-09": {
+    "cutoff": "2025-09",
+    "data_last_month": "2025-09",
+    "window": [
+      "2023-10",
+      "2025-09"
+    ],
+    "forecast_months": [
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03"
+    ],
+    "seasonal_naive_source": [
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01",
+      "2025-02",
+      "2025-03"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2023-10",
+        "label_end": "2025-09",
+        "params": {
+          "ar.L1": 0.7661388476288494,
+          "sigma2": 0.1478742946518279
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 13,
+        "labels": 24,
+        "label_start": "2023-10",
+        "label_end": "2025-09",
+        "params": {
+          "ar.L1": 0.9474564474362285,
+          "sigma2": 0.13930794800819962
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2024-10",
+        "last_row": "2025-09",
+        "earliest_month_used": "2023-10",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2024-10",
+        "last_row": "2025-09",
+        "earliest_month_used": "2023-10",
+        "features": 16
+      }
+    }
+  },
+  "2025-11": {
+    "cutoff": "2025-11",
+    "data_last_month": "2025-11",
+    "window": [
+      "2023-12",
+      "2025-11"
+    ],
+    "forecast_months": [
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05"
+    ],
+    "seasonal_naive_source": [
+      "2024-12",
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2023-12",
+        "label_end": "2025-11",
+        "params": {
+          "ar.L1": 0.8268713004529096,
+          "sigma2": 0.10547233581002782
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 14,
+        "labels": 24,
+        "label_start": "2023-12",
+        "label_end": "2025-11",
+        "params": {
+          "ar.L1": 0.8805070520440309,
+          "sigma2": 0.14033260695569238
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2024-12",
+        "last_row": "2025-11",
+        "earliest_month_used": "2023-12",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2024-12",
+        "last_row": "2025-11",
+        "earliest_month_used": "2023-12",
+        "features": 16
+      }
+    }
+  },
+  "2025-12": {
+    "cutoff": "2025-12",
+    "data_last_month": "2025-12",
+    "window": [
+      "2024-01",
+      "2025-12"
+    ],
+    "forecast_months": [
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06"
+    ],
+    "seasonal_naive_source": [
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 19,
+        "labels": 24,
+        "label_start": "2024-01",
+        "label_end": "2025-12",
+        "params": {
+          "ar.L1": 0.868193227082829,
+          "sigma2": 0.08690047408386369
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2024-01",
+        "label_end": "2025-12",
+        "params": {
+          "ar.L1": 0.8607058102905409,
+          "sigma2": 0.08491332133836103
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2025-01",
+        "last_row": "2025-12",
+        "earliest_month_used": "2024-01",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2025-01",
+        "last_row": "2025-12",
+        "earliest_month_used": "2024-01",
+        "features": 16
+      }
+    }
+  },
+  "2026-02": {
+    "cutoff": "2026-02",
+    "data_last_month": "2026-02",
+    "window": [
+      "2024-03",
+      "2026-02"
+    ],
+    "forecast_months": [
+      "2026-03",
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07",
+      "2026-08"
+    ],
+    "seasonal_naive_source": [
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 7,
+        "labels": 24,
+        "label_start": "2024-03",
+        "label_end": "2026-02",
+        "params": {
+          "ar.L1": 0.6967605918815147,
+          "sigma2": 0.1335995889386524
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 11,
+        "labels": 24,
+        "label_start": "2024-03",
+        "label_end": "2026-02",
+        "params": {
+          "ar.L1": 0.7782722417371581,
+          "sigma2": 0.11720912943652831
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2025-03",
+        "last_row": "2026-02",
+        "earliest_month_used": "2024-03",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2025-03",
+        "last_row": "2026-02",
+        "earliest_month_used": "2024-03",
+        "features": 16
+      }
+    }
+  },
+  "2026-03": {
+    "cutoff": "2026-03",
+    "data_last_month": "2026-03",
+    "window": [
+      "2024-04",
+      "2026-03"
+    ],
+    "forecast_months": [
+      "2026-04",
+      "2026-05",
+      "2026-06",
+      "2026-07",
+      "2026-08",
+      "2026-09"
+    ],
+    "seasonal_naive_source": [
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 5,
+        "labels": 24,
+        "label_start": "2024-04",
+        "label_end": "2026-03",
+        "params": {
+          "ar.L1": 0.8091030830162979,
+          "sigma2": 0.15571526746401657
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 13,
+        "labels": 24,
+        "label_start": "2024-04",
+        "label_end": "2026-03",
+        "params": {
+          "ar.L1": 0.8980944489219158,
+          "sigma2": 0.17655195286407765
+        },
+        "warnings": [
+          "UserWarning: Non-stationary starting autoregressive parameters found. Using zeros as starting parameters.",
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2025-04",
+        "last_row": "2026-03",
+        "earliest_month_used": "2024-04",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2025-04",
+        "last_row": "2026-03",
+        "earliest_month_used": "2024-04",
+        "features": 16
+      }
+    }
+  },
+  "2026-04": {
+    "cutoff": "2026-04",
+    "data_last_month": "2026-04",
+    "window": [
+      "2024-05",
+      "2026-04"
+    ],
+    "forecast_months": [
+      "2026-05",
+      "2026-06",
+      "2026-07",
+      "2026-08",
+      "2026-09",
+      "2026-10"
+    ],
+    "seasonal_naive_source": [
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10"
+    ],
+    "sarima": {
+      "occupied": {
+        "converged": true,
+        "iterations": 6,
+        "labels": 24,
+        "label_start": "2024-05",
+        "label_end": "2026-04",
+        "params": {
+          "ar.L1": 0.7574855697194092,
+          "sigma2": 0.15011489733497252
+        },
+        "warnings": [
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      },
+      "available": {
+        "converged": true,
+        "iterations": 12,
+        "labels": 24,
+        "label_start": "2024-05",
+        "label_end": "2026-04",
+        "params": {
+          "ar.L1": 0.9000442693171736,
+          "sigma2": 0.17635943270361265
+        },
+        "warnings": [
+          "UserWarning: Non-stationary starting autoregressive parameters found. Using zeros as starting parameters.",
+          "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+        ]
+      }
+    },
+    "extra_trees": {
+      "occupied": {
+        "training_rows": 12,
+        "first_row": "2025-05",
+        "last_row": "2026-04",
+        "earliest_month_used": "2024-05",
+        "features": 16
+      },
+      "available": {
+        "training_rows": 12,
+        "first_row": "2025-05",
+        "last_row": "2026-04",
+        "earliest_month_used": "2024-05",
+        "features": 16
+      }
+    }
+  }
+}

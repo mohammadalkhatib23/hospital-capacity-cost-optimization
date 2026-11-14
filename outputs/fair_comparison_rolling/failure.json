@@ -1,0 +1,10 @@
+{
+  "status": "RESOLVED_BEFORE_SCORING",
+  "boundary_failure": "Approved correction applied and tested",
+  "convergence_failure": "Approved exclusion rule applied to both failed planning origins",
+  "prior_records": [
+    "boundary_failure_history.json",
+    "superseded_registration_1d93530a/failure.json",
+    "verification_history.md"
+  ]
+}

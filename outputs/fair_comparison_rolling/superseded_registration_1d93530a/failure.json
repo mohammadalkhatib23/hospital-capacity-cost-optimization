@@ -1,0 +1,18 @@
+{
+  "status": "FAIL",
+  "stage": "planning_origin_precheck",
+  "origin": "2025-10",
+  "error": "SARIMA-24 did not converge for occupied at 2025-10; stopping",
+  "training_start": "2023-11",
+  "training_end": "2025-10",
+  "forecast_months": [
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03",
+    "2026-04"
+  ],
+  "config_sha256": "1d93530aa10a4a110c3f60f979617d50a7c1f0fc50775657ccecacdf08f2f15d",
+  "action": "Stopped; no model rescue, planning-origin exclusion, rolling plans, or scoring performed."
+}
