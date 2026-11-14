@@ -244,7 +244,7 @@ Costs and benefits are millions. Each cost chain is **Rule / LP / Protected / Hi
 
 [SVG](figures/case_study/two_origin_chain.svg)
 
-Optimisation helped Seasonal naive, SARIMA-24 and ExtraTrees-24 at both origins, while the flat forecasts were unchanged within tolerance. Protection helped Mean-24, Persistence and ExtraTrees-24 in September but hurt them in March, while Seasonal naive and SARIMA-24 switched from hurt to helped. Those switches follow the average forecast direction: the former group went from too low to too high, and the latter group went from too high to too low.
+Optimisation helped Seasonal naive, SARIMA-24 and ExtraTrees-24 at both origins, while the flat forecasts were unchanged within tolerance. Protection helped Mean-24, Persistence and ExtraTrees-24 in September but hurt them in March, while Seasonal naive and SARIMA-24 switched from hurt to helped. In these two windows, the protection flip coincided with a switch in average forecast direction: the former group went from too low to too high, and the latter group went from too high to too low. This is an observed pattern in these two windows, not a general rule about protection.
 
 ## How typical are these two windows?
 
@@ -276,7 +276,7 @@ Neighbouring origins share up to five target months, so the 25 origins are about
 
 ## Answer
 
-LP never cost materially more than Rule in either case study or the saved 25-origin comparison. It saved up to 3.48m per case-study plan for the changing Seasonal naive, SARIMA-24 and ExtraTrees-24 forecasts by keeping beds open through dips; flat forecasts gained nothing material. Protection ranged from an extra cost of 5.74m to a saving of 15.66m across these cases, helping forecasts that were too low on average and hurting those already high. The cheapest combinations were SARIMA-24 + LP in September (16.11m), Seasonal naive + Protected in March (13.56m), and Seasonal naive + Protected across the 25 origins (16.96m on average). Across those origins, optimisation saved 0.54m and protection added 3.44m per method-origin case on average, although protection cost more in 65 of 125 cases.
+At both frozen origins, optimisation never materially increased cost and saved up to 3.48m, mainly by keeping beds open through forecast dips. Protection helped the methods that under-forecast in these windows and added cost for those whose forecasts ran high. Across 25 origins, optimisation saved 0.54m and protection a further 3.44m on average per method and origin; Seasonal naive with protection had the lowest mean cost under the chosen assumptions, narrowly ahead of ExtraTrees with protection.
 
 ## Limitations
 
