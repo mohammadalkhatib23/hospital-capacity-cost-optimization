@@ -1,0 +1,179 @@
+{
+ "name": "Clean checkpoint: five forecasting methods x two decision methods at two origins",
+ "question": "Which forecasting method, combined with which decision method, gives the cheapest realised bed-capacity plan, and how much does it improve on simple baselines and on simply following the forecast?",
+ "data": {
+  "file": "data/raw_v6/Beds-publication-Timeseries-March-2020-October-2026.xlsx",
+  "sha256": "a1afbe8659e4ad984628286935a957d51cbcd9099e96edf4906e671d116151cb",
+  "source_url": "https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2026/11/Beds-publication-Timeseries-March-2020-October-2026.xlsx",
+  "retrieved_utc": "2026-11-13T13:05:27Z",
+  "sheet": "TS - All Acutes",
+  "header_row": "zero-based row index 12 (Excel row 13)",
+  "available": "G&A beds available",
+  "occupied": "G&A beds occupied",
+  "blanks": "months with a blank value are dropped",
+  "cutoff_rule": "rows after a cut-off are discarded before any value is converted",
+  "not_used": "data/raw_v5"
+ },
+ "origins": {
+  "O1_sep2025": {
+   "cutoff": "2025-09",
+   "training_window": [
+    "2023-10",
+    "2025-09"
+   ],
+   "forecast_months": [
+    "2025-10",
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03"
+   ]
+  },
+  "O2_mar2026": {
+   "cutoff": "2026-03",
+   "training_window": [
+    "2024-04",
+    "2026-03"
+   ],
+   "forecast_months": [
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08",
+    "2026-09"
+   ]
+  }
+ },
+ "gap": "d = occupied / 0.90 - available",
+ "forecasts": {
+  "common": "each method forecasts occupied and available separately, six months ahead, from the 24-month training window only",
+  "Mean-24": "mean of the window, flat",
+  "Persistence": "last month of the window, flat",
+  "Seasonal naive": "same calendar month one year earlier",
+  "SARIMA-24": {
+   "order": [
+    1,
+    0,
+    0
+   ],
+   "seasonal_order": [
+    0,
+    1,
+    0,
+    12
+   ],
+   "trend": "n",
+   "enforce_stationarity": true,
+   "enforce_invertibility": true,
+   "simple_differencing": false,
+   "target_scaling": "StandardScaler fitted on the 24 window values; forecasts inverse-transformed",
+   "fit": "lbfgs, maxiter 400, cov_type none",
+   "labels": "all 24 window months",
+   "bounds": "forecasts clipped at 0",
+   "non_convergence": "stop; no rescue"
+  },
+  "ExtraTrees-24": {
+   "estimator": "ExtraTreesRegressor",
+   "n_estimators": 300,
+   "min_samples_leaf": 2,
+   "random_state": 42,
+   "n_jobs": -1,
+   "features": [
+    "target_lag_1",
+    "target_lag_2",
+    "target_lag_3",
+    "target_lag_6",
+    "target_lag_12",
+    "target_roll_mean_3",
+    "target_roll_std_3",
+    "target_roll_mean_6",
+    "target_roll_std_6",
+    "target_roll_mean_12",
+    "target_roll_std_12",
+    "month_number",
+    "quarter",
+    "year",
+    "month_sin",
+    "month_cos"
+   ],
+   "feature_rule": "lags and shifted rolling mean/std (ddof 1) of the target, plus calendar values",
+   "training_rows": "rows whose features need data before the window are dropped (12 rows expected)",
+   "forecasting": "recursive, six steps, earlier predictions feed later features",
+   "bounds": "forecasts clipped at 0",
+   "note": "the project pipeline's median imputer is a no-op here because no feature is missing"
+  }
+ },
+ "decisions": {
+  "costs": {
+   "running": 500.0,
+   "opening": 550.0,
+   "closing": 300.0,
+   "shortfall": 5000.0
+  },
+  "limits": {
+   "cap": 15000.0,
+   "ramp_up": 5000.0,
+   "ramp_down": 5000.0,
+   "x0": 0.0
+  },
+  "Rule": "x_t = max(0, forecast gap), clipped in month order to 0 <= x_t <= 15,000 and the ramp limits (if a ramp binds, move as far toward the forecast gap as allowed); a_t, r_t follow from changes in x_t",
+  "LP": "minimise sum_t (500 x_t + 550 a_t + 300 r_t + 5000 s_t) s.t. x_t + s_t - u_t = forecast gap_t; x_t = x_{t-1} + a_t - r_t; x_0 = 0; 0 <= x_t <= 15,000; 0 <= a_t, r_t <= 5,000; s_t, u_t >= 0; continuous; no terminal charge; solver PuLP CBC, one thread",
+  "Hindsight": "the LP solved with the actual gaps"
+ },
+ "scoring": "each plan is held fixed; realised cost = sum_t (500 x_t + 550 a_t + 300 r_t) + 5000 sum_t max(0, d_t - x_t) with actual gaps; no shortfall deadband; a_t and r_t are the positive and negative parts of x_t - x_{t-1}",
+ "plans": [
+  "Mean-24 Rule",
+  "Mean-24 LP",
+  "Persistence Rule",
+  "Persistence LP",
+  "Seasonal naive Rule",
+  "Seasonal naive LP",
+  "SARIMA-24 Rule",
+  "SARIMA-24 LP",
+  "ExtraTrees-24 Rule",
+  "ExtraTrees-24 LP",
+  "Hindsight"
+ ],
+ "rules": {
+  "per_origin": [
+   "tie band for cost: 1% of that origin's hindsight cost",
+   "tie band for gap MAE: 5 beds",
+   "rank the 10 plans by realised cost; plans within the tie band of the cheapest are 'joint best'"
+  ],
+  "across_origins": [
+   "overall cost ranking: by combined excess over hindsight (sum over the two origins of plan cost minus that origin's hindsight cost)",
+   "'clear winner': a plan that is joint best at both origins, or that beats the overall runner-up by more than the tie band at each origin; otherwise report 'no clear winner' and list the joint-best plans",
+   "best forecast: lowest mean gap MAE across both origins; 'clear' only if lowest at both origins by more than 5 beds"
+  ],
+  "improvement_measures": [
+   "value of optimisation: Rule cost - LP cost for each method",
+   "saving vs Persistence and vs Seasonal naive: baseline cost - plan cost (the same decision method for both)",
+   "share of avoidable cost removed: (baseline cost - plan cost) / (baseline cost - hindsight cost), as a percentage, for baselines Persistence LP and Seasonal naive LP",
+   "forecast skill vs Seasonal naive: 1 - (method MAE / Seasonal naive MAE), for the gap, occupied and available",
+   "excess over hindsight, in model units and as a percentage of hindsight cost",
+   "all reported per origin and combined"
+  ],
+  "literal_readings": [
+   "if more than one plan meets the 'clear winner' definition, every such plan is reported as a joint winner and none is singled out",
+   "'runner-up' is the second plan in the overall ranking; exact ties in combined excess keep the fixed plan order",
+   "'lowest at both origins by more than 5 beds' means lower than every other method by more than 5 beds at each origin",
+   "combined ratios are ratios of sums: share = (sum baseline - sum plan) / (sum baseline - sum hindsight); skill = 1 - mean MAE of the method / mean MAE of Seasonal naive; excess % = sum of excess / sum of hindsight cost",
+   "ranks use realised cost; plans with identical cost share a rank"
+  ]
+ },
+ "disclosures": [
+  "Oct 2025 - Sep 2026 actuals were used in earlier, separate tests; the rules are fixed before this run but are not blind",
+  "NHS revised Sep 2026 between the September and October 2026 publications (available -87, occupied -2)",
+  "the October 2026 publication is used throughout",
+  "SARIMA-24 uses all 24 months as labels; the project's original procedure dropped 12 and required at least 30",
+  "ExtraTrees-24 uses settings selected for occupied beds on available beds too, and has about 12 training rows",
+  "costs are illustrative model units (validated: False)"
+ ],
+ "procedure": [
+  "write and hash this config before any forecast",
+  "plan stage: forecasts and plans for both origins from data up to each cut-off; hash them",
+  "score stage: verify both hashes, load outcomes, solve hindsight, score once, apply the rules"
+ ]
+}

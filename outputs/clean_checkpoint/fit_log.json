@@ -1,0 +1,153 @@
+{
+ "versions": {
+  "python": "3.10.11",
+  "numpy": "2.2.6",
+  "pandas": "2.3.3",
+  "scikit_learn": "1.7.2",
+  "statsmodels": "0.14.6",
+  "pulp": "3.3.2"
+ },
+ "origins": {
+  "O1_sep2025": {
+   "cutoff": "2025-09",
+   "data_last_month": "2025-09",
+   "window": [
+    "2023-10",
+    "2025-09"
+   ],
+   "forecast_months": [
+    "2025-10",
+    "2025-11",
+    "2025-12",
+    "2026-01",
+    "2026-02",
+    "2026-03"
+   ],
+   "seasonal_naive_source": [
+    "2024-10",
+    "2024-11",
+    "2024-12",
+    "2025-01",
+    "2025-02",
+    "2025-03"
+   ],
+   "sarima": {
+    "occupied": {
+     "converged": true,
+     "iterations": 12,
+     "labels": 24,
+     "label_start": "2023-10",
+     "label_end": "2025-09",
+     "params": {
+      "ar.L1": 0.7661388476288494,
+      "sigma2": 0.1478742946518279
+     },
+     "warnings": [
+      "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+     ]
+    },
+    "available": {
+     "converged": true,
+     "iterations": 13,
+     "labels": 24,
+     "label_start": "2023-10",
+     "label_end": "2025-09",
+     "params": {
+      "ar.L1": 0.9474564474362285,
+      "sigma2": 0.13930794800819962
+     },
+     "warnings": [
+      "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+     ]
+    }
+   },
+   "extra_trees": {
+    "occupied": {
+     "training_rows": 12,
+     "first_row": "2024-10",
+     "last_row": "2025-09",
+     "earliest_month_used": "2023-10",
+     "features": 16
+    },
+    "available": {
+     "training_rows": 12,
+     "first_row": "2024-10",
+     "last_row": "2025-09",
+     "earliest_month_used": "2023-10",
+     "features": 16
+    }
+   }
+  },
+  "O2_mar2026": {
+   "cutoff": "2026-03",
+   "data_last_month": "2026-03",
+   "window": [
+    "2024-04",
+    "2026-03"
+   ],
+   "forecast_months": [
+    "2026-04",
+    "2026-05",
+    "2026-06",
+    "2026-07",
+    "2026-08",
+    "2026-09"
+   ],
+   "seasonal_naive_source": [
+    "2025-04",
+    "2025-05",
+    "2025-06",
+    "2025-07",
+    "2025-08",
+    "2025-09"
+   ],
+   "sarima": {
+    "occupied": {
+     "converged": true,
+     "iterations": 5,
+     "labels": 24,
+     "label_start": "2024-04",
+     "label_end": "2026-03",
+     "params": {
+      "ar.L1": 0.8091030830162979,
+      "sigma2": 0.15571526746401657
+     },
+     "warnings": [
+      "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+     ]
+    },
+    "available": {
+     "converged": true,
+     "iterations": 13,
+     "labels": 24,
+     "label_start": "2024-04",
+     "label_end": "2026-03",
+     "params": {
+      "ar.L1": 0.8980944489219158,
+      "sigma2": 0.17655195286407765
+     },
+     "warnings": [
+      "UserWarning: Non-stationary starting autoregressive parameters found. Using zeros as starting parameters.",
+      "ValueWarning: No frequency information was provided, so inferred frequency MS will be used."
+     ]
+    }
+   },
+   "extra_trees": {
+    "occupied": {
+     "training_rows": 12,
+     "first_row": "2025-04",
+     "last_row": "2026-03",
+     "earliest_month_used": "2024-04",
+     "features": 16
+    },
+    "available": {
+     "training_rows": 12,
+     "first_row": "2025-04",
+     "last_row": "2026-03",
+     "earliest_month_used": "2024-04",
+     "features": 16
+    }
+   }
+  }
+ }
+}

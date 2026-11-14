@@ -1,0 +1,82 @@
+{
+ "per_origin": {
+  "O1_sep2025": {
+   "hindsight_cost": 15235867.195555475,
+   "cost_tie_band": 152358.67195555475,
+   "cheapest": "SARIMA-24 LP",
+   "joint_best": [
+    "Seasonal naive LP",
+    "SARIMA-24 LP"
+   ],
+   "lowest_gap_mae": "Seasonal naive",
+   "value_of_optimisation": {
+    "Mean-24": 0.3177778348326683,
+    "Persistence": 0.4766665920615196,
+    "Seasonal naive": 433455.556111088,
+    "SARIMA-24": 435413.4675052464,
+    "ExtraTrees-24": 112571.60320692137
+   }
+  },
+  "O2_mar2026": {
+   "hindsight_cost": 12670359.40621855,
+   "cost_tie_band": 126703.5940621855,
+   "cheapest": "Persistence LP",
+   "joint_best": [
+    "Persistence Rule",
+    "Persistence LP"
+   ],
+   "lowest_gap_mae": "Mean-24",
+   "value_of_optimisation": {
+    "Mean-24": -0.7920370046049356,
+    "Persistence": 0.03944443725049496,
+    "Seasonal naive": 3478688.9738890007,
+    "SARIMA-24": 2778023.456764318,
+    "ExtraTrees-24": 957650.5501690079
+   }
+  }
+ },
+ "overall": {
+  "ranking": [
+   "SARIMA-24 LP",
+   "ExtraTrees-24 LP",
+   "SARIMA-24 Rule",
+   "ExtraTrees-24 Rule",
+   "Seasonal naive LP",
+   "Mean-24 Rule",
+   "Mean-24 LP",
+   "Seasonal naive Rule",
+   "Persistence LP",
+   "Persistence Rule"
+  ],
+  "first": "SARIMA-24 LP",
+  "runner_up": "ExtraTrees-24 LP",
+  "margins_first_over_runner_up": {
+   "O1_sep2025": 7550583.80333321,
+   "O2_mar2026": -5278152.951774096
+  },
+  "beats_runner_up_at_each_origin": false,
+  "joint_best_at_both": [],
+  "clear_winners": [],
+  "statement": "no clear winner"
+ },
+ "best_forecast": {
+  "method": "SARIMA-24",
+  "mean_gap_mae": 340.63114757298047,
+  "margin_over_next_best": {
+   "O1_sep2025": -32.96162024264049,
+   "O2_mar2026": -98.30600146643943
+  },
+  "clear": false,
+  "lowest_per_origin": {
+   "O1_sep2025": "Seasonal naive",
+   "O2_mar2026": "Mean-24"
+  }
+ },
+ "lp_worse_than_rule": [
+  "Mean-24 at O2_mar2026"
+ ],
+ "hashes": {
+  "config": "8406460d682a6d5341579b30e6a9d576dd149fa6050b871697b101b6d6d56be9",
+  "plans_frozen": "7269b6c2aed2186de75d86a150be635a546ece970f78ba95dfe62f94949d6c86"
+ }
+}

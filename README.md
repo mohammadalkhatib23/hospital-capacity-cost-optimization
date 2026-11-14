@@ -1,108 +1,166 @@
-# Which forecast gives the best hospital capacity plan? September 2025 origin
+# Which forecast gives the best hospital capacity plan?
 
 ## Question
 
-At the September 2025 origin, we forecast NHS England occupied and available general and acute beds for October 2025 - March 2026, convert them into a planning gap (occupied / 0.90 - available), and plan extra capacity either by following the forecast ("Rule") or with a linear program ("LP") that minimises running (500 per bed-month), opening (550), closing (300) and shortfall (5,000 per bed-month) costs, with capacity carrying over between months, at most 5,000 beds opened or closed per month, at most 15,000 in total and zero starting capacity. The question is which forecasting method, and which decision method, gives the cheapest realised plan at this origin.
+Hospitals in England need enough general and acute beds every month. We forecast bed numbers six months ahead and turn each forecast into a plan for extra beds. Which forecasting method, paired with which way of making the plan, gives the cheapest plan once the real numbers are known, and how much better is it than simple baselines and than simply following the forecast?
 
-## 1. Five methods on the same 24 months
+## Method
 
-All forecasting methods use the same 24 months before the origin (October 2023 - September 2025) and forecast the next six months (October 2025 - March 2026). SARIMA-full (trained on all history) is shown only as a reference.
+Five methods forecast occupied beds and available beds six months ahead, each from the same 24 months of NHS England data: the 24-month mean (Mean-24), the last month repeated (Persistence), the same month one year earlier (Seasonal naive), a seasonal time-series model (SARIMA-24) and a tree-based machine-learning model (ExtraTrees-24). The two forecasts give the planning gap, occupied / 0.90 - available: the extra beds needed to keep occupancy at 90%. Each gap forecast is turned into a plan in two ways. The Rule opens exactly the forecast gap each month. The LP (a linear program) finds the cheapest plan for the forecast gap, so it may keep beds open through a short dip instead of closing and reopening them. A bed costs 500 a month to run, 550 to open and 300 to close; each missing bed costs 5,000 a month. A plan starts with no extra beds, can hold at most 15,000 and can open or close at most 5,000 in a month. Each plan is then held fixed and costed against the actual gap. Hindsight is the LP solved with the actual gaps: no plan can cost less.
 
-### Forecasts by series
+| Origin | Training window (24 months) | Forecast months |
+| --- | --- | --- |
+| Origin 1: September 2025 | October 2023 - September 2025 | October 2025 - March 2026 |
+| Origin 2: March 2026 | April 2024 - March 2026 | April 2026 - September 2026 |
 
-Seasonal naive and SARIMA-24 are shown against the actual values; all methods are in the table below.
+### How we pick a winner
 
-![Occupied beds: forecast vs actual](figures/sep2025_forecast_occupied.png)
+These rules were written down and hashed before any forecast in this run was computed (config SHA-256 `8406460d682a6d5341579b30e6a9d576dd149fa6050b871697b101b6d6d56be9`).
 
-**Occupied beds:** Seasonal naive was closer in 6 of 6 months (MAE 1,028 vs 1,039). Best of all methods: ExtraTrees-24 (MAE 677).
+- **Joint best.** At each origin the 10 plans are ranked by realised cost. Plans within 1% of that origin's hindsight cost of the cheapest plan are "joint best".
+- **Overall ranking.** Plans are ranked by combined excess over hindsight: cost minus hindsight cost, added over the two origins.
+- **Clear winner.** A plan that is joint best at both origins, or that beats the overall runner-up by more than the 1% band at each origin. Otherwise there is no clear winner.
+- **Best forecast.** The method with the lowest mean gap MAE (mean absolute error) across the two origins. It is "clear" only if it is the lowest at both origins by more than 5 beds.
 
-![Available beds: forecast vs actual](figures/sep2025_forecast_available.png)
+The rules were fixed in advance, but the test is not blind: the outcome months had already been used in earlier tests in this project.
 
-**Available beds:** SARIMA-24 was closer in 6 of 6 months (MAE 808 vs 842). Best of all methods: ExtraTrees-24 (MAE 764).
+## Origin 1: September 2025
 
-![Planning gap: forecast vs actual](figures/sep2025_forecast_gap.png)
+Forecast months: October 2025 - March 2026. The figures show Seasonal naive and SARIMA-24 against the actual values; all five methods are in the table.
 
-**Planning gap:** Seasonal naive was closer in 5 of 6 months; SARIMA-24 in 1 (January). Best of all methods: Seasonal naive (MAE 313).
+![Occupied beds: forecast vs actual, Origin 1](figures/clean_checkpoint/o1_forecast_occupied.png)
 
-### Why the gap is the forecast that matters
+**Occupied beds:** Seasonal naive was closer in 6 of 6 months. Best of all five methods: ExtraTrees-24 (MAE 677 beds).
 
-The planner never uses occupied or available beds on their own; it uses the gap, occupied / 0.90 - available. Errors in the two forecasts can cancel or add up: overestimating occupied beds raises the gap, while overestimating available beds lowers it. Seasonal naive and SARIMA-24 both overestimated occupied and available beds by similar amounts, so their errors largely cancelled and their gaps were close to the actual values. ExtraTrees-24 was the most accurate on both bed series, but it overestimated available beds by more than occupied beds in most months, so its gap came out too low and its plans ran short.
+![Available beds: forecast vs actual, Origin 1](figures/clean_checkpoint/o1_forecast_available.png)
 
-| Forecast | Training data | Decision | Gap MAE (beds) | Mean signed gap error (beds) | Operating cost | Shortfall cost | Total realised cost | Excess over hindsight |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
-| Mean-24 | 24 months | Rule | 709 | 289 | 12.74 | 14.98 | 27.72 | 12.48 |
-| Mean-24 | 24 months | LP | 709 | 289 | 12.74 | 14.98 | 27.72 | 12.48 |
-| Persistence | 24 months | Rule | 880 | 545 | 11.83 | 21.38 | 33.21 | 17.97 |
-| Persistence | 24 months | LP | 880 | 545 | 11.83 | 21.38 | 33.21 | 17.97 |
-| Seasonal naive | 24 months | Rule | 313 | -300 | 16.38 | 0.19 | 16.57 | 1.33 |
-| Seasonal naive | 24 months | LP | 313 | -300 | 15.95 | 0.19 | 16.14 | 0.90 |
-| SARIMA-24 | 24 months | Rule | 346 | -346 | 16.54 | 0.00 | 16.54 | 1.31 |
-| SARIMA-24 | 24 months | LP | 346 | -346 | 16.11 | 0.00 | 16.11 | 0.87 |
-| ExtraTrees-24 | 24 months | Rule | 454 | 205 | 13.88 | 9.89 | 23.77 | 8.54 |
-| ExtraTrees-24 | 24 months | LP | 454 | 205 | 13.77 | 9.89 | 23.66 | 8.42 |
-| SARIMA-full | full history (reference) | LP | 356 | -356 | 16.15 | 0.00 | 16.15 | 0.91 |
-| Hindsight | - | LP | - | - | 15.24 | 0.00 | 15.24 | 0.00 |
+**Available beds:** SARIMA-24 was closer in 6 of 6 months. Best of all five methods: ExtraTrees-24 (MAE 764 beds).
 
-Costs in millions of model cost units. Mean signed gap error = actual - forecast.
+![Planning gap: forecast vs actual, Origin 1](figures/clean_checkpoint/o1_forecast_gap.png)
 
-![September 2025 origin: realised cost by method](figures/sep2025_realised_cost_by_plan.png)
+**Planning gap:** Seasonal naive was closer in 5 of 6 months and SARIMA-24 in 1. Best of all five methods: Seasonal naive (MAE 313 beds).
 
-### Month by month: cost
+| Forecast | Decision | Gap MAE (beds) | Mean signed gap error (beds) | Operating cost | Shortfall cost | Total | Excess over hindsight |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Mean-24 | Rule | 709 | 289 | 12.74 | 14.98 | 27.72 | 12.48 |
+| Mean-24 | LP | 709 | 289 | 12.74 | 14.98 | 27.72 | 12.48 |
+| Persistence | Rule | 880 | 545 | 11.83 | 21.38 | 33.21 | 17.97 |
+| Persistence | LP | 880 | 545 | 11.83 | 21.38 | 33.21 | 17.97 |
+| Seasonal naive | Rule | 313 | -300 | 16.38 | 0.19 | 16.57 | 1.33 |
+| Seasonal naive | LP | 313 | -300 | 15.95 | 0.19 | 16.14 | 0.90 |
+| SARIMA-24 | Rule | 346 | -346 | 16.54 | 0.00 | 16.54 | 1.31 |
+| SARIMA-24 | LP | 346 | -346 | 16.11 | 0.00 | 16.11 | 0.87 |
+| ExtraTrees-24 | Rule | 454 | 205 | 13.88 | 9.89 | 23.77 | 8.54 |
+| ExtraTrees-24 | LP | 454 | 205 | 13.77 | 9.89 | 23.66 | 8.42 |
+| Hindsight | LP | - | - | 15.24 | 0.00 | 15.24 | 0.00 |
 
-![September 2025 origin: what each plan cost, month by month](figures/sep2025_monthly_cost_heatmap.png)
+Costs in millions of model units. Mean signed gap error = actual - forecast: above zero means the forecast was too low.
 
-Monthly cost includes running, opening and closing beds plus the 5,000-per-bed shortfall penalty; 'short' and 'spare' show how far each plan was below or above the actual gap that month.
+![Realised cost by plan, Origin 1](figures/clean_checkpoint/o1_cost_bars.png)
 
-**Result.** Seasonal naive had the lowest gap MAE (313 beds), and SARIMA-24 LP had the lowest realised cost (16.11m, 0.87m above hindsight). SARIMA-24 LP, Seasonal naive LP and SARIMA-full LP were within 0.04m of one another. Rule and LP plans were identical for Mean-24 and Persistence, and LP was cheaper than Rule by 0.43m for Seasonal naive, 0.44m for SARIMA-24 and 0.11m for ExtraTrees-24 (differences computed before rounding). This is a single origin (one six-month window), SARIMA-24 and ExtraTrees-24 are fitted on only 24 months, and costs are illustrative model units (validated: False).
+![Monthly cost by plan, Origin 1](figures/clean_checkpoint/o1_cost_heatmap.png)
 
-## 2. Does more training data help?
+**Result.** SARIMA-24 LP was the cheapest plan (16.11m, 0.87m above hindsight), and Seasonal naive LP (16.14m) was joint best with it. Seasonal naive had the most accurate gap forecast (MAE 313 beds). The LP was cheaper than the Rule by 0.43m for Seasonal naive, 0.44m for SARIMA-24 and 0.11m for ExtraTrees-24; for the two flat forecasts (Mean-24, Persistence) the Rule and the LP give the same plan.
 
-SARIMA and ExtraTrees are retrained on 24 months, 36 months and all history before the origin, with unchanged specifications; Seasonal naive is the same in every case and serves as the benchmark.
+## Origin 2: March 2026
 
-| Model | Training window | Training rows / labels | Occupied MAE | Available MAE | Gap MAE | Gap months closer than SN | LP total cost | Shortfall cost | Excess over hindsight |
-| --- | --- | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| Seasonal naive | same month one year earlier | - | 1,028 | 842 | 313 | - | 16.14 | 0.19 | 0.90 |
-| SARIMA-24 | Oct 2023 - Sep 2025 | 24 labels | 1,039 | 808 | 346 | 1 of 6 | 16.11 | 0.00 | 0.87 |
-| SARIMA-36 | Oct 2022 - Sep 2025 | 36 labels | 1,037 | 815 | 339 | 1 of 6 | 16.11 | 0.03 | 0.87 |
-| SARIMA-full | Dec 2020 - Sep 2025 | 58 labels | 1,050 | 805 | 362 | 1 of 6 | 16.17 | 0.00 | 0.93 |
-| ExtraTrees-24 | Oct 2023 - Sep 2025 | 12 rows | 677 | 764 | 454 | 3 of 6 | 23.66 | 9.89 | 8.42 |
-| ExtraTrees-36 | Oct 2022 - Sep 2025 | 24 rows | 834 | 688 | 272 | 3 of 6 | 16.00 | 0.50 | 0.76 |
-| ExtraTrees-full | Dec 2020 - Sep 2025 | 46 rows | 889 | 792 | 272 | 3 of 6 | 16.73 | 1.49 | 1.49 |
-| Hindsight | - | - | - | - | - | - | 15.24 | 0.00 | 0.00 |
+Forecast months: April 2026 - September 2026. The figures show Seasonal naive and SARIMA-24 against the actual values; all five methods are in the table.
 
-Costs in millions of model cost units. SARIMA-full here fits all 58 months as labels, so it differs from the SARIMA-full reference in section 1 (46 labels).
+![Occupied beds: forecast vs actual, Origin 2](figures/clean_checkpoint/o2_forecast_occupied.png)
 
-![Gap MAE by training window](figures/sep2025_windows_gap_mae.png)
+**Occupied beds:** Seasonal naive was closer in 3 of 6 months and SARIMA-24 in 3. Best of all five methods: Seasonal naive (MAE 449 beds).
 
-ExtraTrees-full (271.8) and ExtraTrees-36 (272.5) had the lowest gap MAEs; all three SARIMA variants (339-362) were above Seasonal naive (313).
+![Available beds: forecast vs actual, Origin 2](figures/clean_checkpoint/o2_forecast_available.png)
 
-![Occupied and available bed MAE by training window](figures/sep2025_windows_bed_mae.png)
+**Available beds:** Seasonal naive was closer in 1 of 6 months and SARIMA-24 in 5. Best of all five methods: SARIMA-24 (MAE 262 beds).
 
-ExtraTrees-24 had the lowest occupied-bed MAE (677) and ExtraTrees-36 the lowest available-bed MAE (688); every SARIMA variant was above Seasonal naive on occupied beds and below it on available beds.
+![Planning gap: forecast vs actual, Origin 2](figures/clean_checkpoint/o2_forecast_gap.png)
 
-![LP total realised cost by training window](figures/sep2025_windows_total_cost.png)
+**Planning gap:** SARIMA-24 was closer in 6 of 6 months. Best of all five methods: Mean-24 (MAE 237 beds).
 
-ExtraTrees-36 LP had the lowest total realised cost (16.00m), followed by SARIMA-36 LP and SARIMA-24 LP (both 16.11m); Seasonal naive LP cost 16.14m and Hindsight 15.24m.
+| Forecast | Decision | Gap MAE (beds) | Mean signed gap error (beds) | Operating cost | Shortfall cost | Total | Excess over hindsight |
+| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Mean-24 | Rule | 237 | -113 | 12.33 | 1.87 | 14.19 | 1.52 |
+| Mean-24 | LP | 237 | -113 | 12.33 | 1.87 | 14.19 | 1.52 |
+| Persistence | Rule | 514 | -514 | 13.75 | 0.00 | 13.75 | 1.08 |
+| Persistence | LP | 514 | -514 | 13.75 | 0.00 | 13.75 | 1.08 |
+| Seasonal naive | Rule | 591 | 591 | 11.36 | 17.73 | 29.09 | 16.42 |
+| Seasonal naive | LP | 591 | 591 | 11.14 | 14.48 | 25.62 | 12.95 |
+| SARIMA-24 | Rule | 335 | 316 | 12.21 | 9.78 | 21.99 | 9.32 |
+| SARIMA-24 | LP | 335 | 316 | 12.00 | 7.22 | 19.21 | 6.54 |
+| ExtraTrees-24 | Rule | 524 | -469 | 14.08 | 0.81 | 14.89 | 2.22 |
+| ExtraTrees-24 | LP | 524 | -469 | 13.93 | 0.00 | 13.93 | 1.26 |
+| Hindsight | LP | - | - | 12.67 | 0.00 | 12.67 | 0.00 |
 
-![Planning gap by month and training window](figures/sep2025_windows_gap_forecasts.png)
+Costs in millions of model units. Mean signed gap error = actual - forecast: above zero means the forecast was too low.
 
-ExtraTrees-24 gave the lowest gap forecast in every month, and every forecast was above the actual gap in December 2025.
+![Realised cost by plan, Origin 2](figures/clean_checkpoint/o2_cost_bars.png)
 
-![Monthly realised cost by training window](figures/sep2025_windows_monthly_cost_heatmap.png)
+![Monthly cost by plan, Origin 2](figures/clean_checkpoint/o2_cost_heatmap.png)
 
-ExtraTrees-24 LP was short in 5 of 6 months, ExtraTrees-full LP in 3, ExtraTrees-36 LP, SARIMA-36 LP and Seasonal naive LP in 1 (January 2026), and SARIMA-24 LP and SARIMA-full LP in none.
+**Result.** Persistence was the cheapest plan (13.75m, 1.08m above hindsight; its Rule and LP plans are the same), and no other plan was within the tie band. Mean-24 had the most accurate gap forecast (MAE 237 beds). Seasonal naive LP and SARIMA-24 LP, joint best at Origin 1, ranked 9th and 7th: their gap forecasts were below the actual gap in 6 and 5 of 6 months.
 
-**Result.** For SARIMA, more data did not consistently lower gap MAE or cost (gap MAE 346, 339, 362 and LP cost 16.11m, 16.11m, 16.17m for 24 months, 36 months and full history); for ExtraTrees, moving from 24 to 36 months lowered gap MAE from 454 to 272 and LP cost from 23.66m to 16.00m, while full history gave a gap MAE of 272 and an LP cost of 16.73m. ExtraTrees-36 and ExtraTrees-full beat Seasonal naive on gap MAE (313), and ExtraTrees-36, SARIMA-36 and SARIMA-24 beat it on LP cost (16.14m), by at most 0.14m. This is a single origin (one six-month window); costs are illustrative model units (validated: False).
+## Both origins together
+
+| Plan | Origin 1 cost | Origin 1 rank | Origin 2 cost | Origin 2 rank | Combined excess over hindsight | Overall rank |
+| --- | ---: | --- | ---: | --- | ---: | --- |
+| SARIMA-24 LP | 16.11 | 1 (joint best) | 19.21 | 7 | 7.41 | 1 |
+| ExtraTrees-24 LP | 23.66 | 5 | 13.93 | 3 | 9.69 | 2 |
+| SARIMA-24 Rule | 16.54 | 3 | 21.99 | 8 | 10.63 | 3 |
+| ExtraTrees-24 Rule | 23.77 | 6 | 14.89 | 6 | 10.76 | 4 |
+| Seasonal naive LP | 16.14 | 2 (joint best) | 25.62 | 9 | 13.85 | 5 |
+| Mean-24 Rule | 27.72 | 7= | 14.19 | 4= | 14.00 | 6= |
+| Mean-24 LP | 27.72 | 7= | 14.19 | 4= | 14.00 | 6= |
+| Seasonal naive Rule | 16.57 | 4 | 29.09 | 10 | 17.76 | 8 |
+| Persistence LP | 33.21 | 9= | 13.75 | 1= (joint best) | 19.05 | 9= |
+| Persistence Rule | 33.21 | 9= | 13.75 | 1= (joint best) | 19.05 | 9= |
+
+Costs in millions of model units. Hindsight cost: 15.24m at Origin 1 and 12.67m at Origin 2, so the tie bands are 0.15m and 0.13m. "=" marks a shared rank: for a flat forecast the Rule and the LP give the same plan, and their costs differ by less than 1 model unit (solver rounding).
+
+| Plan | Value of optimisation | Saving vs Persistence | Saving vs Seasonal naive | Avoidable cost removed, vs Persistence LP | Avoidable cost removed, vs Seasonal naive LP | Gap forecast skill vs Seasonal naive |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: |
+| Mean-24 Rule | 0.00 / 0.00 / 0.00 | 5.49 / -0.44 / 5.05 | -11.15 / 14.90 / 3.75 | 31% / -41% / 26% | -1,285% / 88% / -1% | -1.27 / 0.60 / -0.05 |
+| Mean-24 LP | 0.00 / 0.00 / 0.00 | 5.49 / -0.44 / 5.05 | -11.58 / 11.42 / -0.16 | 31% / -41% / 26% | -1,285% / 88% / -1% | -1.27 / 0.60 / -0.05 |
+| Persistence Rule | 0.00 / 0.00 / 0.00 | 0.00 / 0.00 / 0.00 | -16.64 / 15.35 / -1.29 | 0% / 0% / 0% | -1,894% / 92% / -38% | -1.81 / 0.13 / -0.54 |
+| Persistence LP | 0.00 / 0.00 / 0.00 | 0.00 / 0.00 / 0.00 | -17.07 / 11.87 / -5.21 | 0% / 0% / 0% | -1,894% / 92% / -38% | -1.81 / 0.13 / -0.54 |
+| Seasonal naive Rule | 0.43 / 3.48 / 3.91 | 16.64 / -15.35 / 1.29 | 0.00 / 0.00 / 0.00 | 93% / -1,422% / 7% | -48% / -27% / -28% | 0.00 / 0.00 / 0.00 |
+| Seasonal naive LP | 0.43 / 3.48 / 3.91 | 17.07 / -11.87 / 5.21 | 0.00 / 0.00 / 0.00 | 95% / -1,100% / 27% | 0% / 0% / 0% | 0.00 / 0.00 / 0.00 |
+| SARIMA-24 Rule | 0.44 / 2.78 / 3.21 | 16.67 / -8.24 / 8.43 | 0.03 / 7.10 / 7.13 | 93% / -764% / 44% | -45% / 28% / 23% | -0.11 / 0.43 / 0.25 |
+| SARIMA-24 LP | 0.44 / 2.78 / 3.21 | 17.10 / -5.46 / 11.64 | 0.03 / 6.40 / 6.43 | 95% / -506% / 61% | 3% / 49% / 46% | -0.11 / 0.43 / 0.25 |
+| ExtraTrees-24 Rule | 0.11 / 0.96 / 1.07 | 9.44 / -1.14 / 8.30 | -7.20 / 14.20 / 7.00 | 53% / -106% / 44% | -847% / 83% / 22% | -0.45 / 0.11 / -0.08 |
+| ExtraTrees-24 LP | 0.11 / 0.96 / 1.07 | 9.55 / -0.19 / 9.37 | -7.52 / 11.68 / 4.16 | 53% / -17% / 49% | -835% / 90% / 30% | -0.45 / 0.11 / -0.08 |
+
+Each cell shows Origin 1 / Origin 2 / both origins; money in millions of model units. **Value of optimisation** = Rule cost - LP cost for the same forecast. **Saving** = baseline cost - plan cost, with the same decision method on both sides (Rule against Rule, LP against LP); below zero means the plan cost more than the baseline. **Avoidable cost removed** = (baseline LP cost - plan cost) / (baseline LP cost - hindsight cost); 100% would match hindsight, and the figure becomes large and negative when the baseline was already close to hindsight. **Skill** = 1 - gap MAE / Seasonal naive gap MAE; above zero is more accurate than Seasonal naive. Skill for occupied and available beds is in `outputs/clean_checkpoint/improvements.csv`.
+
+![Excess over hindsight by plan, both origins](figures/clean_checkpoint/both_excess_over_hindsight.png)
 
 ## Answer
 
-With 24 months of training, Seasonal naive had the most accurate gap forecast (MAE 313 beds) and SARIMA-24 LP had the cheapest plan (16.11m), within 0.04m of Seasonal naive LP (16.14m) and SARIMA-full LP (16.15m). The LP was never more expensive than the Rule: identical for the flat forecasts (Mean-24, Persistence) and cheaper by 0.43m (Seasonal naive), 0.44m (SARIMA-24) and 0.11m (ExtraTrees-24). With more training data, ExtraTrees-full and ExtraTrees-36 had the most accurate gap forecasts (MAE 271.8 and 272.5) and ExtraTrees-36 LP the cheapest plan (16.00m), while SARIMA changed little (gap MAE 346, 339 and 362; LP cost 16.11m, 16.11m and 16.17m for 24 months, 36 months and full history). Hindsight cost was 15.24m. This is a single origin (one six-month window); results may differ at other origins. Costs are illustrative model units (validated: False).
+There is no clear winner: no plan was joint best at both origins (Origin 1: SARIMA-24 LP and Seasonal naive LP; Origin 2: Persistence, whose Rule and LP plans are the same). SARIMA-24 LP ranked first overall (7.41m above hindsight over both origins) and SARIMA-24 had the lowest mean gap MAE (341 beds), but it is not a clear best forecast: Seasonal naive was more accurate at Origin 1 and Mean-24 at Origin 2. Over both origins SARIMA-24 LP cost 11.64m less than Persistence LP, 6.43m less than Seasonal naive LP and 3.21m less than following its own forecast with the Rule, although at Origin 2 it cost 5.46m more than Persistence LP; the LP was never worse than the Rule, apart from rounding of less than 1 model unit where the two give the same plan. Two non-overlapping six-month windows show whether a ranking repeats once; they do not establish a general ranking. Costs are illustrative model units (validated: False).
 
-### Limitations
+## Methodology notes
 
-- One origin only.
-- Univariate models; no exogenous drivers.
+A review of this design was written before anything was run (`outputs/clean_checkpoint/methodology_review.md`). Nothing was rated "must change". The points below need to be kept in mind when reading the results.
+
+- **Fair in information.** Every method sees the same 24 months and faces the same six months, costs, limits and scoring. Hindsight uses the same LP.
+- **Costs are lopsided.** A missing bed costs ten times as much as a spare bed, and neither decision method adds a safety margin. A forecast that is too high is protected; a forecast that is too low is punished. The cheapest plan is therefore not always the most accurate forecast. Read the mean signed gap error together with the MAE.
+- **SARIMA-24 (departure).** It is fitted on all 24 months as labels. The project's original procedure dropped the first 12 months and needed at least 30 labels, so it could not run on a 24-month window. One seasonal difference leaves about 12 observations. All 4 fits converged.
+- **ExtraTrees-24 (departure).** Its settings were selected earlier for occupied beds and are reused for available beds. Every fit had 12 training rows for 16 features. The results describe this model with very little data, not the model family in general.
+- **Fixed in advance, not blind.** The rules were hashed before any forecast. But October 2025 - September 2026 actuals had been used in earlier, separate tests, and the model settings, the 24-month window and both origins were chosen with knowledge of that earlier work.
+- **Data.** The October 2026 NHS England publication is used throughout (SHA-256 checked). NHS revised September 2026 between the September and October 2026 publications (available -87, occupied -2).
+- **Start and end.** Each window starts from zero extra beds and has no closing charge at the end. This is the same for every plan, including hindsight.
+- **Wording of the winner rule.** If more than one plan had met the "clear winner" definition, all would have been reported as joint winners. This did not arise.
+- **Verification.** All checks in `outputs/clean_checkpoint/verification.md` pass: unit tests, date and constraint checks, independent recomputation of costs and rules, a full rerun, and a second LP solver. Origin 1 reproduces the earlier September 2025 results of this repository to within rounding error. Frozen-plan SHA-256: `7269b6c2aed2186de75d86a150be635a546ece970f78ba95dfe62f94949d6c86`.
+
+Code: `scripts/clean_checkpoint/`. Results: `outputs/clean_checkpoint/`.
+
+## Limitations
+
+- Two origins only. Their training windows share 18 of 24 months, so the two tests are not independent.
+- Small samples: each model sees 24 months. Model settings are fixed, not tuned.
+- Point forecasts only. No plan includes a safety margin or a measure of uncertainty.
+- Univariate models; no outside drivers such as weather, flu or staffing.
 - Occupied and available beds are forecast separately and combined into the gap afterwards.
-- National monthly aggregates; no trust- or region-level detail.
-- Model specifications are fixed, not tuned.
+- National monthly totals; no trust or regional detail.
+- A retrospective test on final published figures, not on the figures available at each origin.
 - Costs are illustrative model units, not NHS cash.
