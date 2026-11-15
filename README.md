@@ -70,6 +70,35 @@ Each cell is **total (operating + shortfall)**, in millions. Bold marks the chea
 
 Source: [saved total scores](outputs/fair_comparison/O1_sep2025/totals.csv) and [saved Rule/LP/Protected monthly costs](outputs/optimisation_value/monthly_costs.csv).
 
+### Month by month
+
+![September 2025: actual gap, forecast and all capacity plans](figures/case_study/sep2025_monthly_plans.png)
+
+[SVG](figures/case_study/sep2025_monthly_plans.svg)
+
+Capacity below the actual line is short; capacity above it is spare. Overlapping lines show equal values.
+
+![September 2025: monthly realised cost of all plans](figures/case_study/sep2025_monthly_cost_all_plans.png)
+
+[SVG](figures/case_study/sep2025_monthly_cost_all_plans.svg)
+
+**Computed from saved plans and actuals.** Costs are millions of model units; short/spare values are rounded beds. In Total, short is summed shortfall bed-months; if that rounds to zero, spare is summed spare bed-months. Total has its own colour scale, and the unrounded monthly costs sum to the saved total for every plan.
+
+Actual and forecast gaps, rounded to whole beds:
+
+| Month | Actual gap | Mean-24 | Persistence | Seasonal naive | SARIMA-24 | ExtraTrees-24 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Oct 2025 | 3,868 | 3,589 | 3,333 | 4,244 | 4,303 | 3,564 |
+| Nov 2025 | 3,900 | 3,589 | 3,333 | 4,419 | 4,472 | 3,397 |
+| Dec 2025 | 2,330 | 3,589 | 3,333 | 3,181 | 3,228 | 3,076 |
+| Jan 2026 | 4,680 | 3,589 | 3,333 | 4,642 | 4,684 | 4,100 |
+| Feb 2026 | 4,618 | 3,589 | 3,333 | 4,667 | 4,705 | 4,189 |
+| Mar 2026 | 3,873 | 3,589 | 3,333 | 3,918 | 3,953 | 3,711 |
+
+Sources: [saved actuals](outputs/fair_comparison/O1_sep2025/actuals.csv) and [saved forecasts](outputs/fair_comparison/O1_sep2025/forecasts.csv).
+
+January and February drive the largest bills for Mean-24 and Persistence under Rule and LP, while October includes the opening costs. In December, LP keeps Seasonal naive and SARIMA-24 capacity open through the dip; Protected keeps every method above the actual gap throughout this window.
+
 ### Why optimisation helped
 
 The tables show additional beds open (**x**), additions (**+**) and removals (**-**) each month. All values are beds, rounded to one decimal. These are the frozen schedules, not decisions updated after observing demand.
@@ -172,6 +201,35 @@ Each cell is **total (operating + shortfall)**, in millions. Bold marks the chea
 
 Source: [saved total scores](outputs/fair_comparison/O2_mar2026/totals.csv) and [saved Rule/LP/Protected monthly costs](outputs/optimisation_value/monthly_costs.csv).
 
+### Month by month
+
+![March 2026: actual gap, forecast and all capacity plans](figures/case_study/mar2026_monthly_plans.png)
+
+[SVG](figures/case_study/mar2026_monthly_plans.svg)
+
+Capacity below the actual line is short; capacity above it is spare. Overlapping lines show equal values.
+
+![March 2026: monthly realised cost of all plans](figures/case_study/mar2026_monthly_cost_all_plans.png)
+
+[SVG](figures/case_study/mar2026_monthly_cost_all_plans.svg)
+
+**Computed from saved plans and actuals.** Costs are millions of model units; short/spare values are rounded beds. In Total, short is summed shortfall bed-months; if that rounds to zero, spare is summed spare bed-months. Total has its own colour scale, and the unrounded monthly costs sum to the saved total for every plan.
+
+Actual and forecast gaps, rounded to whole beds:
+
+| Month | Actual gap | Mean-24 | Persistence | Seasonal naive | SARIMA-24 | ExtraTrees-24 |
+| --- | --- | --- | --- | --- | --- | --- |
+| Apr 2026 | 3,541 | 3,472 | 3,873 | 3,187 | 3,290 | 3,846 |
+| May 2026 | 3,579 | 3,472 | 3,873 | 3,128 | 3,337 | 3,416 |
+| Jun 2026 | 3,495 | 3,472 | 3,873 | 2,819 | 3,101 | 3,825 |
+| Jul 2026 | 3,281 | 3,472 | 3,873 | 2,397 | 2,725 | 3,859 |
+| Aug 2026 | 2,615 | 3,472 | 3,873 | 1,746 | 2,103 | 3,982 |
+| Sep 2026 | 3,646 | 3,472 | 3,873 | 3,333 | 3,703 | 4,047 |
+
+Sources: [saved actuals](outputs/fair_comparison/O2_mar2026/actuals.csv) and [saved forecasts](outputs/fair_comparison/O2_mar2026/forecasts.csv).
+
+Opening costs raise April's bills, while Seasonal naive's Rule and LP bills peak in July. LP keeps Seasonal naive and SARIMA-24 capacity open through August; Protected reduces their shortfalls while leaving Mean-24, Persistence and ExtraTrees-24 above the actual gap throughout the window.
+
 ### Why optimisation helped
 
 The tables show additional beds open (**x**), additions (**+**) and removals (**-**) each month. All values are beds, rounded to one decimal. These are the frozen schedules, not decisions updated after observing demand.
@@ -246,62 +304,35 @@ Costs and benefits are millions. Each cost chain is **Rule / LP / Protected / Hi
 
 Optimisation helped Seasonal naive, SARIMA-24 and ExtraTrees-24 at both origins, while the flat forecasts were unchanged within tolerance. Protection helped Mean-24, Persistence and ExtraTrees-24 in September but hurt them in March, while Seasonal naive and SARIMA-24 switched from hurt to helped. In these two windows, the protection flip coincided with a switch in average forecast direction: the former group went from too low to too high, and the latter group went from too high to too low. This is an observed pattern in these two windows, not a general rule about protection.
 
-## How typical are these two windows?
-
-The saved comparison retains 25 origins for every method. The table gives mean cost per six-month plan; C/E/D counts LP cheaper/equal/dearer than Rule under the registered tolerance.
-
-| Method | Rule | LP | Protected | Hindsight | Optimisation value (C/E/D) | Protection value |
-| --- | --- | --- | --- | --- | --- | --- |
-| Mean-24 | 20.71 | 20.71 | 19.67 | 13.45 | 0.00 (0/25/0) | 1.05 |
-| Persistence | 27.57 | 27.57 | 20.75 | 13.45 | 0.00 (0/25/0) | 6.82 |
-| Seasonal naive | 18.86 | 17.97 | 16.96 | 13.45 | 0.90 (17/8/0) | 1.01 |
-| SARIMA-24 | 24.88 | 23.39 | 17.90 | 13.45 | 1.49 (19/6/0) | 5.49 |
-| ExtraTrees-24 | 20.49 | 20.17 | 17.32 | 13.45 | 0.33 (20/5/0) | 2.84 |
-
-Source: [saved 25-origin summary](outputs/optimisation_value/summary.csv).
-
-Percentiles rank each case-study benefit within that method's saved 25-origin results. Higher means a larger saving, not necessarily a positive saving. We use a midrank: **100 × (number below + half the number tied) / 25**. Optimisation benefits within the registered cost-equality tolerance count as zero for these ranks; the raw scores stay unchanged.
-
-| Method | Sep: optimisation percentile | Sep: protection percentile | Mar: optimisation percentile | Mar: protection percentile |
-| --- | --- | --- | --- | --- |
-| Mean-24 | 50% | 94% | 50% | 26% |
-| Persistence | 50% | 74% | 50% | 22% |
-| Seasonal naive | 50% | 54% | 94% | 98% |
-| SARIMA-24 | 34% | 6% | 78% | 54% |
-| ExtraTrees-24 | 50% | 74% | 90% | 10% |
-
-The flat methods therefore sit at the middle optimisation percentile. Seasonal naive's March protection benefit was the largest in its saved distribution, so that window shows an unusually large gain.
-
-Neighbouring origins share up to five target months, so the 25 origins are about four to five independent windows. This describes a rough count of disjoint six-month blocks; statistical dependence may extend across them.
-
 ## Answer
 
-At both frozen origins, optimisation never materially increased cost and saved up to 3.48m, mainly by keeping beds open through forecast dips. Protection helped the methods that under-forecast in these windows and added cost for those whose forecasts ran high. Across 25 origins, optimisation saved 0.54m and protection a further 3.44m on average per method and origin; Seasonal naive with protection had the lowest mean cost under the chosen assumptions, narrowly ahead of ExtraTrees with protection.
+At both origins, optimisation never materially increased cost compared with following the forecast, and it saved up to 3.48m, mainly by keeping beds open through forecast dips. The cheapest plan was SARIMA-24 with optimisation in September 2025 (16.11m, close to Seasonal naive with optimisation at 16.14m) and Seasonal naive with protection in March 2026 (13.56m). Protection helped the methods that under-forecast in each window and added cost for those whose forecasts ran high; because the methods switched direction between the two windows, protection's effect flipped for every method. These are two six-month windows, so they show how the methods behaved, not a general ranking.
 
 ## Limitations
 
-- These are two case-study origins; the overlapping comparison gives broader descriptive context.
+- These are two six-month windows, so the results describe these cases.
 - The models are univariate and do not use staffing, admissions, discharge or policy variables.
+- Occupied and available beds are forecast separately.
 - National monthly totals hide local bottlenecks and daily peaks.
 - Model specifications were fixed, not tuned for these windows.
-- Costs are illustrative; capacity is not a full staffing or clinical feasibility model.
-- Results depend on the shortage price and the assumed capacity limits.
+- Costs are illustrative (validated: False); capacity is not a full staffing or clinical feasibility model.
+- Results depend on the assumed shortage price and capacity limits.
 
 <details>
 <summary>Saved sources, verification and reproduction</summary>
 
-The builder verifies the existing SHA-256 manifests, agreement between the two-origin and rolling records, Rule agreement with the clean checkpoint, monthly sums, hindsight bounds, numerical provenance, table structure and figure links. All checks passed. Monthly cost arithmetic only reconstructs components of the saved plans; no model or optimisation routine is called.
+The builder verifies the existing SHA-256 manifests, agreement between the saved two-origin records, Rule agreement with the clean checkpoint, monthly sums, hindsight bounds, numerical provenance, table structure and figure links. All checks passed. Monthly cost arithmetic only reconstructs components of the saved plans; no model or optimisation routine is called.
 
 Checker correction: Rule, LP and Protected are checked against their hashed frozen plans. Hindsight is checked against the saved scored plans and totals from both the fair comparison and clean checkpoint, which agree to 1e-6 relative. A scored-only unit test covers this distinction; no saved data or results changed.
 
 The source files are:
 
-- **September 2025:** [actuals](outputs/fair_comparison/O1_sep2025/actuals.csv), [forecasts](outputs/fair_comparison/O1_sep2025/forecasts.csv), [accuracy](outputs/fair_comparison/O1_sep2025/accuracy.csv), [plans](outputs/fair_comparison/O1_sep2025/plans.csv), [totals](outputs/fair_comparison/O1_sep2025/totals.csv); [clean-checkpoint totals](outputs/clean_checkpoint/O1_sep2025/totals.csv); [clean-checkpoint scored plans](outputs/clean_checkpoint/O1_sep2025/plans.csv); [rolling totals](outputs/fair_comparison_rolling/2025-09/totals.csv).
-- **March 2026:** [actuals](outputs/fair_comparison/O2_mar2026/actuals.csv), [forecasts](outputs/fair_comparison/O2_mar2026/forecasts.csv), [accuracy](outputs/fair_comparison/O2_mar2026/accuracy.csv), [plans](outputs/fair_comparison/O2_mar2026/plans.csv), [totals](outputs/fair_comparison/O2_mar2026/totals.csv); [clean-checkpoint totals](outputs/clean_checkpoint/O2_mar2026/totals.csv); [clean-checkpoint scored plans](outputs/clean_checkpoint/O2_mar2026/plans.csv); [rolling totals](outputs/fair_comparison_rolling/2026-03/totals.csv).
+- **September 2025:** [actuals](outputs/fair_comparison/O1_sep2025/actuals.csv), [forecasts](outputs/fair_comparison/O1_sep2025/forecasts.csv), [accuracy](outputs/fair_comparison/O1_sep2025/accuracy.csv), [plans](outputs/fair_comparison/O1_sep2025/plans.csv), [totals](outputs/fair_comparison/O1_sep2025/totals.csv); [clean-checkpoint totals](outputs/clean_checkpoint/O1_sep2025/totals.csv); [clean-checkpoint scored plans](outputs/clean_checkpoint/O1_sep2025/plans.csv).
+- **March 2026:** [actuals](outputs/fair_comparison/O2_mar2026/actuals.csv), [forecasts](outputs/fair_comparison/O2_mar2026/forecasts.csv), [accuracy](outputs/fair_comparison/O2_mar2026/accuracy.csv), [plans](outputs/fair_comparison/O2_mar2026/plans.csv), [totals](outputs/fair_comparison/O2_mar2026/totals.csv); [clean-checkpoint totals](outputs/clean_checkpoint/O2_mar2026/totals.csv); [clean-checkpoint scored plans](outputs/clean_checkpoint/O2_mar2026/plans.csv).
 - **Rule and common scoring:** [rule_plans](outputs/optimisation_value/rule_plans.csv), [monthly_costs](outputs/optimisation_value/monthly_costs.csv), [costs](outputs/optimisation_value/costs.csv).
-- **Broader context:** [25-origin summary](outputs/optimisation_value/summary.csv) and [April–September 2025 actuals](outputs/fair_comparison_rolling/2025-03/actuals.csv).
+- **Prior-year comparison:** Seasonal naive's [saved March forecast](outputs/fair_comparison/O2_mar2026/forecasts.csv) repeats the same calendar months of 2025.
 - **Definitions:** [fair-comparison configuration](outputs/fair_comparison/config.json) and [registered optimisation-value configuration](outputs/optimisation_value/config.json).
 
-Rebuild the README and figures with `python -B scripts/case_study/build.py`. The script reads saved files and writes only this README and the new case-study figures.
+Refresh the monthly figures and this README with `python -B scripts/case_study/monthly_views.py`. The script reads saved files; existing case-study figures are reused unchanged.
 
 </details>
