@@ -1,4 +1,4 @@
-# Does optimisation improve a bed-capacity forecast? Two frozen origins
+# Does optimisation improve a bed-capacity forecast? Two frozen origins and a monthly comparison
 
 ## Question
 
@@ -20,7 +20,7 @@ Each method forecasts occupied and available beds separately:
 
 **Rule** follows the forecast gap, opening the requested non-negative capacity as far as the limits allow. **LP** optimises the entire schedule: running costs 500 per bed-month, opening 550 per bed opened, closing 300 per bed closed, and shortfall 5,000 per missing bed-month. Capacity carries over between months, starts at zero, is capped at 15,000 beds, and can rise or fall by at most 5,000 beds per month; there is no terminal closing charge.
 
-**Protected** uses the same optimisation with scenarios formed from the method's own past forecast errors, adding a data-driven safety margin. **Hindsight** uses the actual future gap: it is the best possible schedule under these same constraints. All forecasts, plans and total scores below were already saved; nothing was refitted, re-solved or rescored.
+**Protected** uses the same optimisation with scenarios formed from the method's own past forecast errors, adding a data-driven safety margin. **Hindsight** uses the actual future gap: it is the best possible schedule under these same constraints. The September and March case studies use previously saved forecasts, plans and scores.
 
 Costs are **illustrative model units (validated: False)**, not NHS expenditure estimates. Cost tables use **millions**. Operating cost means running + opening + closing; total cost adds the shortfall penalty. Small solver-rounding differences are treated as equal using the saved relative tolerance of 1e-6.
 
@@ -310,7 +310,7 @@ At both origins, optimisation never materially increased cost compared with foll
 
 ## Limitations
 
-- These are two six-month windows, so the results describe these cases.
+- The two detailed case studies each cover six months. The monthly extension below uses overlapping windows.
 - The models are univariate and do not use staffing, admissions, discharge or policy variables.
 - Occupied and available beds are forecast separately.
 - National monthly totals hide local bottlenecks and daily peaks.
@@ -333,6 +333,222 @@ The source files are:
 - **Prior-year comparison:** Seasonal naive's [saved March forecast](outputs/fair_comparison/O2_mar2026/forecasts.csv) repeats the same calendar months of 2025.
 - **Definitions:** [fair-comparison configuration](outputs/fair_comparison/config.json) and [registered optimisation-value configuration](outputs/optimisation_value/config.json).
 
-Refresh the monthly figures and this README with `python -B scripts/case_study/monthly_views.py`. The script reads saved files; existing case-study figures are reused unchanged.
+The original two-origin figure builder is [monthly_views.py](scripts/case_study/monthly_views.py). For the monthly extension, run `python -B scripts/monthly_origins/interpret.py`, then `python -B scripts/monthly_origins/figures.py` and `python -B scripts/monthly_origins/report.py` from the repository root using the verified outputs.
 
 </details>
+
+## All monthly origins: April 2025 to April 2026
+
+September favoured SARIMA-24 with LP. March favoured Seasonal naive with protection. We repeated the same six-month planning exercise at every monthly origin from April 2025 to April 2026 to see which findings repeated.
+
+**How to read the figures.** Each summary heatmap column is the month the plan was made. Hindsight is the cheapest feasible plan if all six future gaps are known. Subtracting its cost shows how much extra each plan cost in its own window, so an expensive winter does not automatically make its forecasts look worse. Savings compare two plans for the same forecast.
+
+**Which origins count?** Ranks and cross-method averages use the 11 origins with all five methods. SARIMA-24 failed to converge for occupied beds in October 2025 and for available beds in January 2026. The other four methods still have results in those columns. Neighbouring plans share five target months, so the counts describe about two to three independent six-month windows.
+
+### Which forecasts missed, and which plans were cheapest?
+
+![B1. Average forecast error in beds by method and origin](figures/monthly_origins/summary_signed_gap_error.png)
+
+[Vector figure](figures/monthly_origins/summary_signed_gap_error.svg)
+
+**B1. Forecast direction.** Positive values mean the forecast gap was too low on average over six months. Every method switched direction at least once. For example, Seasonal naive went from 300 beds too high in September to 591 too low in March.
+
+![B2. Six-month LP cost above hindsight in millions](figures/monthly_origins/summary_lp_excess.png)
+
+[Vector figure](figures/monthly_origins/summary_lp_excess.svg)
+
+**B2. Cost of the optimised forecast.** All five methods had the cheapest LP at least once across the 11 common origins. Seasonal naive and SARIMA-24 had nearly identical mean costs above hindsight (5.51m and 5.52m). SARIMA-24 won most often and never finished last, while Persistence won in March and finished last at 7 origins.
+
+| Method | Forecast low / high | LP saved / tied vs Rule | LP wins (11 origins) | LP rank range | Mean LP excess |
+| --- | --- | --- | --- | --- | --- |
+| Mean-24 | 7 / 6 | 0 / 13 | 1 | 1–4 | 6.75m |
+| Persistence | 5 / 8 | 0 / 13 | 1 | 1–5 | 16.12m |
+| Seasonal naive | 5 / 8 | 9 / 4 | 3 | 1–5 | 5.51m |
+| SARIMA-24 | 6 / 5 | 9 / 2 | 4 | 1–4 | 5.52m |
+| ExtraTrees-24 | 6 / 7 | 12 / 1 | 2 | 1–5 | 6.18m |
+
+The first two count columns use each method's available origins (13 for four methods and 11 for SARIMA-24). LP wins, ranks and mean excess compare all five on the same 11 origins. A win is the lowest realised cost before rounding.
+
+**Does the season pick the winner?** Among the 7 common April–September starts, SARIMA-24 won 4 times, ExtraTrees-24 2 times and Seasonal naive once. Among the 4 common October–March starts, Seasonal naive won twice, and Mean-24 and Persistence once each.
+
+The target months explain more of the winter story. In all 5 common windows that included the January 2026 peak, Seasonal naive (3 LP wins) or SARIMA-24 (2) was cheapest. Together they won 2 of the other 6. Those winter plans share the same peak, so this is weak evidence for choosing a method by season in another year.
+
+### What did optimisation and protection buy?
+
+![B3. Saving from optimising each forecast instead of following the Rule](figures/monthly_origins/summary_value_of_optimisation.png)
+
+[Vector figure](figures/monthly_origins/summary_value_of_optimisation.svg)
+
+**B3. Optimisation.** LP saved money in all 30 forecasts that fell and then rose within the six months, and tied the Rule in the other 33 at the registered tolerance. Keeping a bed open through a one-month dip avoids paying to close and reopen it, and sometimes covers a shortage as well. Mean-24 and Persistence forecast the same gap every month, so the Rule already holds the capacity steady and there is no dip to bridge.
+
+![B4. Saving or extra cost from protecting each optimised forecast](figures/monthly_origins/summary_value_of_protection.png)
+
+[Vector figure](figures/monthly_origins/summary_value_of_protection.svg)
+
+**B4. Protection.** Across 55 method–origin pairs at the 11 common origins, optimisation saved 0.50m on average and protection saved a further 3.89m. Protection cut the bill in 27 of those pairs and raised it in 28. Avoided shortage charges outweighed the extra cost of running the protected schedules.
+
+![B5. Cheapest forecast-based plan and its excess cost above hindsight](figures/monthly_origins/summary_best_plan.png)
+
+[Vector figure](figures/monthly_origins/summary_best_plan.svg)
+
+**B5. The cheapest plan after costs were known.** An ordinary LP won at 6 of the 11 common origins and a Protected plan won at 5. In November and December, Seasonal naive had the cheapest ordinary LP, but ExtraTrees-24 became cheaper once its plan included protection.
+
+| Origin | Lowest LP cost | Lowest cost across all plans | Winner above hindsight |
+| --- | --- | --- | --- |
+| Apr 2025 | ExtraTrees-24 · 12.95m | ExtraTrees-24 (LP) · 12.95m | 1.23m |
+| May 2025 | SARIMA-24 · 13.29m | SARIMA-24 (LP) · 13.29m | 1.43m |
+| Jun 2025 | ExtraTrees-24 · 12.91m | ExtraTrees-24 (LP) · 12.91m | 1.18m |
+| Jul 2025 | Seasonal naive · 15.21m | Seasonal naive (LP) · 15.21m | 1.92m |
+| Aug 2025 | SARIMA-24 · 15.74m | SARIMA-24 (LP) · 15.74m | 0.99m |
+| Sep 2025 | SARIMA-24 · 16.11m | SARIMA-24 (LP) · 16.11m | 0.87m |
+| Oct 2025 | Unranked | SARIMA-24 unavailable | — |
+| Nov 2025 | Seasonal naive · 18.60m | ExtraTrees-24 (Protected) · 16.29m | 2.06m |
+| Dec 2025 | Seasonal naive · 21.89m | ExtraTrees-24 (Protected) · 15.72m | 0.88m |
+| Jan 2026 | Unranked | SARIMA-24 unavailable | — |
+| Feb 2026 | Mean-24 · 15.02m | SARIMA-24 (Protected) · 14.86m | 2.14m |
+| Mar 2026 | Persistence · 13.75m | Seasonal naive (Protected) · 13.56m | 0.89m |
+| Apr 2026 | SARIMA-24 · 15.78m | Seasonal naive (Protected) · 14.20m | 0.95m |
+
+Reading across a row shows whether protection changed the winner. In March it did, even though optimisation had already saved Seasonal naive money compared with following its forecast.
+
+![C. Value of protection versus the average signed forecast error](figures/monthly_origins/protection_vs_error_direction.png)
+
+[Vector figure](figures/monthly_origins/protection_vs_error_direction.svg)
+
+**C. When protection paid.** Each point pairs one forecast with the saving from protecting it. The Spearman rank correlation of 0.926 across the 63 available pairs means larger under-forecasts tended to go with larger savings. The same calculation using just the 55 common-origin pairs gave 0.911.
+
+| Six-month mean error | Protection reduced cost | Protection added cost |
+| --- | --- | --- |
+| Forecast too low | 26 | 3 |
+| Forecast too high | 8 | 26 |
+
+Protection helped in 26 of 29 under-forecasts and in 8 of 34 over-forecasts. A high six-month average can hide a costly monthly shortage. At the July 2025 origin, Mean-24 averaged 276 beds too high but forecast 3,586 beds for January against an actual gap of 4,680. Protecting it saved 2.60m.
+
+### Where September and March sit
+
+September's 0.43m optimisation saving for Seasonal naive was exactly its median over 13 origins. Protection raised SARIMA-24's September cost by 3.35m, its second-largest increase in 11 origins. March was Seasonal naive's strongest window for both steps, with 3.48m saved by LP and another 12.06m by protection. The two case studies illustrate a mechanism, but March gives an unusually large example.
+
+### What generalises
+
+- **Holds across these windows.** Optimising the same forecast never materially increased realised cost across the 63 comparisons. The shape of the forecast explained where optimisation saved money.
+- **Depends on the window.** The cheapest forecasting method changed. Protection usually paid when the forecast was low, but the timing and size of monthly shortages also mattered.
+
+### A planner's rule?
+
+Under these cost assumptions, optimise the forecast when freezing a plan. A planner can see a dip before acting. The direction of the future forecast error only becomes known later, so these windows support using past errors to assess the cost of protection but do not establish a reliable trigger for switching it on. The verified schedules establish what happened in these windows. Their overlap limits confidence in applying the seasonal pattern to another winter.
+
+The underlying results include the forecasts, the monthly accounts for each plan, the common-origin rankings and the verification checks. [Forecasts](outputs/monthly_origins/forecasts.csv) · [Monthly costs](outputs/monthly_origins/monthly_costs.csv) · [Rankings](outputs/monthly_origins/winners.csv) · [Interpretation data](outputs/monthly_origins/interpretation.json) · [Verification](outputs/monthly_origins/verification.md)
+
+<details>
+
+<summary>Per-origin heatmaps</summary>
+
+Each row follows one frozen six-month schedule. The first month includes the cost of opening beds. A monthly cell gives the cost and the beds short or spare. The Total column uses its own colour scale and sums bed-months, showing shortfall when it rounds to at least one bed-month and spare capacity otherwise.
+
+**April 2025**
+
+![Monthly costs and beds short or spare for April 2025](figures/monthly_origins/origin_2025-04_heatmap.png)
+
+[Vector figure](figures/monthly_origins/origin_2025-04_heatmap.svg)
+
+ExtraTrees-24 kept 2,971 beds open in Aug 2025 with LP versus 2,390 with the Rule, saving 0.20m over the full window.
+
+**May 2025**
+
+![Monthly costs and beds short or spare for May 2025](figures/monthly_origins/origin_2025-05_heatmap.png)
+
+[Vector figure](figures/monthly_origins/origin_2025-05_heatmap.svg)
+
+SARIMA-24 kept 2,507 beds open in Aug 2025 with LP versus 1,457 with the Rule, saving 1.81m over the full window.
+
+**June 2025**
+
+![Monthly costs and beds short or spare for June 2025](figures/monthly_origins/origin_2025-06_heatmap.png)
+
+[Vector figure](figures/monthly_origins/origin_2025-06_heatmap.svg)
+
+ExtraTrees-24 kept 2,991 beds open in Aug 2025 with LP versus 2,774 with the Rule, saving 0.08m over the full window.
+
+**July 2025**
+
+![Monthly costs and beds short or spare for July 2025](figures/monthly_origins/origin_2025-07_heatmap.png)
+
+[Vector figure](figures/monthly_origins/origin_2025-07_heatmap.svg)
+
+Seasonal naive kept 4,419 beds open in Dec 2025 with LP versus 3,181 with the Rule, saving 0.43m over the full window.
+
+**August 2025**
+
+![Monthly costs and beds short or spare for August 2025](figures/monthly_origins/origin_2025-08_heatmap.png)
+
+[Vector figure](figures/monthly_origins/origin_2025-08_heatmap.svg)
+
+SARIMA-24 kept 4,522 beds open in Dec 2025 with LP versus 3,269 with the Rule, saving 0.44m over the full window.
+
+**September 2025**
+
+![Monthly costs and beds short or spare for September 2025](figures/monthly_origins/origin_2025-09_heatmap.png)
+
+[Vector figure](figures/monthly_origins/origin_2025-09_heatmap.svg)
+
+SARIMA-24 kept 4,472 beds open in Dec 2025 with LP versus 3,228 with the Rule, saving 0.44m over the full window.
+
+**October 2025**
+
+![Monthly costs and beds short or spare for October 2025](figures/monthly_origins/origin_2025-10_heatmap.png)
+
+[Vector figure](figures/monthly_origins/origin_2025-10_heatmap.svg)
+
+Seasonal naive cost 17.60m with LP, and protection saved 0.34m over the six months.
+
+**November 2025**
+
+![Monthly costs and beds short or spare for November 2025](figures/monthly_origins/origin_2025-11_heatmap.png)
+
+[Vector figure](figures/monthly_origins/origin_2025-11_heatmap.svg)
+
+For ExtraTrees-24, protection made its largest reduction in shortfall in May 2026, from 1,147 beds with LP to 0 beds.
+
+**December 2025**
+
+![Monthly costs and beds short or spare for December 2025](figures/monthly_origins/origin_2025-12_heatmap.png)
+
+[Vector figure](figures/monthly_origins/origin_2025-12_heatmap.svg)
+
+For ExtraTrees-24, protection made its largest reduction in shortfall in May 2026, from 899 beds with LP to 0 beds.
+
+**January 2026**
+
+![Monthly costs and beds short or spare for January 2026](figures/monthly_origins/origin_2026-01_heatmap.png)
+
+[Vector figure](figures/monthly_origins/origin_2026-01_heatmap.svg)
+
+Seasonal naive cost 25.13m with LP, and protection saved 8.70m over the six months.
+
+**February 2026**
+
+![Monthly costs and beds short or spare for February 2026](figures/monthly_origins/origin_2026-02_heatmap.png)
+
+[Vector figure](figures/monthly_origins/origin_2026-02_heatmap.svg)
+
+For SARIMA-24, protection made its largest reduction in shortfall in Jul 2026, from 793 beds with LP to 0 beds.
+
+**March 2026**
+
+![Monthly costs and beds short or spare for March 2026](figures/monthly_origins/origin_2026-03_heatmap.png)
+
+[Vector figure](figures/monthly_origins/origin_2026-03_heatmap.svg)
+
+For Seasonal naive, protection made its largest reduction in shortfall in Jul 2026, from 884 beds with LP to 0 beds.
+
+**April 2026**
+
+![Monthly costs and beds short or spare for April 2026](figures/monthly_origins/origin_2026-04_heatmap.png)
+
+[Vector figure](figures/monthly_origins/origin_2026-04_heatmap.svg)
+
+For Seasonal naive, protection made its largest reduction in shortfall in Jul 2026, from 884 beds with LP to 0 beds.
+
+</details>
+
+Neighbouring origins share up to five target months, so these 13 origins are about two to three independent windows; costs are illustrative model units (validated: False).

@@ -1,0 +1,454 @@
+{
+  "origins": 13,
+  "common_origins": 11,
+  "available_cases": 63,
+  "common_cases": 55,
+  "winter_peak_month": "2026-01-01",
+  "definitions": {
+    "signed_error": "Six-month mean of actual gap minus forecast gap, in beds.",
+    "costs": "Raw illustrative units. LP excess = LP minus Hindsight.",
+    "optimisation": "Rule minus LP, with equality band 1e-6 times Rule cost.",
+    "protection": "LP minus Protected. Scatter quadrants use raw signs; material effect uses 1% of Hindsight.",
+    "dip": "A fall followed by a rise inside the six forecast months, ignoring changes of at most 1e-6 beds.",
+    "rank": "Minimum realised LP cost. Overall winners include Rule/LP ties within relative 1e-6.",
+    "comparisons": "Cross-method ranks and means use only the 11 common origins. Other counts use available pairs.",
+    "overlap": "Adjacent six-month windows share five target months. These counts are descriptive."
+  },
+  "per_method": {
+    "ExtraTrees-24": {
+      "available_origins": 13,
+      "common_origins": 11,
+      "signed_error_counts": {
+        "low": 6,
+        "high": 7,
+        "balanced": 0
+      },
+      "optimisation_counts": {
+        "helped": 12,
+        "tied": 1,
+        "hurt": 0
+      },
+      "dipped": 12,
+      "dip_and_helped": 12,
+      "lp_wins_common": 2,
+      "lp_last_common": 1,
+      "lp_mean_excess_common": 6178485.231508658,
+      "mean_signed_error_common": -49.89936104178877,
+      "mean_protection_value_common": 3130620.842362271,
+      "lp_rank_min_common": 1,
+      "lp_rank_max_common": 5
+    },
+    "Mean-24": {
+      "available_origins": 13,
+      "common_origins": 11,
+      "signed_error_counts": {
+        "low": 7,
+        "high": 6,
+        "balanced": 0
+      },
+      "optimisation_counts": {
+        "helped": 0,
+        "tied": 13,
+        "hurt": 0
+      },
+      "dipped": 0,
+      "dip_and_helped": 0,
+      "lp_wins_common": 1,
+      "lp_last_common": 0,
+      "lp_mean_excess_common": 6749854.486770944,
+      "mean_signed_error_common": -103.81416313674445,
+      "mean_protection_value_common": 1667487.88070536,
+      "lp_rank_min_common": 1,
+      "lp_rank_max_common": 4
+    },
+    "Persistence": {
+      "available_origins": 13,
+      "common_origins": 11,
+      "signed_error_counts": {
+        "low": 5,
+        "high": 8,
+        "balanced": 0
+      },
+      "optimisation_counts": {
+        "helped": 0,
+        "tied": 13,
+        "hurt": 0
+      },
+      "dipped": 0,
+      "dip_and_helped": 0,
+      "lp_wins_common": 1,
+      "lp_last_common": 7,
+      "lp_mean_excess_common": 16120660.184014373,
+      "mean_signed_error_common": 261.57809275551034,
+      "mean_protection_value_common": 9662337.077898292,
+      "lp_rank_min_common": 1,
+      "lp_rank_max_common": 5
+    },
+    "SARIMA-24": {
+      "available_origins": 11,
+      "common_origins": 11,
+      "signed_error_counts": {
+        "low": 6,
+        "high": 5,
+        "balanced": 0
+      },
+      "optimisation_counts": {
+        "helped": 9,
+        "tied": 2,
+        "hurt": 0
+      },
+      "dipped": 9,
+      "dip_and_helped": 9,
+      "lp_wins_common": 4,
+      "lp_last_common": 0,
+      "lp_mean_excess_common": 5523761.011959954,
+      "mean_signed_error_common": 65.69491906797715,
+      "mean_protection_value_common": 2029390.685439823,
+      "lp_rank_min_common": 1,
+      "lp_rank_max_common": 4
+    },
+    "Seasonal naive": {
+      "available_origins": 13,
+      "common_origins": 11,
+      "signed_error_counts": {
+        "low": 5,
+        "high": 8,
+        "balanced": 0
+      },
+      "optimisation_counts": {
+        "helped": 9,
+        "tied": 4,
+        "hurt": 0
+      },
+      "dipped": 9,
+      "dip_and_helped": 9,
+      "lp_wins_common": 3,
+      "lp_last_common": 3,
+      "lp_mean_excess_common": 5512728.579993498,
+      "mean_signed_error_common": 31.68752036493817,
+      "mean_protection_value_common": 2958157.51814103,
+      "lp_rank_min_common": 1,
+      "lp_rank_max_common": 5
+    }
+  },
+  "common_pooled": {
+    "method_origin_count": 55,
+    "mean_value_optimisation": 500781.50065120857,
+    "mean_value_protection": 3889598.800909354,
+    "protection_effect": {
+      "helped": 27,
+      "tied": 0,
+      "hurt": 28
+    }
+  },
+  "season_comparisons_common": {
+    "origin_season": {
+      "Apr-Sep": {
+        "origin_count": 7,
+        "wins": {
+          "Mean-24": 0,
+          "Persistence": 0,
+          "Seasonal naive": 1,
+          "SARIMA-24": 4,
+          "ExtraTrees-24": 2
+        },
+        "mean_lp_excess": {
+          "ExtraTrees-24": 3524494.3191269855,
+          "Mean-24": 6699870.562222211,
+          "Persistence": 17571670.341904763,
+          "SARIMA-24": 1990180.6664926275,
+          "Seasonal naive": 3060370.825391742
+        }
+      },
+      "Oct-Mar": {
+        "origin_count": 4,
+        "wins": {
+          "Mean-24": 1,
+          "Persistence": 1,
+          "Seasonal naive": 2,
+          "SARIMA-24": 0,
+          "ExtraTrees-24": 0
+        },
+        "mean_lp_excess": {
+          "ExtraTrees-24": 10822969.328176588,
+          "Mean-24": 6837326.354731226,
+          "Persistence": 13581392.407706182,
+          "SARIMA-24": 11707526.616527775,
+          "Seasonal naive": 9804354.65054657
+        }
+      }
+    },
+    "contains_winter_peak": {
+      "False": {
+        "origin_count": 6,
+        "wins": {
+          "Mean-24": 1,
+          "Persistence": 1,
+          "Seasonal naive": 0,
+          "SARIMA-24": 2,
+          "ExtraTrees-24": 2
+        },
+        "mean_lp_excess": {
+          "ExtraTrees-24": 2779594.3381362385,
+          "Mean-24": 3109644.9982467405,
+          "Persistence": 5146624.3298776,
+          "SARIMA-24": 4693435.977759878,
+          "Seasonal naive": 7536128.622210254
+        }
+      },
+      "True": {
+        "origin_count": 5,
+        "wins": {
+          "Mean-24": 0,
+          "Persistence": 0,
+          "Seasonal naive": 3,
+          "SARIMA-24": 2,
+          "ExtraTrees-24": 0
+        },
+        "mean_lp_excess": {
+          "ExtraTrees-24": 10257154.303555563,
+          "Mean-24": 11118105.872999987,
+          "Persistence": 29289503.208978496,
+          "SARIMA-24": 6520151.053000046,
+          "Seasonal naive": 3084648.5293333894
+        }
+      }
+    }
+  },
+  "optimisation_by_dip": {
+    "False": {
+      "helped": 0,
+      "tied": 33,
+      "hurt": 0
+    },
+    "True": {
+      "helped": 30,
+      "tied": 0,
+      "hurt": 0
+    }
+  },
+  "protection_vs_error": {
+    "available": {
+      "n": 63,
+      "protection_sign": {
+        "low": {
+          "helped": 26,
+          "hurt": 3,
+          "tied": 0
+        },
+        "high": {
+          "helped": 8,
+          "hurt": 26,
+          "tied": 0
+        },
+        "balanced": {
+          "helped": 0,
+          "hurt": 0,
+          "tied": 0
+        }
+      },
+      "protection_effect": {
+        "low": {
+          "helped": 26,
+          "hurt": 3,
+          "tied": 0
+        },
+        "high": {
+          "helped": 8,
+          "hurt": 26,
+          "tied": 0
+        },
+        "balanced": {
+          "helped": 0,
+          "hurt": 0,
+          "tied": 0
+        }
+      },
+      "spearman_rho": 0.9260272657450077
+    },
+    "common": {
+      "n": 55,
+      "protection_sign": {
+        "low": {
+          "helped": 21,
+          "hurt": 3,
+          "tied": 0
+        },
+        "high": {
+          "helped": 6,
+          "hurt": 25,
+          "tied": 0
+        },
+        "balanced": {
+          "helped": 0,
+          "hurt": 0,
+          "tied": 0
+        }
+      },
+      "protection_effect": {
+        "low": {
+          "helped": 21,
+          "hurt": 3,
+          "tied": 0
+        },
+        "high": {
+          "helped": 6,
+          "hurt": 25,
+          "tied": 0
+        },
+        "balanced": {
+          "helped": 0,
+          "hurt": 0,
+          "tied": 0
+        }
+      },
+      "spearman_rho": 0.9109668109668112
+    }
+  },
+  "anchor_positions": [
+    {
+      "method": "ExtraTrees-24",
+      "origin": "2025-09",
+      "metric": "value_optimisation",
+      "value": 112571.60320675373,
+      "comparison_origins": 13,
+      "median": 134239.16549199075,
+      "raw_rank_descending": 10
+    },
+    {
+      "method": "ExtraTrees-24",
+      "origin": "2025-09",
+      "metric": "value_protection",
+      "value": 6609102.123333212,
+      "comparison_origins": 13,
+      "median": 2326898.588996358,
+      "raw_rank_descending": 5
+    },
+    {
+      "method": "ExtraTrees-24",
+      "origin": "2026-03",
+      "metric": "value_optimisation",
+      "value": 957650.5501689278,
+      "comparison_origins": 13,
+      "median": 134239.16549199075,
+      "raw_rank_descending": 2
+    },
+    {
+      "method": "ExtraTrees-24",
+      "origin": "2026-03",
+      "metric": "value_protection",
+      "value": -3067666.4749999996,
+      "comparison_origins": 13,
+      "median": 2326898.588996358,
+      "raw_rank_descending": 12
+    },
+    {
+      "method": "Mean-24",
+      "origin": "2025-09",
+      "metric": "value_protection",
+      "value": 9301524.218333215,
+      "comparison_origins": 13,
+      "median": 2556212.356218543,
+      "raw_rank_descending": 1
+    },
+    {
+      "method": "Mean-24",
+      "origin": "2026-03",
+      "metric": "value_protection",
+      "value": -3741070.049336996,
+      "comparison_origins": 13,
+      "median": 2556212.356218543,
+      "raw_rank_descending": 12
+    },
+    {
+      "method": "Persistence",
+      "origin": "2025-09",
+      "metric": "value_protection",
+      "value": 15661727.358333215,
+      "comparison_origins": 13,
+      "median": 2434784.0311110206,
+      "raw_rank_descending": 4
+    },
+    {
+      "method": "Persistence",
+      "origin": "2026-03",
+      "metric": "value_protection",
+      "value": -5736622.195,
+      "comparison_origins": 13,
+      "median": 2434784.0311110206,
+      "raw_rank_descending": 13
+    },
+    {
+      "method": "SARIMA-24",
+      "origin": "2025-09",
+      "metric": "value_optimisation",
+      "value": 435413.4675052464,
+      "comparison_origins": 11,
+      "median": 438554.66760954075,
+      "raw_rank_descending": 7
+    },
+    {
+      "method": "SARIMA-24",
+      "origin": "2025-09",
+      "metric": "value_protection",
+      "value": -3351286.2750000004,
+      "comparison_origins": 11,
+      "median": -938829.4177778121,
+      "raw_rank_descending": 10
+    },
+    {
+      "method": "SARIMA-24",
+      "origin": "2026-03",
+      "metric": "value_optimisation",
+      "value": 2778023.456764318,
+      "comparison_origins": 11,
+      "median": 438554.66760954075,
+      "raw_rank_descending": 1
+    },
+    {
+      "method": "SARIMA-24",
+      "origin": "2026-03",
+      "metric": "value_protection",
+      "value": 3890689.306774093,
+      "comparison_origins": 11,
+      "median": -938829.4177778121,
+      "raw_rank_descending": 3
+    },
+    {
+      "method": "Seasonal naive",
+      "origin": "2025-09",
+      "metric": "value_optimisation",
+      "value": 433455.556111088,
+      "comparison_origins": 13,
+      "median": 433455.556111088,
+      "raw_rank_descending": 7
+    },
+    {
+      "method": "Seasonal naive",
+      "origin": "2025-09",
+      "metric": "value_protection",
+      "value": -1471338.9638889022,
+      "comparison_origins": 13,
+      "median": 343422.3105555512,
+      "raw_rank_descending": 9
+    },
+    {
+      "method": "Seasonal naive",
+      "origin": "2026-03",
+      "metric": "value_optimisation",
+      "value": 3478688.9738890007,
+      "comparison_origins": 13,
+      "median": 433455.556111088,
+      "raw_rank_descending": 1
+    },
+    {
+      "method": "Seasonal naive",
+      "origin": "2026-03",
+      "metric": "value_protection",
+      "value": 12057976.412741754,
+      "comparison_origins": 13,
+      "median": 343422.3105555512,
+      "raw_rank_descending": 1
+    }
+  ]
+}
