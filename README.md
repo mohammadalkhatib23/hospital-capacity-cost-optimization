@@ -47,6 +47,26 @@ Each forecast has separate Rule, LP and Protected rows. Monthly cells show reali
 
 Flat forecasts left Mean-24 and Persistence short in January and February, their two most expensive LP months. In December, LP kept beds open that the Rule would have closed. Over the six months, LP saved 0.43m for Seasonal naive and 0.44m for SARIMA-24. The Average of five ran 79 beds low, and protection cut its cost from 21.17m to 17.01m. It was the cheapest Protected plan. SARIMA-24 LP was cheapest overall at 16.11m.
 
+## Why the September winner is not the overall answer
+
+At September 2025, SARIMA-24 with LP was the cheapest plan, 0.87m above Hindsight. Across the 23 origins of the primary averaging test, the same plan averaged 10.48m above Hindsight, while the Average of five with protection averaged 3.13m - the lowest of any plan. In September the protected average was 1.77m above Hindsight, the cheapest of the Protected plans.
+
+| Plan | September 2025 (above Hindsight) | Mean over the 23 primary origins |
+| --- | --- | --- |
+| SARIMA-24 LP | 0.87m | 10.48m |
+| Seasonal naive Protected | 2.37m | 3.66m |
+| Average of five Protected | 1.77m | 3.13m |
+
+The protected average was never the single cheapest plan at any of the 13 monthly origins: SARIMA-24 LP won in August and September 2025, ExtraTrees-24 Protected from October 2025 to January 2026, Seasonal naive Protected in March and April 2026, and other plans elsewhere. It has the lowest average because it was rarely far from the best. A plan that is excellent in one window and poor in others can lose to one that is good in every window.
+
+Averaging and protection do different jobs. Averaging cancels part of each method's bet on whether demand will run high or low. Protection adds a margin that covers the shortfall when the forecast runs low. Neither makes a plan the best in a single window; together they reduce the chance of being badly wrong.
+
+![Protected plan costs above Hindsight by planning origin](figures/forecast_combination/excess_by_origin.png)
+
+[Vector figure](figures/forecast_combination/excess_by_origin.svg)
+
+Each line shows a Protected plan's cost above Hindsight by origin, with SARIMA-24 varying widely and the protected average (labelled Combo) staying comparatively steady.
+
 ## Protection depends on the forecast
 
 ![Protection saving versus mean forecast error, individual methods](figures/monthly_origins/protection_vs_error_direction.png)
