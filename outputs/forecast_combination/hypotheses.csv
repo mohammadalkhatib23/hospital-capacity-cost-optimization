@@ -1,0 +1,3 @@
+population,H1,H2,H3,lowest_mean_protected,lowest_worst_protected,lowest_mean_abs_signed,lowest_subsets,beats_each_more_than_loses,clear_winner
+P1,True,False,False,Combo,Seasonal naive,Seasonal naive,5,True,True
+P3,False,False,True,Seasonal naive,Seasonal naive,Combo,2,False,False

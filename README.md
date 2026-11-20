@@ -552,3 +552,74 @@ For Seasonal naive, protection made its largest reduction in shortfall in Jul 20
 </details>
 
 Neighbouring origins share up to five target months, so these 13 origins are about two to three independent windows; costs are illustrative model units (validated: False).
+
+## Averaging the forecasts
+
+Every individual method had windows when it forecast too high and others when it forecast too low. An equal-weight average could cancel opposing errors before the planner decides how many beds to open. September 2025 and March 2026 suggested the idea, so we excluded them from the primary test.
+
+**Method.** Combo averages the five occupied forecasts and the five available forecasts separately, then calculates the gap. To protect Combo, we average the five errors from the same historical backtest and forecast month, preserving their six-month paths. Every method faces the same prices, capacity limits and number of historical scenarios. The primary test (P1) has 23 origins. P2 includes all 25 rolling origins. P3 compares the 11 complete origins in the 13-origin monthly study. The two four-method averages are shown separately.
+
+Registered config SHA-256: `a04097b8ea7e34bcbde295b4cf5236312922ca27b33c235df84ade43613097d4`. [Design and origin lists](outputs/forecast_combination/config.json)
+
+### Did the combination win?
+
+**On average, yes in the primary test.** Combo Protected cost 3.13m above hindsight per six-month plan, compared with 3.66m for Seasonal naive, the cheapest individual Protected method. Combo had the lowest mean in 5 of the six every-sixth-origin subsets and beat every individual method more often than it lost. That meets the registered clear-winner rule. The overlapping primary origins represent about four independent windows.
+
+| Method | Mean LP excess | Mean Protected excess | Worst excess (LP / Protected) | Mean absolute bias (beds) | Mean signed bias / SD (beds) | Combo Protected wins / ties / losses |
+| --- | --- | --- | --- | --- | --- | --- |
+| Combo | 6.00m | 3.13m | 20.17m / 5.69m | 288.6 | -18.9 / 379.9 | — |
+| Mean-24 | 7.28m | 6.38m | 15.17m / 10.21m | 402.2 | -181.5 / 428.4 | 23 / 0 / 0 |
+| Persistence | 14.52m | 7.53m | 64.94m / 20.82m | 889.4 | -61.0 / 1,139.1 | 21 / 0 / 2 |
+| Seasonal naive | 4.30m | 3.66m | 14.85m / 5.38m | 260.7 | -54.9 / 301.4 | 13 / 1 / 9 |
+| SARIMA-24 | 10.48m | 4.54m | 38.54m / 16.89m | 440.9 | +310.6 / 500.8 | 13 / 2 / 8 |
+| ExtraTrees-24 | 6.88m | 3.94m | 23.82m / 9.50m | 450.6 | -107.5 / 514.2 | 19 / 1 / 3 |
+
+Costs are millions above what a planner with perfect foresight would have spent. A win or loss requires a difference greater than 1% of that origin's hindsight cost. Bias is the average actual gap minus forecast gap within a window. The absolute column measures the usual size of that miss. SD shows how much the signed miss varied between windows.
+
+**The other hypotheses had different answers.** In P1, lowest mean Protected cost (H1) held. Lowest worst Protected cost (H2) and smallest mean absolute bias (H3) both went to Seasonal naive. In P3 only H3 held for Combo (218 beds). Seasonal naive had lower mean Protected excess (2.55m vs 2.64m) and narrowly lower worst excess (3.8505m vs 3.8520m). This covers about two to three independent windows.
+
+![Protected excess cost by origin, with the two idea-forming origins marked](figures/forecast_combination/excess_by_origin.png)
+
+[Vector figure](figures/forecast_combination/excess_by_origin.svg)
+
+Combo Protected beat Seasonal naive Protected at 13 primary origins, tied at 1 and cost more at 9. When compared with the cheapest individual Protected plan chosen *after* each window, Combo cost materially more at 16 of 23. That individual winner changed with the window.
+
+![Six-month mean gap error for individual and averaged forecasts](figures/forecast_combination/signed_error_by_origin.png)
+
+[Vector figure](figures/forecast_combination/signed_error_by_origin.svg)
+
+In July 2025, individual methods missed by 374 beds on average in absolute terms, yet their average forecast was only 9 beds high. In December 2025 all five forecast too low, leaving Combo 771 beds short in its forecast. Protection then saved Combo 17.84m, although Protected ExtraTrees-24 still cost 1.45m less.
+
+In the primary test, all five forecast high at 4 origins. Protection added cost at every one. Their only unanimous under-forecast was December 2025. Across all 23 origins, Combo's signed miss averaged 19 beds high, but the average *size* of its miss was 289 beds. Those two numbers answer different questions.
+
+![90th-percentile and worst-origin LP and Protected excess cost in the primary test](figures/forecast_combination/worst_case.png)
+
+[Vector figure](figures/forecast_combination/worst_case.svg)
+
+Combo had the lowest Protected 90th-percentile excess (4.17m). Its worst Protected window cost 5.69m above hindsight in Feb 2025, while Seasonal naive's worst was 5.38m. Combo kept most of the expensive outcomes smaller, but Seasonal naive had the smaller single worst loss.
+
+![Protected excess at all monthly origins including the four-method fallback](figures/forecast_combination/summary_heatmap.png)
+
+[Vector figure](figures/forecast_combination/summary_heatmap.svg)
+
+Seasonal naive had a 0.09m mean advantage over Combo on the 11 comparable monthly origins. Where SARIMA was unavailable, four-method Combo Protected excess was 1.83m in October 2025 and 2.47m in January 2026. Those cells sit outside the rankings.
+
+### What did averaging and protection each contribute?
+
+Start with Seasonal naive LP at 4.30m above hindsight per primary origin. Switching to Combo LP **added 1.70m**, taking the excess to 6.00m. Protecting that same Combo forecast **saved 2.87m**, bringing it to 3.13m. Together the two steps saved 1.17m against Seasonal naive LP and 0.53m against Seasonal naive Protected. The secondary median forecast had mean LP excess of 5.52m.
+
+**Was the protection margin better sized?** Combo's average margin at the 90% quantile was 1,374 beds, smaller than any individual's. Actual demand gaps fell below or at its upper forecast in 137 of 138 origin-month pairs (99.3%), above the 90% target. At horizon one it covered 22 of 23 and at each of horizons two through six it covered all 23. Individual coverage ranged from 92.8% to 100%. A smaller margin still left Combo conservative here.
+
+### What should a planner use?
+
+At the assumed shortage price of 5,000, Combo Protected has the strongest case for minimising average cost on the primary origins. A planner prioritising the worst bill has evidence for Seasonal naive Protected. Price matters too. At 2,500 Seasonal naive had the lowest mean Protected excess (1.94m vs Combo's 2.24m). At 10,000 Combo ranked first (3.89m), an indicative sensitivity result. With about four independent primary windows, confidence in carrying that choice into another year is limited.
+
+### How we checked this
+
+Before scoring, we checked that averaging errors from matched backtests gives exactly the error of the average forecast, using the same information and number of scenarios as each rival. We froze the plans, matched the individual methods' costs exactly to both earlier studies, and reproduced one month's shortfall and bill by hand. Combo LP saved money against the Rule at 19 origins and tied at 8. Combo's historical error range narrowed in 570 of 690 comparisons, yet in February 2025 all five methods forecast high and Combo still missed high by 806 beds. Removing any two primary origins left its average Protected advantage over each individual intact. [Logic and sanity review](outputs/forecast_combination/logic_review.md) · [Verification](outputs/forecast_combination/verification.md)
+
+Putting the two idea-forming origins back in (P2) gives a mean Protected excess of 3.06m for Combo and 3.50m for Seasonal naive. [All endpoints](outputs/forecast_combination/endpoints.csv) · [Coverage](outputs/forecast_combination/coverage.csv) · [Cost decomposition](outputs/forecast_combination/decomposition_summary.csv)
+
+For the forecasting rationale behind equal-weight combinations, see [Bates and Granger](https://doi.org/10.1057/jors.1969.103), [Clemen](https://www.sciencedirect.com/science/article/pii/0169207089900125), [Forecasting: Principles and Practice](https://otexts.com/fpp3/practical.html#forecast-combinations) and [the M4 competition](https://doi.org/10.1016/j.ijforecast.2018.06.001).
+
+The idea was formed at Sep 2025 and Mar 2026, which are excluded from the main test. Neighbouring origins share up to five target months, so origins are not independent; costs are illustrative model units (validated: False).

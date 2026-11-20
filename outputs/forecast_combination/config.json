@@ -1,0 +1,284 @@
+{
+  "baseline_commit": "523311131936408f038f2b14e05871530a9737c6",
+  "part_a_sha256": "31e3bbf77a43347cc985bcc3d4a40a647e7788e139acb226bd8a702eb86e02b8",
+  "data": {
+    "file": "Beds-publication-Timeseries-March-2020-October-2026.xlsx",
+    "source_url": "https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2026/11/Beds-publication-Timeseries-March-2020-October-2026.xlsx",
+    "retrieved_utc": "2026-11-13T13:05:27Z",
+    "sha256": "a1afbe8659e4ad984628286935a957d51cbcd9099e96edf4906e671d116151cb"
+  },
+  "data_end": "2026-10",
+  "source_hashes": {
+    "outputs/fair_comparison_rolling/config.sha256": "ce3de04cc3442a9edab943230a8d517ea325f3ab4a24413931060e6d34a6833a",
+    "outputs/fair_comparison_rolling/registration.sha256": "5947d088bd1ac3923c72b973e690100765f4d897515a5e4de7be55250ad2b4e2",
+    "outputs/fair_comparison_rolling/plans.sha256": "505d3fc5f439eb79e24af27c25ad98f97e5c827bb155a3a744b209d2519123e3",
+    "outputs/monthly_origins/data.sha256": "5a3d4d2dba66f2924db3bc7662043a6adc262406708287a8ed6fef6674588f08",
+    "outputs/optimisation_value/config.sha256": "43585f614c8dc9fec3b17d0de9df22d4e1693e766f6a98c7cde935f564407066",
+    "outputs/optimisation_value/rule_plans.sha256": "bbf62e45df0ed0d6b057f5fbb24573314c5466469350442ea937037113e7fcba",
+    "outputs/fair_comparison_rolling/config.json": "8715467371b89f2f10a0124613ce7387bdc9296d9f05026c0a91b6e63ca85e48",
+    "outputs/monthly_origins/availability.csv": "0cd68365b408e1cf24dc90ccce9ab741e4639a4333422a8d42cdba203bc24809",
+    "outputs/optimisation_value/publication_input_hashes.json": "f120f1802b1ef26c9aeb481922dc67828f11c92a3d8058c860fe380543bcc7ae",
+    "outputs/fair_comparison_rolling/report_source_hashes.json": "e6ab096c345a8a965c703fe96f876b6d2c5a9baa5e3efd4fd50b25efceb29342"
+  },
+  "methods": [
+    "Mean-24",
+    "Persistence",
+    "Seasonal naive",
+    "SARIMA-24",
+    "ExtraTrees-24"
+  ],
+  "populations": {
+    "P1": [
+      "2024-02",
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-11",
+      "2025-12",
+      "2026-02",
+      "2026-04"
+    ],
+    "P2": [
+      "2024-02",
+      "2024-03",
+      "2024-04",
+      "2024-05",
+      "2024-06",
+      "2024-07",
+      "2024-08",
+      "2024-09",
+      "2024-10",
+      "2024-11",
+      "2024-12",
+      "2025-01",
+      "2025-02",
+      "2025-03",
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-11",
+      "2025-12",
+      "2026-02",
+      "2026-03",
+      "2026-04"
+    ],
+    "P3": [
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-11",
+      "2025-12",
+      "2026-02",
+      "2026-03",
+      "2026-04"
+    ],
+    "P3_partial": [
+      "2025-10",
+      "2026-01"
+    ],
+    "P3_all": [
+      "2025-04",
+      "2025-05",
+      "2025-06",
+      "2025-07",
+      "2025-08",
+      "2025-09",
+      "2025-10",
+      "2025-11",
+      "2025-12",
+      "2026-01",
+      "2026-02",
+      "2026-03",
+      "2026-04"
+    ]
+  },
+  "idea_formed_at": [
+    "2025-09",
+    "2026-03"
+  ],
+  "subsets": {
+    "P1": {
+      "0": [
+        "2024-02",
+        "2024-08",
+        "2025-02",
+        "2025-08"
+      ],
+      "1": [
+        "2024-03",
+        "2024-09",
+        "2025-03",
+        "2025-11"
+      ],
+      "2": [
+        "2024-04",
+        "2024-10",
+        "2025-04",
+        "2025-12"
+      ],
+      "3": [
+        "2024-05",
+        "2024-11",
+        "2025-05",
+        "2026-02"
+      ],
+      "4": [
+        "2024-06",
+        "2024-12",
+        "2025-06",
+        "2026-04"
+      ],
+      "5": [
+        "2024-07",
+        "2025-01",
+        "2025-07"
+      ]
+    },
+    "P2": {
+      "0": [
+        "2024-02",
+        "2024-08",
+        "2025-02",
+        "2025-08",
+        "2026-04"
+      ],
+      "1": [
+        "2024-03",
+        "2024-09",
+        "2025-03",
+        "2025-09"
+      ],
+      "2": [
+        "2024-04",
+        "2024-10",
+        "2025-04",
+        "2025-11"
+      ],
+      "3": [
+        "2024-05",
+        "2024-11",
+        "2025-05",
+        "2025-12"
+      ],
+      "4": [
+        "2024-06",
+        "2024-12",
+        "2025-06",
+        "2026-02"
+      ],
+      "5": [
+        "2024-07",
+        "2025-01",
+        "2025-07",
+        "2026-03"
+      ]
+    },
+    "P3": {
+      "0": [
+        "2025-04",
+        "2025-11"
+      ],
+      "1": [
+        "2025-05",
+        "2025-12"
+      ],
+      "2": [
+        "2025-06",
+        "2026-02"
+      ],
+      "3": [
+        "2025-07",
+        "2026-03"
+      ],
+      "4": [
+        "2025-08",
+        "2026-04"
+      ],
+      "5": [
+        "2025-09"
+      ]
+    }
+  },
+  "forecast": {
+    "window_months": 24,
+    "horizon_months": 6,
+    "occupancy_target": 0.9,
+    "Combo": "Equal-weight occupied and available forecasts, then occupied / 0.90 - available.",
+    "secondary": "Combo-median: median of the available gap forecasts. Descriptive point forecast, Rule and LP only.",
+    "partial": "Mean of the four available methods and their same-date raw errors. Report individually outside all population rankings."
+  },
+  "bank": "One paired occupied/available error path per common backtest. Average across members on exactly the same keys. Every path ends by the planning origin. Keep the registered shared backtest exclusions. No centring, resampling or clipping.",
+  "costs": {
+    "running": 500,
+    "opening": 550,
+    "closing": 300,
+    "shortage": 5000,
+    "capacity": 15000,
+    "ramp": 5000,
+    "initial": 0,
+    "terminal_charge": 0,
+    "validated": false
+  },
+  "endpoints": {
+    "E1": "Mean Protected cost minus same-origin hindsight and Combo wins/ties/losses against each individual Protected plan.",
+    "E2": "Same comparison for LP.",
+    "E3": "Maximum and empirical 90th percentile of LP and Protected excess (linear interpolation).",
+    "E4": "Six-month mean gap error (actual minus point), then mean absolute value across origins, sample SD (ddof=1) and min/max.",
+    "E5": "Coverage of the 0.9 scenario quantile: actual <= quantile overall and by horizon. Reuse the registered finite-bank order statistic. Report observed counts, target 0.90, individual benchmarks and margins.",
+    "E6": "Savings from Seasonal naive LP to Combo LP plus savings from Combo LP to Combo Protected. Equal origin weights."
+  },
+  "hypotheses": {
+    "H1": "Combo Protected strictly lowest mean excess among the five individuals and Combo.",
+    "H2": "Combo Protected worst excess strictly lower than each individual Protected worst excess.",
+    "H3": "Combo mean absolute six-month signed error strictly lower than every individual's.",
+    "populations": [
+      "P1",
+      "P3"
+    ],
+    "clear_winner": "H1, lowest mean Protected excess in at least four of six chronological every-sixth-origin subsets, and more wins than losses against every individual. Lowest subset means include exact ties."
+  },
+  "conventions": {
+    "tie_band": "1% of same-origin, same-penalty hindsight for pairwise wins/ties/losses",
+    "sensitivity_penalties": [
+      2500,
+      10000
+    ],
+    "indicative": 10000,
+    "sensitivity": "Descriptive E1 on complete five-method populations only, using same-penalty saved comparators and hindsight.",
+    "score_rtol": 1e-06,
+    "optimisation_tolerance": "1e-6 times own Rule cost",
+    "no_refit": true,
+    "price_units": "illustrative model units",
+    "shared_direction": "Compare unanimous misses with majority and mixed cases using signs of each method's six-month mean error.",
+    "concentration": "On P1, sort Combo Protected minus individual Protected by origin difference. Use cumulative sums and remove one/two strongest contributors to check dominance and sign reversals.",
+    "bank_spread": "For each P1 origin and horizon take empirical 90th minus 10th percentile of raw gap errors (linear interpolation), then average widths equally over origins."
+  },
+  "gates": [
+    "Part A before registration",
+    "config SHA-256 before planning",
+    "plans SHA-256 before scoring",
+    "Phase 2 checks and toy pytest",
+    "Part B sanity checks before publication; stop on failure"
+  ]
+}
