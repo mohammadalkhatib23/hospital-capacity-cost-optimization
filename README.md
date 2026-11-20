@@ -28,6 +28,20 @@ The **Protected** plan uses sample average approximation (SAA). Each scenario ad
 
 In September 2025, protection used about 30 scenarios. It raised SARIMA-24's plan by roughly 700 to 1,400 beds per month when the forecast already ran high. Spare bed-months rose from 3,320 to 9,291 and cost rose from 16.11m to 19.46m. Persistence ran low. Its Protected plan eliminated an LP shortfall of 4,276 bed-months and cut cost from 33.21m to 17.55m.
 
+**In maths.** For one method, let $\hat d_t$ be its forecast gap for month $t$, and let $e_{j,t}$ be its error in month $t$ of the $j$-th past six-month forecast ($j = 1,\dots,N$, with $N \approx 30$). Each scenario is the forecast plus one past error path:
+
+$$d_{j,t} = \hat d_t + e_{j,t}$$
+
+The Protected plan chooses one schedule $x_t$ (with additions $a_t$ and removals $r_t$) that minimises the average cost over all scenarios:
+
+$$\min_{x,a,r}\; \sum_{t=1}^{6} \big(500\,x_t + 550\,a_t + 300\,r_t\big) \;+\; \frac{5000}{N}\sum_{j=1}^{N}\sum_{t=1}^{6} \max\big(0,\; d_{j,t} - x_t\big)$$
+
+subject to $x_t = x_{t-1} + a_t - r_t$, $x_0 = 0$, $0 \le x_t \le 15{,}000$ and $0 \le a_t, r_t \le 5{,}000$.
+
+The LP plan is the same problem with a single scenario, the forecast itself ($N = 1$, $d_{1,t} = \hat d_t$). Ignoring opening and closing costs, one more bed is worth adding while $5000 \times P(\text{it is needed}) > 500$, so each month's Protected plan sits near the 90% point of its scenario gaps rather than at the forecast.
+
+The Protected solver adds 0.0001 per open bed-month to break ties in favour of the smaller plan. Reported costs use the rates in the equation.
+
 ### How to read the heatmaps
 
 Each forecast has separate Rule, LP and Protected rows. Monthly cells show realised cost in millions and the number of beds short or spare, rounded to whole beds. Pale yellow marks low costs and deep red marks high costs. All heatmaps use the same scales, **0–16m for monthly cells** and **0–68m for totals**. The Total column also gives the cost above Hindsight. A thick border marks the cheapest available forecast-based plan before rounding. Grey cells mark unavailable forecasts. Read “+X vs hindsight” as the extra cost over the whole six-month plan. A single month can mislead because opening, closing and carrying beds forward shift costs between months.
@@ -76,13 +90,13 @@ Over the longer pre-registered test (23 origins, 2024–2026, excluding Septembe
 
 ![Protected excess cost by planning origin](figures/forecast_combination/excess_by_origin.png)
 
-Each line shows a Protected plan’s cost above Hindsight, with SARIMA-24 varying more across origins than the Average of five (labelled Combo).
+Each line shows a Protected plan’s cost above Hindsight, with SARIMA-24 varying more across origins than the Average of five.
 
 ## 4. Why did September and March disagree?
 
-Protection depended on which way the forecast missed. In September, SARIMA-24 and Seasonal naive forecast too high, so protection added beds that were not needed. In March, both forecast too low, so the extra beds reduced shortages.
+Repeating the experiment at every month shows why. The cheapest plan is the one whose beds end up just above the actual need. That can happen in two ways. A forecast that runs slightly high already has a cushion, so protection only adds unused beds: in September 2025, SARIMA-24 and Seasonal naive forecast too high, and their plain LP plans were cheapest. A forecast that runs low needs the extra beds that protection adds: in March 2026, Seasonal naive and SARIMA-24 forecast too low, and Seasonal naive with protection was cheapest.
 
-Across all months, protection helped in 26 of 29 forecasts that ran too low and only 8 of 34 that ran too high. The direction is unknown when the plan is frozen, but protection lowered cost on average.
+Across all months, protection helped in 26 of 29 forecasts that ran too low and only 8 of 34 that ran too high. Which way the forecasts missed changed through the year: protection helped in 2 of 18 forecasts at the April - June 2025 origins and in 21 of 22 at the October 2025 - January 2026 origins. September and March therefore follow the same pattern; they simply fell in windows where the forecasts missed in opposite directions. The direction is unknown when the plan is frozen, but protection lowered cost on average.
 
 ![Saving from protection versus signed forecast error](figures/monthly_origins/protection_vs_error_direction.png)
 
