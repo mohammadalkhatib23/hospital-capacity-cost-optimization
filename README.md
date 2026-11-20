@@ -34,7 +34,7 @@ $$d_{j,t} = \hat d_t + e_{j,t}$$
 
 The Protected plan chooses one schedule $x_t$ (with additions $a_t$ and removals $r_t$) that minimises the average cost over all scenarios:
 
-$$\min_{x,a,r}\; \sum_{t=1}^{6} \big(500\,x_t + 550\,a_t + 300\,r_t\big) \;+\; \frac{5000}{N}\sum_{j=1}^{N}\sum_{t=1}^{6} \max\big(0,\; d_{j,t} - x_t\big)$$
+$$\min_{x,a,r}\\; \sum_{t=1}^{6} \big(500\\,x_t + 550\\,a_t + 300\\,r_t\big) \\;+\\; \frac{5000}{N}\sum_{j=1}^{N}\sum_{t=1}^{6} \max\big(0,\\; d_{j,t} - x_t\big)$$
 
 subject to $x_t = x_{t-1} + a_t - r_t$, $x_0 = 0$, $0 \le x_t \le 15{,}000$ and $0 \le a_t, r_t \le 5{,}000$.
 
