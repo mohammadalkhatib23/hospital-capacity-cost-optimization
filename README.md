@@ -1,28 +1,94 @@
 # Frozen bed-capacity plans: forecast, optimise, protect
 
-## Question
+## 1. The problem
 
-If NHS England must fix its bed schedule six months ahead, how many extra general and acute beds should it keep open each month? Does optimising the schedule save money over following the forecast? When does protection against forecast error pay, and does averaging five forecasts improve the plan?
+How many extra general and acute beds should NHS England keep open if it must fix the next six months’ schedule today? We use five forecasts and their average to compare three ways of planning: follow the forecast (Rule), optimise the schedule (LP), or optimise with protection against forecast error (Protected). The first two origins gave different winners.
 
-## Results at a glance
+![September 2025 monthly costs and bed shortages](figures/readme_heatmaps/origin_2025-09.png)
 
-Across the five individual methods, optimisation saved money in all 30 forecasts with a dip and tied in the other 33, so it never materially cost more than following the forecast. In those monthly comparisons, protection helped in 26 of 29 under-forecasts and 8 of 34 over-forecasts. In the 23-origin primary test, protection lowered mean cost for every method. The Average of five trailed Seasonal naive with optimisation alone, but its Protected plan had the lowest mean cost, 3.13m above Hindsight compared with 3.66m for Seasonal naive Protected.
+In September 2025, SARIMA-24 LP was cheapest at 0.87m above Hindsight, and protecting that forecast increased its cost by 3.35m.
 
-## Method
+![March 2026 monthly costs and bed shortages](figures/readme_heatmaps/origin_2026-03.png)
 
-An origin is the last month of observed data. Each method uses the 24 months ending at that origin to forecast occupied and available beds separately. The gap is **occupied / 0.90 − available**, the extra beds needed to meet the 90% occupancy target. We fix all six monthly decisions at the origin.
+In March 2026, Seasonal naive Protected was cheapest at 0.89m above Hindsight, saving 12.06m compared with Seasonal naive LP.
 
-**Mean-24** repeats the training average, **Persistence** repeats the latest observation and **Seasonal naive** repeats the value from the same month a year earlier. **SARIMA-24** uses a fixed seasonal time-series model, and **ExtraTrees-24** uses a fixed tree ensemble with past observations and calendar features. The **Average of five** weights the methods equally for each series, using an **Average of four** in October 2025 and January 2026 when SARIMA-24 failed to converge.
+Two months, two different answers. So we repeated the same experiment from every month, April 2025 to April 2026, to see what holds.
 
-The **Rule** follows the forecast gap within the capacity limits. **LP** uses linear programming to choose the lowest-cost schedule for the same forecast. **Hindsight** chooses a schedule using the actual gaps and the same limits. When comparing LP with the Rule, we count cost differences within 1e-6 times the Rule cost as ties.
+## 2. What we did
 
-Extra capacity starts at zero, carries over between months and is capped at 15,000 beds. It can change by up to 5,000 beds per month. Running a bed costs 500 per month, opening one costs 550 and closing one costs 300. Each missing bed costs 5,000 per month. There is no closure charge after the final month. Costs are illustrative model units (validated: False).
+At each of the 13 starting months (origins), we used only data available then. Each method forecast occupied and available beds for the next six months. We froze Rule, LP and Protected schedules for each forecast and their average, then compared their realised costs with Hindsight, the cheapest schedule possible with the actual gaps known. SARIMA-24 failed to fit in October 2025 and January 2026, so the average used the four available methods at those origins and comparisons across all methods use the other 11.
+
+Mean-24 repeats the 24-month training average, Persistence repeats the latest observation and Seasonal naive repeats the same month a year earlier. SARIMA-24 uses a fixed seasonal time-series model and ExtraTrees-24 uses a fixed tree ensemble with past observations and calendar features. At each origin, for each forecast month, the Average of five is the plain average of the five methods' forecasts for that month (occupied and available beds averaged separately, then the gap computed).
+
+The planning gap is **occupied / 0.90 − available**, the extra beds needed for 90% occupancy, and extra capacity starts at zero, carries over up to a limit of 15,000 beds and can change by up to 5,000 beds per month. Running costs 500 per bed-month, opening costs 550 per bed, closing costs 300 per bed and shortages cost 5,000 per missing bed-month, with no closure charge after the final month. Costs are illustrative model units (validated: False).
 
 ### How protection works
 
 The **Protected** plan uses sample average approximation (SAA). Each scenario adds a past six-month sequence of errors from the same method to its current forecast. Protected chooses the single schedule with the lowest average cost across those scenarios. A missing bed costs 5,000 per month, compared with about 500 to run a spare bed.
 
 In September 2025, protection used about 30 scenarios. It raised SARIMA-24's plan by roughly 700 to 1,400 beds per month when the forecast already ran high. Spare bed-months rose from 3,320 to 9,291 and cost rose from 16.11m to 19.46m. Persistence ran low. Its Protected plan eliminated an LP shortfall of 4,276 bed-months and cut cost from 33.21m to 17.55m.
+
+### How to read the heatmaps
+
+Each forecast has separate Rule, LP and Protected rows. Monthly cells show realised cost in millions and the number of beds short or spare, rounded to whole beds. Pale yellow marks low costs and deep red marks high costs. All heatmaps use the same scales, **0–16m for monthly cells** and **0–68m for totals**. The Total column also gives the cost above Hindsight. A thick border marks the cheapest available forecast-based plan before rounding. Grey cells mark unavailable forecasts. Read “+X vs hindsight” as the extra cost over the whole six-month plan. A single month can mislead because opening, closing and carrying beds forward shift costs between months.
+
+## 3. What we found
+
+There are two questions here.
+
+### Question A: which approach - follow the forecast, optimise, or optimise and protect?
+
+There is a clear winner: optimise and protect.
+
+At every starting month, LP never materially cost more than the Rule for any of the five individual methods. It saved money in all 30 forecasts with a dip (a fall followed by a rise) and tied in the 33 without one. Differences within 1e-6 times the Rule cost count as ties.
+
+![Savings from LP over the Rule by method and origin](figures/monthly_origins/summary_value_of_optimisation.png)
+
+Each cell shows the six-month saving from optimising the same forecast.
+
+Across the 11 comparable origins, protection roughly halved the gap to Hindsight for Seasonal naive, the Average of five and ExtraTrees-24.
+
+| Method | Optimised only (LP) | Optimised + protected |
+| --- | ---: | ---: |
+| Seasonal naive | 5.51m | 2.55m |
+| Average of five | 5.61m | 2.64m |
+| ExtraTrees-24 | 6.18m | 3.05m |
+| SARIMA-24 | 5.52m | 3.49m |
+| Mean-24 | 6.75m | 5.08m |
+| Persistence | 16.12m | 6.46m |
+
+Average cost above the perfect plan, per six-month plan.
+
+![Mean cost above Hindsight for LP and Protected, with the tie band above the lowest Protected mean](figures/readme_story/approach_lp_vs_protected.png)
+
+[Vector figure](figures/readme_story/approach_lp_vs_protected.svg)
+
+### Question B: which forecasting method?
+
+There is no clean winner. Two are tied at the top:
+
+- Seasonal naive with protection averaged 2.55m above Hindsight.
+- The Average of five with protection averaged 2.64m above Hindsight.
+
+They are 0.09m apart, inside the tie band of about 0.133m, so they are effectively equal. The band is the mean of 1% of each comparable origin’s Hindsight cost. All other methods are outside it.
+
+Over the longer pre-registered test (23 origins, 2024–2026, excluding September 2025 and March 2026), the Average of five with protection had the lowest mean cost (3.13m above Hindsight versus 3.66m for Seasonal naive with protection).
+
+![Protected excess cost by planning origin](figures/forecast_combination/excess_by_origin.png)
+
+Each line shows a Protected plan’s cost above Hindsight, with SARIMA-24 varying more across origins than the Average of five (labelled Combo).
+
+## 4. Why did September and March disagree?
+
+Protection depended on which way the forecast missed. In September, SARIMA-24 and Seasonal naive forecast too high, so protection added beds that were not needed. In March, both forecast too low, so the extra beds reduced shortages.
+
+Across all months, protection helped in 26 of 29 forecasts that ran too low and only 8 of 34 that ran too high. The direction is unknown when the plan is frozen, but protection lowered cost on average.
+
+![Saving from protection versus signed forecast error](figures/monthly_origins/protection_vs_error_direction.png)
+
+Each dot pairs one method’s average forecast error at one origin with the saving from protecting its plan.
+
+**September 2025**
 
 | Forecast | Direction (signed error in beds) | LP cost · short / spare | Protected cost · short / spare | Saving from protection |
 | --- | --- | --- | --- | --- |
@@ -35,81 +101,7 @@ In September 2025, protection used about 30 scenarios. It raised SARIMA-24's pla
 
 Signed error is the actual gap minus the forecast gap, averaged over the six months. The short and spare figures sum missing and unused bed-months across that window. A positive saving means Protected cost less than LP.
 
-## How to read the heatmaps
-
-Each forecast has separate Rule, LP and Protected rows. Monthly cells show realised cost in millions and the number of beds short or spare, rounded to whole beds. Pale yellow marks low costs and deep red marks high costs. All heatmaps use the same scales, **0–16m for monthly cells** and **0–68m for totals**. The Total column also gives the cost above Hindsight. A thick border marks the cheapest available forecast-based plan before rounding. Grey cells mark unavailable forecasts.
-
-## Main origin: September 2025
-
-![Monthly costs, shortages and spare beds for the September 2025 origin](figures/readme_heatmaps/origin_2025-09.png)
-
-[Vector heatmap](figures/readme_heatmaps/origin_2025-09.svg)
-
-Flat forecasts left Mean-24 and Persistence short in January and February, their two most expensive LP months. In December, LP kept beds open that the Rule would have closed. Over the six months, LP saved 0.43m for Seasonal naive and 0.44m for SARIMA-24. The Average of five ran 79 beds low, and protection cut its cost from 21.17m to 17.01m. It was the cheapest Protected plan. SARIMA-24 LP was cheapest overall at 16.11m.
-
-## Why the September winner is not the overall answer
-
-At September 2025, SARIMA-24 with LP was the cheapest plan, 0.87m above Hindsight. Across the 23 origins of the primary averaging test, the same plan averaged 10.48m above Hindsight, while the Average of five with protection averaged 3.13m - the lowest of any plan. In September the protected average was 1.77m above Hindsight, the cheapest of the Protected plans.
-
-| Plan | September 2025 (above Hindsight) | Mean over the 23 primary origins |
-| --- | --- | --- |
-| SARIMA-24 LP | 0.87m | 10.48m |
-| Seasonal naive Protected | 2.37m | 3.66m |
-| Average of five Protected | 1.77m | 3.13m |
-
-The protected average was never the single cheapest plan at any of the 13 monthly origins: SARIMA-24 LP won in August and September 2025, ExtraTrees-24 Protected from October 2025 to January 2026, Seasonal naive Protected in March and April 2026, and other plans elsewhere. It has the lowest average because it was rarely far from the best. A plan that is excellent in one window and poor in others can lose to one that is good in every window.
-
-Averaging and protection do different jobs. Averaging cancels part of each method's bet on whether demand will run high or low. Protection adds a margin that covers the shortfall when the forecast runs low. Neither makes a plan the best in a single window; together they reduce the chance of being badly wrong.
-
-![Protected plan costs above Hindsight by planning origin](figures/forecast_combination/excess_by_origin.png)
-
-[Vector figure](figures/forecast_combination/excess_by_origin.svg)
-
-Each line shows a Protected plan's cost above Hindsight by origin, with SARIMA-24 varying widely and the protected average (labelled Combo) staying comparatively steady.
-
-## Protection depends on the forecast
-
-![Protection saving versus mean forecast error, individual methods](figures/monthly_origins/protection_vs_error_direction.png)
-
-[Vector scatter plot](figures/monthly_origins/protection_vs_error_direction.svg)
-
-Each dot represents one of the five individual methods at one origin. The more the actual gap exceeded the forecast, the more protection tended to save (Spearman rank correlation **0.926**). A forecast that ran high across six months could still leave beds short in an individual month. The direction of the error is unknown when the schedule is fixed.
-
-## Did averaging the forecasts help?
-
-The primary test gives equal weight to 23 origins. It excludes September 2025 and March 2026, the two origins that suggested averaging. Excess cost is the difference between a plan's six-month cost and the cost of Hindsight at the same origin.
-
-| Forecast (ranked by LP cost) | Mean LP excess | Mean Protected excess | Extra planned beds | Forecast uncertainty margin (beds) | 90% upper forecast coverage |
-| --- | --- | --- | --- | --- | --- |
-| Seasonal naive | 4.30m | 3.66m | 1,009 | 1,802 | 95.7% (132/138) |
-| Average of five | 6.00m | 3.13m | 1,072 | 1,374 | 99.3% (137/138) |
-| ExtraTrees-24 | 6.88m | 3.94m | 1,032 | 1,424 | 96.4% (133/138) |
-| Mean-24 | 7.28m | 6.38m | 1,942 | 2,970 | 100.0% (138/138) |
-| SARIMA-24 | 10.48m | 4.54m | 1,122 | 1,619 | 94.2% (130/138) |
-| Persistence | 14.52m | 7.53m | 1,711 | 2,419 | 92.8% (128/138) |
-
-The extra planned beds column gives the average monthly increase in capacity from LP to Protected. The forecast uncertainty margin is the distance from the point forecast to its 90% upper forecast. Coverage is the share of actual gaps at or below that upper forecast.
-
-Seasonal naive cost 1.70m less per origin than the Average of five with LP. Protection saved the Average of five 2.87m per origin and moved it from second to first place. It had the smallest forecast uncertainty margin and the third-smallest increase in planned capacity.
-
-### Where the costs and added beds went
-
-Costs (in millions) and short or spare bed-months are means per six-month window, rounded after averaging. Operating cost covers running, opening and closing beds. The last column totals the bed-months that Protected added across all 23 origins. If LP was short in a month, all beds added that month count in the first group, even those beyond the shortage. Additions in months with spare LP capacity count in the second group.
-
-| Forecast | Plan | Operating total | Running | Opening | Closing | Shortfall cost | Short / spare bed-months | Added in LP-short / LP-spare months |
-| --- | --- | --- | --- | --- | --- | --- | --- | --- |
-| Average of five | LP | 12.91m | 10.47m | 2.26m | 0.19m | 6.50m | 1,300 / 1,708 | — |
-| Average of five | Protected | 16.42m | 13.69m | 2.66m | 0.08m | 0.12m | 23 / 6,866 | 75,067 / 72,937 |
-| Seasonal naive | LP | 13.79m | 10.74m | 2.66m | 0.38m | 3.93m | 785 / 1,746 | — |
-| Seasonal naive | Protected | 16.79m | 13.77m | 2.80m | 0.23m | 0.28m | 57 / 7,070 | 68,798 / 70,397 |
-| ExtraTrees-24 | LP | 13.23m | 10.69m | 2.33m | 0.20m | 7.06m | 1,412 / 2,269 | — |
-| ExtraTrees-24 | Protected | 16.60m | 13.79m | 2.74m | 0.07m | 0.75m | 150 / 7,199 | 58,154 / 84,279 |
-
-Compared with Seasonal naive Protected, the Protected plan for the Average of five saved 0.37m per origin on running, opening and closing combined, and 0.17m on shortages. Lower shortfall costs accounted for 0.63m of its 0.81m saving over ExtraTrees-24 Protected. It averaged 23 short and 6,866 spare bed-months per origin, fewer of both than either comparison plan.
-
-All five forecasts ran high at the February 2025 origin and low at the December 2025 origin. Averaging kept the error in the same direction in both windows.
-
-## Every origin: April 2025 to April 2026
+## 5. Every origin: April 2025 to April 2026
 
 | Origin | Forecast months | Cheapest available plan | Excess over hindsight | Protection helped most? |
 | --- | --- | --- | --- | --- |
@@ -259,11 +251,9 @@ Seasonal naive underestimated the gap by 579 beds on average. Jul 2026 was its m
 
 </details>
 
-## Findings
+## 6. Answer
 
-For the individual methods, LP saved money on every dip (a fall followed by a rise) and tied the Rule otherwise. Protection mainly helped forecasts that ran low. Counting the average, it helped 21 of 22 forecasts at the October 2025–January 2026 origins and 2 of 18 at the April–June 2025 origins. SARIMA-24 LP was cheapest in September 2025 and Seasonal naive Protected in March 2026. In the primary test, the Average of five ranked second to Seasonal naive with LP and first with protection. Its Protected plan had fewer short and spare bed-months than Seasonal naive Protected or ExtraTrees-24 Protected. Its 90% upper forecast covered 137 of 138 monthly gaps (99.3%).
-
-In short, optimising the frozen plan never cost more than following the forecast and saved money whenever the forecast dipped; protection then lowered the average cost for every forecast, most of all when forecasts ran low; and averaging the five forecasts before protecting gave the cheapest plan on average.
+We repeated the experiment from every month, April 2025 to April 2026. The approach has a clear winner on average: optimise the plan and add protection. Optimisation never materially cost more than following the forecast, and protection roughly halved the gap to the perfect plan for Seasonal naive, the Average of five and ExtraTrees-24. Seasonal naive and the Average of five, both with protection, were effectively tied at the top across the comparable months. September and March differed because protection helped most often when forecasts ran low, and the direction of the error changed between the two windows.
 
 ## Data and code
 
